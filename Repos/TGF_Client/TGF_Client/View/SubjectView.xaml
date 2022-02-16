@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="TGF_Client.View.SubjectView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TGF_Client.View"
+             xmlns:vm ="clr-namespace:TGF_Client.ViewModel"
+             d:DataContext="{d:DesignInstance Type=vm:SubjectViewVM, IsDesignTimeCreatable=True}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Resources/AllStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Background="{StaticResource WindowForeGroundBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="9*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0"
+              Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ContentControl Grid.Row="1"
+                            Grid.Column="0"
+                            Content="{Binding messageBoardVM}"
+                            Margin="5"/>
+            <ContentControl Grid.Row="2"
+                            Grid.Column="0"
+                            Content="{Binding userTextInputVM}"
+                            Margin="5"/>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,9 @@
+﻿<Application x:Class="TGF_Client.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:TGF_Client"
+             StartupUri="Shell/ShellView.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>

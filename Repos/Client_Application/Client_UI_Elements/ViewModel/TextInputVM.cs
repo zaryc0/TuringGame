@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Client_ViewModels
+namespace Client_UI_Elements.ViewModel
 {
-    class TextInputVM
+    public class TextInputVM
     {
     }
 }

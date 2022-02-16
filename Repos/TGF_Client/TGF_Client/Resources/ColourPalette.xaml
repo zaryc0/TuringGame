@@ -1,0 +1,37 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!--Colours for Color properties-->
+    <Color x:Key="WindowBackGround1">#FF7A3900</Color>
+    <Color x:Key="WindowBackGround2">#FFB6B2AE</Color>
+    <Color x:Key="WindowForeGround">#FF2F2F2F</Color>
+    <Color x:Key="PanelBackGround" >#FFF5F5F5</Color>
+    <Color x:Key="PanelForeground">#FF1F1F1F</Color>
+    <Color x:Key="TitleColor">#FF330000</Color>
+    <Color x:Key="PanelHeader">Gainsboro</Color>
+    <Color x:Key="PrimaryForeground">#DD000000</Color>
+    <Color x:Key="TextForeground">#FF4146</Color>
+    <Color x:Key="SecondaryAccent">#FFFC4C02</Color>
+    <Color x:Key="ContentOverlay">#30FFFFFF</Color>
+    <Color x:Key="ValidationErrorColor">#F4F336</Color>
+    <Color x:Key="Invisible">#00FFFFFF</Color>
+    <Color x:Key="ScrollBar">#F0555555</Color>
+    <Color x:Key="MessageBoxForeGround">#FF243B58</Color>
+    <Color x:Key="MessageBoxBackGround">#FFD8BFA0</Color>
+
+        <!--Brushes for background properties-->
+    <SolidColorBrush x:Key="ScrollBarBrush" Color="{StaticResource ScrollBar}"/>
+    <SolidColorBrush x:Key="WindowBackGround1Brush" Color="{StaticResource WindowBackGround1}"/>
+    <SolidColorBrush x:Key="WindowBackGround2Brush" Color="{StaticResource WindowBackGround2}"/>
+    <SolidColorBrush x:Key="WindowForeGroundBrush" Color="{StaticResource WindowForeGround}"/>
+    <SolidColorBrush x:Key="PanelBackGroundBrush" Color="{StaticResource PanelBackGround}"/>
+    <SolidColorBrush x:Key="PanelForeGroundBrush" Color="{StaticResource PanelForeground}"/>
+    <SolidColorBrush x:Key="TitlecolorBrush" Color="{StaticResource TitleColor}"/>
+    <SolidColorBrush x:Key="PanelHeaderBrush" Color="{StaticResource PanelHeader}"/>
+    <SolidColorBrush x:Key="ContentOverlayBrush" Color="{StaticResource ContentOverlay}"/>
+    <SolidColorBrush x:Key="ValidationErrorColorBrush" Color="{StaticResource ValidationErrorColor}"/>
+    <SolidColorBrush x:Key="InvisibleBrush" Color="{StaticResource Invisible}"/>
+    <SolidColorBrush x:Key="MessageBoxForeGroundBrush" Color="{StaticResource MessageBoxForeGround}"/>
+    <SolidColorBrush x:Key="MessageBoxBackGroundBrush" Color="{StaticResource MessageBoxBackGround}"/>
+
+</ResourceDictionary>

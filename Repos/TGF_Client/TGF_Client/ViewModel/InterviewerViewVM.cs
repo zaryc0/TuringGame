@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Client_UI_Elements.ViewModel
+namespace TGF_Client.ViewModel
 {
-    public class SubjectSelection
+    class InterviewerViewVM : BaseViewModel
     {
     }
 }

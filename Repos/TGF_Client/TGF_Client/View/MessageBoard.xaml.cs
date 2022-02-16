@@ -11,16 +11,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Client_UI_Elements
+namespace TGF_Client.View
 {
     /// <summary>
-    /// Interaction logic for UserControl1.xaml
+    /// Interaction logic for MessageBoard.xaml
     /// </summary>
-    public partial class UserControl1 : UserControl
+    public partial class MessageBoard : UserControl
     {
-        public UserControl1()
+        public MessageBoard()
         {
             InitializeComponent();
+
+            Scrollable.ScrollToBottom();
         }
     }
 }

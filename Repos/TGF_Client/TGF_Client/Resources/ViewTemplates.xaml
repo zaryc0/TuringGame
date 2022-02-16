@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:v ="clr-namespace:TGF_Client.View"
+                    xmlns:vm="clr-namespace:TGF_Client.ViewModel">
+    
+    <DataTemplate DataType="{x:Type vm:UserTextInputVM}">
+        <v:UserTextInput/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:InitialViewVM}">
+        <v:InitialView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:InterviewerViewVM}">
+        <v:InterviewerView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:SubjectViewVM}">
+        <v:SubjectView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:MessageBoardVM}">
+        <v:MessageBoard/>
+    </DataTemplate>
+</ResourceDictionary>

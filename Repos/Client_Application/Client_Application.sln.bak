@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shell", "Client_Shell\Shell.csproj", "{0F532559-02CE-4656-84E7-ADBB139A6D6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shell", "Client_Application\Shell.csproj", "{0F532559-02CE-4656-84E7-ADBB139A6D6A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client_App", "Client_App\Client_App.csproj", "{A2D3CB6F-7EA1-4712-A182-5BC86FE57597}"
 EndProject
