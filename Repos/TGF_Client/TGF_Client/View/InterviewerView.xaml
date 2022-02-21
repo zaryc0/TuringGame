@@ -4,9 +4,49 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TGF_Client.View"
+             xmlns:vm ="clr-namespace:TGF_Client.ViewModel"
+             d:DataContext="{d:DesignInstance Type=vm:InterviewerViewVM, IsDesignTimeCreatable=True}"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+             d:DesignHeight="500" d:DesignWidth="1000">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Resources/AllStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Background="{StaticResource ContentBackGroundBrush2}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="12*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition MinHeight="470"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0"
+              Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="350"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" MinHeight="10"/>
+                <RowDefinition Height="8*" MinHeight="410"/>
+                <RowDefinition Height="2*" MinHeight="40"/>
+                <RowDefinition Height="*" MinHeight="10"/>
+            </Grid.RowDefinitions>
+            <ContentControl Grid.Row="1"
+                            Grid.Column="0"
+                            Content="{Binding messageBoardVM}"
+                            Margin="5"/>
+            <ContentControl Grid.Row="2"
+                            Grid.Column="0"
+                            Content="{Binding userTextInputVM}"
+                            Margin="5"/>
+            <ContentControl Grid.Column="1"
+                            Grid.Row="1"
+                            Content="{Binding subjectSelectionVM}"/>
+        </Grid>
     </Grid>
 </UserControl>

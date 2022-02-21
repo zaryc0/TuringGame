@@ -1,0 +1,113 @@
+﻿<UserControl x:Class="TGF_Client.View.SubjectSelection"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TGF_Client.View"
+             xmlns:vm ="clr-namespace:TGF_Client.ViewModel"
+             d:DataContext="{d:DesignInstance Type=vm:SubjectSelectionVM, IsDesignTimeCreatable=True}"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="400">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Resources/AllStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <UserControl.DataContext>
+        <vm:SubjectSelectionVM/>
+    </UserControl.DataContext>
+    <Grid Background="{StaticResource InvisibleBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="350"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" MinHeight="45"/>
+            <RowDefinition Height="155"/>
+            <RowDefinition Height="155"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="Header"
+                   Grid.Column="1"
+                   Grid.Row="0"
+                   HorizontalAlignment="Center"
+                   TextAlignment="Justify"
+                   VerticalAlignment="Center"
+                   TextWrapping="Wrap"
+                   FontSize="30"
+                   Foreground="{StaticResource PanelHeaderBrush}"
+                   Text="{Binding Header}"/>
+        <Grid Grid.Column="1"
+              Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" MaxHeight="128"/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+            <Rectangle Grid.Column="0"
+                       Grid.Row="0"
+                       Grid.RowSpan="2"
+                       Width="150"
+                       RadiusX="20"
+                       RadiusY="20"
+                       Fill="{StaticResource PanelBackGroundRadialBrush}"/>
+            <Image x:Name="Robot_Image"
+                   Grid.Column="0"
+                   Grid.Row="0"
+                   Source="pack://application:,,,/images/robot128.png"
+                   Width="128"
+                   MaxWidth="128"
+                   MouseLeftButtonDown="Robot_Image_MouseLeftButtonDown"/>
+            <TextBlock Grid.Column="0"
+                       Grid.Row="1"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="15"
+                       Foreground="{StaticResource PanelForeGroundBrush}"
+                       Text="ROBOT"/>
+        </Grid>
+        <Grid Grid.Column="0"
+              Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" MaxHeight="128"/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+            <Rectangle Grid.Column="0"
+                       Grid.Row="0"
+                       Grid.RowSpan="2"
+                       Width="150"
+                       RadiusX="20"
+                       RadiusY="20"
+                       Fill="{StaticResource PanelBackGroundRadialBrush}"/>
+            <Image x:Name="Human_Image"
+                   Source="pack://application:,,,/images/human128.png"
+                   Grid.Column="1"
+                   Grid.Row="0"
+                   Width="128"
+                   MaxWidth="128"
+                   MouseLeftButtonDown="Human_Image_MouseLeftButtonDown"/>
+            <TextBlock Grid.Column="0"
+                       Grid.Row="1"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="15"
+                       Foreground="{StaticResource PanelForeGroundBrush}"
+                       Text="HUMAN"/>
+        </Grid>
+        <Button x:Name="Button1"
+                Grid.Column="1"
+                Grid.Row="3"
+                MaxHeight="45"
+                MaxWidth="128"
+                Command="{Binding SubmitSelection}">
+            <TextBlock Text="{Binding ButtonText}"/>
+        </Button>
+    </Grid>
+</UserControl>

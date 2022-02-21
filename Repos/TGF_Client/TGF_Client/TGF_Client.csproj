@@ -7,15 +7,42 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\human128.png" />
+    <None Remove="images\human32.png" />
+    <None Remove="images\human64.png" />
     <None Remove="images\profile.png" />
     <None Remove="images\profile32.png" />
+    <None Remove="images\robot128.png" />
+    <None Remove="images\robot32.png" />
+    <None Remove="images\robot64.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="images\human32.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="images\profile.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="images\profile32.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\human128.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\human64.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\robot128.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\robot32.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\robot64.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

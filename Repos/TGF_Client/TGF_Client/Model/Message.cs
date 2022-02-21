@@ -17,11 +17,15 @@ namespace TGF_Client.Model
 
         public string CompileMessage()
         {
-            return $"{Destination},{Source},{Type},{TimeStamp},{Content},<MessageEnd/>";
+            return $"{Destination},{Source},{Type},{TimeStamp},{Content},{Constants.Message_End_Tag}";
         }
         public Message(string message)
         {
             string[] messageContent = message.Split(',');
+            if (MessageIsNotValid(messageContent))
+            {
+                //RAiseError
+            }
             Destination = messageContent[0];
             Source = messageContent[1];
             Type = messageContent[2];
@@ -36,6 +40,10 @@ namespace TGF_Client.Model
             Type = type;
             TimeStamp = DateTime.Now.ToString();
             Content = Body;
+        }
+        public bool MessageIsNotValid(string[] input)
+        {
+            return input.Length != 6 || input[5] != Constants.Message_End_Tag;
         }
     }
 }

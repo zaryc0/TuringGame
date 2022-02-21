@@ -23,12 +23,12 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBox Grid.Column="0"
-                 Margin="5"
+
                  TextWrapping="Wrap"
                  Text="{Binding Text}"/>
         <Button Grid.Column="1"
                 ClickMode="Release"
-                Margin="0,5,5,5"
+                Margin="5,5,5,5"
                 MaxHeight="40"
                 MaxWidth="80"
                 Command="{Binding SubmitText}">

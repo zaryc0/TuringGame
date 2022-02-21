@@ -12,6 +12,7 @@ namespace TGF_Client
         public Config config;
         public List<Message> messages = new List<Message>();
         public SocketHandler socket;
+        public Roles role;
 
         public Client()
         {
@@ -19,15 +20,15 @@ namespace TGF_Client
             {
                 if (i % 2 == 0)
                 {
-                    messages.Add(new Message($"10.228.199.121,10.228.199.123,Answer,{DateTime.Now},Nulla id mollis est. Vestibulum massa ligula posuere semper arcu velestas. Nunc tristique odio arcu nec congue quam eleifend sit amet. Aenean in ex nulla. Nam interdum erat turpis. Morbi in enim vitae libero maximus porttitor. Praesent quis fringilla"));
+                    messages.Add(new Message($"<SUBJECT/>,<INTERVIEWER/>,Answer,{DateTime.Now},Nulla id mollis est. Vestibulum massa ligula posuere semper arcu velestas. Nunc tristique odio arcu nec congue quam eleifend sit amet. Aenean in ex nulla. Nam interdum erat turpis. Morbi in enim vitae libero maximus porttitor. Praesent quis fringilla"));
                 }
                 else
                 {
-                    messages.Add(new Message($"10.228.199.123,10.228.199.121,Question,{DateTime.Now},Nulla id mollis est. Vestibulum massa ligula posuere semper arcu velestas. Nunc tristique odio arcu nec congue quam eleifend sit amet. Aenean in ex nulla. Nam interdum erat turpis. Morbi in enim vitae libero maximus porttitor. Praesent quis fringilla"));
+                    messages.Add(new Message($"<INTERVIEWER/>,<SUBJECT/>,Question,{DateTime.Now},Nulla id mollis est. Vestibulum massa ligula posuere semper arcu velestas. Nunc tristique odio arcu nec congue quam eleifend sit amet. Aenean in ex nulla. Nam interdum erat turpis. Morbi in enim vitae libero maximus porttitor. Praesent quis fringilla"));
                 }
             }
             config = new Config();
-            socket = new SocketHandler(GetControllerIP(),GetLocalIP());
+            socket = new SocketHandler(GetControllerIP(), GetLocalIP());
         }
 
         public void AddMessageToList(Message message)

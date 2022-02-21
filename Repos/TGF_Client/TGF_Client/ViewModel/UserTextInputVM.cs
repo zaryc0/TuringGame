@@ -15,9 +15,9 @@ namespace TGF_Client.ViewModel
             get => _text;
             set
             {
-                if (value != this._text)
+                if (value != _text)
                 {
-                    this._text = value;
+                    _text = value;
                     NotifyPropertyChanged();
                 }
             }

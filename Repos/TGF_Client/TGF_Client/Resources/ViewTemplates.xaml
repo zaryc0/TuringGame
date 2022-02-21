@@ -18,4 +18,7 @@
     <DataTemplate DataType="{x:Type vm:MessageBoardVM}">
         <v:MessageBoard/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:SubjectSelectionVM}">
+        <v:SubjectSelection/>
+    </DataTemplate>
 </ResourceDictionary>

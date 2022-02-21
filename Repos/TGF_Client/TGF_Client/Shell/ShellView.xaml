@@ -8,7 +8,7 @@
         xmlns:svm="clr-namespace:TGF_Client.Shell"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type = svm:ShellViewModel, IsDesignTimeCreatable=True}"
-        Title="{Binding Title}" MinHeight="450" MinWidth="800">
+        Title="{Binding Title}" MinHeight="500" MinWidth="800">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -17,11 +17,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid>
-        <Grid.Background>
-            <SolidColorBrush Color="AliceBlue"/>
-        </Grid.Background>
-        <ContentControl Content="{Binding OutputContent}"
-                        Margin="10,0,10,10"/>
+    <Grid Background="{StaticResource WindowBackGroundRadialBrush}">
+        <ContentControl Content="{Binding OutputContent}"/>
     </Grid>
 </Window>

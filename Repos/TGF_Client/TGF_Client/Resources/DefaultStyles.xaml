@@ -6,6 +6,7 @@
     <!--This Dictionary is for Default style overides e.g scroll bars-->
     <Style TargetType="ScrollBar">
         <Setter Property="Background" Value="{StaticResource InvisibleBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource InvisibleBrush}"/>
         <Setter Property="Foreground" Value="{StaticResource ScrollBarBrush}"/>
         <Setter Property="Margin" Value="1"/>
         <Style.Triggers>

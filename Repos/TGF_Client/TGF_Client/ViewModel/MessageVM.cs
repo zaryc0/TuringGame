@@ -11,17 +11,8 @@ namespace TGF_Client.ViewModel
         //Properties
         public string Sender
         {
-            get
-            {
-                if (Destination == Bus.CheckLocalIP().ToString())
-                {
-                    return "?????";
-                }
-                else
-                {
-                    return "You";
-                }
-            }
+            get => Bus.GetSender(Source);
+
         }
 
         public string Destination

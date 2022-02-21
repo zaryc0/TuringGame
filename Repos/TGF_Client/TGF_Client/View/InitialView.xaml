@@ -6,8 +6,7 @@
              xmlns:local="clr-namespace:TGF_Client.View"
              xmlns:vm ="clr-namespace:TGF_Client.ViewModel"
              d:DataContext="{d:DesignInstance Type=vm:InitialViewVM, IsDesignTimeCreatable=True}"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -17,7 +16,7 @@
     </UserControl.Resources>
     <Grid>
         <Grid.Background>
-            <SolidColorBrush Color="{StaticResource PanelBackGround}"/>
+            <SolidColorBrush Color="{StaticResource ContentBackGround2}"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -47,11 +46,14 @@
                      Grid.Column="0"
                      Height="30"
                      Margin="10"
+                     Background="{StaticResource PanelBackGroundBrush1}"
+                     Foreground="{StaticResource PanelForeGroundBrush}"
                      Text="{Binding Input}"
                      FontSize="20"/>
             <Button Grid.Row="0"
                     Grid.Column="1"
                     Height="30"
+                    Margin="0,0,10,0"
                     Command="{Binding SubmitInput}"
                     FontSize="20">
                 SUBMIT

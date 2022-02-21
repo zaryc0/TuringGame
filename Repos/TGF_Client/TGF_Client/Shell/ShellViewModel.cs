@@ -59,21 +59,13 @@ namespace TGF_Client.Shell
         //Command Functions
         public void ChangeOutputContent(int id)
         {
-            switch (id)
+            OutputContent = id switch
             {
-                case 0:
-                    OutputContent = InitialVM;
-                    break;
-                case 1:
-                    OutputContent = SubjectVM;
-                    break;
-                case 2:
-                    OutputContent = InterviewerVM;
-                    break;
-                default:
-                    OutputContent = InitialVM;
-                    break;
-            }
+                Constants.Initial_View_ID => InitialVM,
+                Constants.Subject_View_ID => SubjectVM,
+                Constants.Interviewer_View_ID => InterviewerVM,
+                _ => InitialVM,
+            };
         }
     }
 }
