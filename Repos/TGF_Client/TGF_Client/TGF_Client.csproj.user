@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="View\InitialView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\InterviewerView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Message.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\MessageBoard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\SubjectSelection.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\SubjectView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\UserTextInput.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Resources\AllStyles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\ColourPalette.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\DefaultStyles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Typography.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\ViewTemplates.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Shell\ShellView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\InitialView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\InterviewerView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Message.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\MessageBoard.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\SubjectSelection.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\SubjectView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\UserTextInput.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

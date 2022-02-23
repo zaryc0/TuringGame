@@ -1,0 +1,67 @@
+C:\Users\cotgr\source\repos\TGF_Client\TGF_Client\bin\Debug\netcoreapp3.1\TGF_Client.exe
+C:\Users\cotgr\source\repos\TGF_Client\TGF_Client\bin\Debug\netcoreapp3.1\TGF_Client.deps.json
+C:\Users\cotgr\source\repos\TGF_Client\TGF_Client\bin\Debug\netcoreapp3.1\TGF_Client.runtimeconfig.json
+C:\Users\cotgr\source\repos\TGF_Client\TGF_Client\bin\Debug\netcoreapp3.1\TGF_Client.runtimeconfig.dev.json
+C:\Users\cotgr\source\repos\TGF_Client\TGF_Client\bin\Debug\netcoreapp3.1\TGF_Client.dll
+C:\Users\cotgr\source\repos\TGF_Client\TGF_Client\bin\Debug\netcoreapp3.1\TGF_Client.pdb
+C:\Users\cotgr\source\repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\TGF_Client.csproj.AssemblyReference.cache
+C:\Users\cotgr\source\repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\Resources\AllStyles.baml
+C:\Users\cotgr\source\repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\Resources\ColourPalette.baml
+C:\Users\cotgr\source\repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\Resources\DefaultStyles.baml
+C:\Users\cotgr\source\repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\Resources\Typography.baml
+C:\Users\cotgr\source\repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\Resources\ViewTemplates.baml
+C:\Users\cotgr\source\repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\Shell\ShellView.g.cs
+C:\Users\cotgr\source\repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\View\UserTextInput.g.cs
+C:\Users\cotgr\source\repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\App.g.cs
+C:\Users\cotgr\source\repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\TGF_Client_MarkupCompile.cache
+C:\Users\cotgr\source\repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\TGF_Client_MarkupCompile.lref
+C:\Users\cotgr\source\repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\Shell\ShellView.baml
+C:\Users\cotgr\source\repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\View\UserTextInput.baml
+C:\Users\cotgr\source\repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\TGF_Client.g.resources
+C:\Users\cotgr\source\repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\TGF_Client.AssemblyInfoInputs.cache
+C:\Users\cotgr\source\repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\TGF_Client.AssemblyInfo.cs
+C:\Users\cotgr\source\repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\TGF_Client.csproj.CoreCompileInputs.cache
+C:\Users\cotgr\source\repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\TGF_Client.dll
+C:\Users\cotgr\source\repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\TGF_Client.pdb
+C:\Users\cotgr\source\repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\TGF_Client.genruntimeconfig.cache
+C:\Users\cotgr\source\repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\bin\Debug\netcoreapp3.1\TGF_Client.exe
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\bin\Debug\netcoreapp3.1\TGF_Client.deps.json
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\bin\Debug\netcoreapp3.1\TGF_Client.runtimeconfig.json
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\bin\Debug\netcoreapp3.1\TGF_Client.runtimeconfig.dev.json
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\bin\Debug\netcoreapp3.1\TGF_Client.dll
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\bin\Debug\netcoreapp3.1\TGF_Client.pdb
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\Resources\AllStyles.baml
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\Resources\ColourPalette.baml
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\Resources\DefaultStyles.baml
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\Resources\Typography.baml
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\Shell\ShellView.g.cs
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\View\InitialView.g.cs
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\View\InterviewerView.g.cs
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\View\Message.g.cs
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\View\MessageBoard.g.cs
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\View\SubjectView.g.cs
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\View\UserTextInput.g.cs
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\App.g.cs
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\TGF_Client_MarkupCompile.cache
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\TGF_Client_MarkupCompile.lref
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\Resources\ViewTemplates.baml
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\Shell\ShellView.baml
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\View\InitialView.baml
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\View\InterviewerView.baml
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\View\Message.baml
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\View\MessageBoard.baml
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\View\SubjectView.baml
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\View\UserTextInput.baml
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\TGF_Client.g.resources
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\TGF_Client.AssemblyInfoInputs.cache
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\TGF_Client.AssemblyInfo.cs
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\TGF_Client.csproj.CoreCompileInputs.cache
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\TGF_Client.dll
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\TGF_Client.pdb
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\TGF_Client.genruntimeconfig.cache
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\TGF_Client.GeneratedMSBuildEditorConfig.editorconfig
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\View\SubjectSelection.g.cs
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\View\SubjectSelection.baml
+E:\Repos\Turing game\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\TGF_Client.csproj.AssemblyReference.cache
