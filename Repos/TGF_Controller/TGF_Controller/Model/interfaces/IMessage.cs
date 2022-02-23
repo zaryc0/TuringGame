@@ -11,7 +11,7 @@ namespace TGF_Controller.Model.interfaces
         //Properties
         public string Destination { get; set; }
         public string Source { get; set; }
-        public string Type { get; set; }
+        public string TypeTag { get; set; }
         public string TimeStamp { get; set; }
         public string Content { get; set; }
         

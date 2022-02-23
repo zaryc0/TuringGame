@@ -1,4 +1,10 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"                    
+                    xmlns:v ="clr-namespace:TGF_Controller.View"
+                    xmlns:vm="clr-namespace:TGF_Controller.ViewModel">
+
+    <DataTemplate DataType="{x:Type vm:InitialViewVM}">
+        <v:InitialView/>
+    </DataTemplate>
+
 </ResourceDictionary>

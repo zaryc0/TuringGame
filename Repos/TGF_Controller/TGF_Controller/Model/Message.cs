@@ -13,7 +13,7 @@ namespace TGF_Controller.Model
         //Properties
         public string Destination { get; set; }
         public string Source { get; set; }
-        public string Type { get; set; }
+        public string TypeTag { get; set; }
         public string TimeStamp { get; set; }
         public string Content { get; set; }
 
@@ -23,7 +23,7 @@ namespace TGF_Controller.Model
             string[] messageContent = message.Split(',');
             Destination = messageContent[0];
             Source = messageContent[1];
-            Type = messageContent[2];
+            TypeTag = messageContent[2];
             TimeStamp = messageContent[3];
             Content = messageContent[4];
         }
@@ -32,7 +32,7 @@ namespace TGF_Controller.Model
         {
             Destination = destination;
             Source = source;
-            Type = type;
+            TypeTag = type;
             TimeStamp = DateTime.Now.ToString();
             Content = Body;
         }
@@ -40,7 +40,7 @@ namespace TGF_Controller.Model
         //Functions
         public string CompileMessage()
         {
-            return $"{Destination},{Source},{Type},{TimeStamp},{Content},{Constants.Message_End_Tag}";
+            return $"{Destination},{Source},{TypeTag},{TimeStamp},{Content},{Constants.Message_End_Tag}";
         }
 
         public bool MessageIsNotValid(string[] input)

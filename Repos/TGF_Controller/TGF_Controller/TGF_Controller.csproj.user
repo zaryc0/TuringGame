@@ -7,6 +7,14 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="View\InitialView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\MonitoringView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="Resources\AllStyles.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -23,6 +31,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Shell\Shell.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\InitialView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\MonitoringView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

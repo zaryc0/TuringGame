@@ -13,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TGF_Controller.Shell
+namespace TGF_Controller.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for InitialView.xaml
     /// </summary>
-    public partial class Shell : Window
+    public partial class InitialView : UserControl
     {
-        public Shell()
+        public InitialView()
         {
             InitializeComponent();
-            this.DataContext = new ShellViewModel();
         }
     }
 }

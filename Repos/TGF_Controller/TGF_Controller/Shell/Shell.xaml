@@ -3,12 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TGF_Controller"
+        xmlns:local="clr-namespace:TGF_Controller.Shell"
         xmlns:svm ="clr-namespace:TGF_Controller.Shell"
         mc:Ignorable="d"
-        d:DataContext="{d:DesignInstance Type=svm:ShellViewModel, IsDesignTimeCreatable=True}"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
+        d:DataContext="{d:DesignInstance Type = svm:ShellViewModel, IsDesignTimeCreatable=True}"
+        Title="{Binding Title}" MinHeight="500" MinWidth="800">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Resources/AllStyles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Resources/ViewTemplates.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Background="{StaticResource WindowBackGroundRadialBrush}">
+        <ContentControl Content="{Binding OutputContent}"/>
     </Grid>
 </Window>

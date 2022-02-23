@@ -1,12 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TGF_Controller.Controller;
+using TGF_Controller.Shell;
+using TGF_Controller.ViewModel;
 
 namespace TGF_Controller
 {
-    class Bus
+    internal static class Bus
     {
+        public static Control controller;
+        public static ShellViewModel shellVM;
+        public static InitialViewVM initialVM;
+        public static MonitoringVM monitoringVM;
+
+        internal static void LaunchApplication()
+        {
+            controller = new();
+            shellVM.ChangeOutputContent(Constants.Monitor_View_ID);
+        }
     }
 }
