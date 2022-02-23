@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace TGF_Client
+namespace TGF_Controller.Controller
 {
     internal class Constants
     {
+        public const int Room_Limit = 5;
+
         public const int Initial_View_ID = 0;
         public const int Interviewer_View_ID = 1;
         public const int Subject_View_ID = 2;

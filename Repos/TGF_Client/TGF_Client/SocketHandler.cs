@@ -22,7 +22,7 @@ namespace TGF_Client
 
         public SocketHandler(IPAddress controllerAddress, IPAddress localAddress)
         {
-            hostName = Dns.GetHostName();
+            this.hostName = Dns.GetHostName();
             this.controllerPortNumber = 0;
             this.controllerAddress = controllerAddress;
             this.localAddress = localAddress;
