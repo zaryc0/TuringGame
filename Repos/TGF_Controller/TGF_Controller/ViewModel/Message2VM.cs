@@ -8,13 +8,13 @@ using TGF_Controller.ViewModel.interfaces;
 
 namespace TGF_Controller.ViewModel
 {
-    internal class MessageVM : BaseViewModel, IMessageVM
+    internal class Message2VM : BaseViewModel, IMessageVM
     {
         //Model
         private IMessage _m;
 
         //Constructor
-        public MessageVM(IMessage m)
+        public Message2VM(IMessage m)
         {
             _m = m;
         }
@@ -79,7 +79,7 @@ namespace TGF_Controller.ViewModel
             }
         }
 
-        public string Sender { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Sender { get => "?????"; }
 
         //Functions
         public IMessageVM GetMessageVM()

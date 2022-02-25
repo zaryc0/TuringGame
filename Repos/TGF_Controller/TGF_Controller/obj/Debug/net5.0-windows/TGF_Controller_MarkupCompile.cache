@@ -1,5 +1,5 @@
 ﻿TGF_Controller
-1.0.0.0
+
 
 winexe
 C#
@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 C:\Users\callu\OneDrive\Documents\UniWork\New folder\TuringGame\Repos\TGF_Controller\TGF_Controller\App.xaml
-10-1755807105
+91233676050
 
-35-1393962949
+31156273977
 193-1891726104
-Resources\AllStyles.xaml;Resources\ColourPalette.xaml;Resources\DefaultStyles.xaml;Resources\Typography.xaml;Resources\ViewTemplates.xaml;Shell\Shell.xaml;View\InitialView.xaml;View\MessageView.xaml;View\MessageView2.xaml;View\MonitoringView.xaml;
+Resources\AllStyles.xaml;Resources\ColourPalette.xaml;Resources\DefaultStyles.xaml;Resources\Typography.xaml;Resources\ViewTemplates.xaml;Shell\Shell.xaml;View\InitialView.xaml;View\MessageView.xaml;View\MonitoringView.xaml;
 
 False
 

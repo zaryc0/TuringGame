@@ -26,8 +26,12 @@
     <Color x:Key="ScrollBar">#F0555555</Color>
 
     <Color x:Key="MessageBoxForeGround">#FF08090A</Color>
-    <Color x:Key="MessageBoxBackGround">#F98510</Color>
+    <Color x:Key="MessageBoxBackGround">#FFF98510</Color>
     <Color x:Key="MessageBoxHighlight">#FFF99939</Color>
+    
+    <Color x:Key="MessageBox2ForeGround">#FF08090A</Color>
+    <Color x:Key="MessageBox2BackGround">#FFFF00FF</Color>
+    <Color x:Key="MessageBox2Highlight">#FFFF69FF</Color>
 
     <!--SolidBrushes for background properties-->
     <SolidColorBrush x:Key="ScrollBarBrush" Color="{StaticResource ScrollBar}"/>
@@ -68,6 +72,11 @@
     <RadialGradientBrush x:Key="MessageBackGroundRadialBrush" GradientOrigin="0,0.5" RadiusX="1" RadiusY="0.2">
         <GradientStop Color="{StaticResource MessageBoxBackGround}" Offset="1.5"/>
         <GradientStop Color="{StaticResource MessageBoxHighlight}"/>
+    </RadialGradientBrush>
+
+    <RadialGradientBrush x:Key="Message2BackGroundRadialBrush" GradientOrigin="0,0.5" RadiusX="1" RadiusY="0.2">
+        <GradientStop Color="{StaticResource MessageBox2BackGround}" Offset="1.5"/>
+        <GradientStop Color="{StaticResource MessageBox2Highlight}"/>
     </RadialGradientBrush>
 
     <!--Linear Brushes for background properties-->
