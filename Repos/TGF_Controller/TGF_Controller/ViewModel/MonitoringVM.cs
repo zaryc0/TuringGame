@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace TGF_Controller.ViewModel
 {
-    class MonitoringVM
+    internal class MonitoringVM
     {
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using TGF_Controller.Controller;
+using TGF_Controller.Model.interfaces;
 using TGF_Controller.Shell;
 using TGF_Controller.ViewModel;
 

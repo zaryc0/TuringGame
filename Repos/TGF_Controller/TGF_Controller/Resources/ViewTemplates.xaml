@@ -6,5 +6,8 @@
     <DataTemplate DataType="{x:Type vm:InitialViewVM}">
         <v:InitialView/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:MonitoringVM}">
+        <v:MonitoringView/>
+    </DataTemplate>
 
 </ResourceDictionary>
