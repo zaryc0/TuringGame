@@ -23,6 +23,20 @@ namespace TGF_Client.ViewModel
             }
         }
 
+        private string _robotImgURI;
+        public string RobotURI
+        {
+            get => _robotImgURI;
+            set
+            {
+                if (value != _robotImgURI)
+                {
+                    _robotImgURI= value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         private string _buttonText;
         public string ButtonText
         {
@@ -54,6 +68,7 @@ namespace TGF_Client.ViewModel
         public SubjectSelectionVM()
         {
             Header = "Who are you talking to?";
+            RobotURI = Constants.Robot128_Img_File_Path;
             ButtonText = "Select Image";
             Selection = SubjectEnum.None;
             SubmitSelection = new RelayCommand(o => Submit());

@@ -58,7 +58,7 @@
             <Image x:Name="Robot_Image"
                    Grid.Column="0"
                    Grid.Row="0"
-                   Source="pack://application:,,,/images/robot128.png"
+                   Source="{Binding RobotURI}"
                    Width="128"
                    MaxWidth="128"
                    MouseLeftButtonDown="Robot_Image_MouseLeftButtonDown"/>
@@ -101,7 +101,7 @@
                        Foreground="{StaticResource PanelForeGroundBrush}"
                        Text="HUMAN"/>
         </Grid>
-        <Button x:Name="Button1"
+        <Button x:Name="Submission_Button"
                 Grid.Column="1"
                 Grid.Row="3"
                 MaxHeight="45"

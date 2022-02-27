@@ -21,6 +21,9 @@ namespace TGF_Client
         public const string Message_Type_Submission_Tag = "<SUBMISSION/>";
         public const string Submission_Robot_Tag = "<ROBOT/>";
         public const string Submission_Human_Tag = "<HUMAN/>";
+
+        public const string Robot128_Img_File_Path = "pack://application:,,,/images/robot128.png";
+        public const string Human128_Img_File_Path = "pack://application:,,,/images/human128.png";
     }
 
     internal enum Roles
