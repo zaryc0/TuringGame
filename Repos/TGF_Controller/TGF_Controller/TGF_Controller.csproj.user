@@ -19,6 +19,9 @@
     <Compile Update="View\MonitoringView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\RoomView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Resources\AllStyles.xaml">
@@ -49,6 +52,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\MonitoringView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\RoomView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cotgr\\source\\repos\\ControllerSpoof\\ControllerSpoof\\ControllerSpoof.csproj",
+      "projectUniqueName": "E:\\Repos\\Turing game\\TuringGame\\Repos\\ControllerSpoof\\ControllerSpoof\\ControllerSpoof.csproj",
       "projectName": "ControllerSpoof",
-      "projectPath": "C:\\Users\\cotgr\\source\\repos\\ControllerSpoof\\ControllerSpoof\\ControllerSpoof.csproj",
+      "projectPath": "E:\\Repos\\Turing game\\TuringGame\\Repos\\ControllerSpoof\\ControllerSpoof\\ControllerSpoof.csproj",
       "packagesPath": "C:\\Users\\cotgr\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cotgr\\source\\repos\\ControllerSpoof\\ControllerSpoof\\obj\\",
+      "outputPath": "E:\\Repos\\Turing game\\TuringGame\\Repos\\ControllerSpoof\\ControllerSpoof\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

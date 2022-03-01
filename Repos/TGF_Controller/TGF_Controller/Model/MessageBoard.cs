@@ -19,8 +19,10 @@ namespace TGF_Controller.Model
         }
         public MessageBoard(IMessage message)
         {
-            Messages = new List<IMessage>();
-            Messages.Add(message);
+            Messages = new List<IMessage>
+            {
+                message
+            };
         }
         public MessageBoard(List<IMessage> messages)
         {

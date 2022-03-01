@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Text;
+using TGF_Client.Client_App;
 using TGF_Client.Model;
 using TGF_Client.Shell;
 using TGF_Client.ViewModel;
@@ -22,8 +23,8 @@ namespace TGF_Client
         }
         internal static void SetPortNumber(int port)
         {
-            (string, int) T = client.socket.SetPort(port);
-            if (T.Item1 == Constants.Subject_Tag)
+            string T = client.socket.SetPort(port);
+            if (T == Constants.Subject_Tag)
             {
                 client.role = Roles.Subject;
                 shellVM.ChangeOutputContent(Constants.Subject_View_ID);
@@ -33,7 +34,6 @@ namespace TGF_Client
                 client.role = Roles.Interviewer;
                 shellVM.ChangeOutputContent(Constants.Interviewer_View_ID);
             }
-            client.socket.RoomPortNumber = T.Item2;
         }
 
         internal static IPAddress CheckLocalIP()
@@ -67,10 +67,13 @@ namespace TGF_Client
 
             Message temp = new Message("<ROOM/>", source, typeTag , text);
             client.AddMessageToList(typeTag, text);
+            UpdateMessageBoard(temp);
             client.socket.Broadcast(typeTag, text);
-            UpdateMessageBoard(temp);
             temp = new Message(client.socket.Listen());
-            UpdateMessageBoard(temp);
+            if (temp.TypeTag == Constants.Message_Type_Answer_Tag || temp.TypeTag != Constants.Message_Type_Question_Tag)
+            {
+                UpdateMessageBoard(temp);
+            }
         }
 
         internal static void SubmitSubjectSelection(string v)

@@ -1,0 +1,48 @@
+C:\Users\cotgr\source\repos\ControllerSpoof\ControllerSpoof\bin\Debug\net5.0\ControllerSpoof.exe
+C:\Users\cotgr\source\repos\ControllerSpoof\ControllerSpoof\bin\Debug\net5.0\ControllerSpoof.deps.json
+C:\Users\cotgr\source\repos\ControllerSpoof\ControllerSpoof\bin\Debug\net5.0\ControllerSpoof.runtimeconfig.json
+C:\Users\cotgr\source\repos\ControllerSpoof\ControllerSpoof\bin\Debug\net5.0\ControllerSpoof.runtimeconfig.dev.json
+C:\Users\cotgr\source\repos\ControllerSpoof\ControllerSpoof\bin\Debug\net5.0\ControllerSpoof.dll
+C:\Users\cotgr\source\repos\ControllerSpoof\ControllerSpoof\bin\Debug\net5.0\ref\ControllerSpoof.dll
+C:\Users\cotgr\source\repos\ControllerSpoof\ControllerSpoof\bin\Debug\net5.0\ControllerSpoof.pdb
+C:\Users\cotgr\source\repos\ControllerSpoof\ControllerSpoof\obj\Debug\net5.0\ControllerSpoof.csproj.AssemblyReference.cache
+C:\Users\cotgr\source\repos\ControllerSpoof\ControllerSpoof\obj\Debug\net5.0\ControllerSpoof.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\cotgr\source\repos\ControllerSpoof\ControllerSpoof\obj\Debug\net5.0\ControllerSpoof.AssemblyInfoInputs.cache
+C:\Users\cotgr\source\repos\ControllerSpoof\ControllerSpoof\obj\Debug\net5.0\ControllerSpoof.AssemblyInfo.cs
+C:\Users\cotgr\source\repos\ControllerSpoof\ControllerSpoof\obj\Debug\net5.0\ControllerSpoof.csproj.CoreCompileInputs.cache
+C:\Users\cotgr\source\repos\ControllerSpoof\ControllerSpoof\obj\Debug\net5.0\ControllerSpoof.dll
+C:\Users\cotgr\source\repos\ControllerSpoof\ControllerSpoof\obj\Debug\net5.0\ref\ControllerSpoof.dll
+C:\Users\cotgr\source\repos\ControllerSpoof\ControllerSpoof\obj\Debug\net5.0\ControllerSpoof.pdb
+C:\Users\cotgr\source\repos\ControllerSpoof\ControllerSpoof\obj\Debug\net5.0\ControllerSpoof.genruntimeconfig.cache
+E:\Repos\Turing game\TuringGame\Repos\ControllerSpoof\ControllerSpoof\bin\Debug\net5.0\ControllerSpoof.exe
+E:\Repos\Turing game\TuringGame\Repos\ControllerSpoof\ControllerSpoof\bin\Debug\net5.0\ControllerSpoof.deps.json
+E:\Repos\Turing game\TuringGame\Repos\ControllerSpoof\ControllerSpoof\bin\Debug\net5.0\ControllerSpoof.runtimeconfig.json
+E:\Repos\Turing game\TuringGame\Repos\ControllerSpoof\ControllerSpoof\bin\Debug\net5.0\ControllerSpoof.runtimeconfig.dev.json
+E:\Repos\Turing game\TuringGame\Repos\ControllerSpoof\ControllerSpoof\bin\Debug\net5.0\ControllerSpoof.dll
+E:\Repos\Turing game\TuringGame\Repos\ControllerSpoof\ControllerSpoof\bin\Debug\net5.0\ref\ControllerSpoof.dll
+E:\Repos\Turing game\TuringGame\Repos\ControllerSpoof\ControllerSpoof\bin\Debug\net5.0\ControllerSpoof.pdb
+E:\Repos\Turing game\TuringGame\Repos\ControllerSpoof\ControllerSpoof\obj\Debug\net5.0\ControllerSpoof.csproj.AssemblyReference.cache
+E:\Repos\Turing game\TuringGame\Repos\ControllerSpoof\ControllerSpoof\obj\Debug\net5.0\ControllerSpoof.GeneratedMSBuildEditorConfig.editorconfig
+E:\Repos\Turing game\TuringGame\Repos\ControllerSpoof\ControllerSpoof\obj\Debug\net5.0\ControllerSpoof.AssemblyInfoInputs.cache
+E:\Repos\Turing game\TuringGame\Repos\ControllerSpoof\ControllerSpoof\obj\Debug\net5.0\ControllerSpoof.AssemblyInfo.cs
+E:\Repos\Turing game\TuringGame\Repos\ControllerSpoof\ControllerSpoof\obj\Debug\net5.0\ControllerSpoof.csproj.CoreCompileInputs.cache
+E:\Repos\Turing game\TuringGame\Repos\ControllerSpoof\ControllerSpoof\obj\Debug\net5.0\ControllerSpoof.dll
+E:\Repos\Turing game\TuringGame\Repos\ControllerSpoof\ControllerSpoof\obj\Debug\net5.0\ref\ControllerSpoof.dll
+E:\Repos\Turing game\TuringGame\Repos\ControllerSpoof\ControllerSpoof\obj\Debug\net5.0\ControllerSpoof.pdb
+E:\Repos\Turing game\TuringGame\Repos\ControllerSpoof\ControllerSpoof\obj\Debug\net5.0\ControllerSpoof.genruntimeconfig.cache
+E:\Repos\Turing game\TuringGame\Repos\RoomSpoof\ControllerSpoof\bin\Debug\net5.0\ControllerSpoof.exe
+E:\Repos\Turing game\TuringGame\Repos\RoomSpoof\ControllerSpoof\bin\Debug\net5.0\ControllerSpoof.deps.json
+E:\Repos\Turing game\TuringGame\Repos\RoomSpoof\ControllerSpoof\bin\Debug\net5.0\ControllerSpoof.runtimeconfig.json
+E:\Repos\Turing game\TuringGame\Repos\RoomSpoof\ControllerSpoof\bin\Debug\net5.0\ControllerSpoof.runtimeconfig.dev.json
+E:\Repos\Turing game\TuringGame\Repos\RoomSpoof\ControllerSpoof\bin\Debug\net5.0\ControllerSpoof.dll
+E:\Repos\Turing game\TuringGame\Repos\RoomSpoof\ControllerSpoof\bin\Debug\net5.0\ref\ControllerSpoof.dll
+E:\Repos\Turing game\TuringGame\Repos\RoomSpoof\ControllerSpoof\bin\Debug\net5.0\ControllerSpoof.pdb
+E:\Repos\Turing game\TuringGame\Repos\RoomSpoof\ControllerSpoof\obj\Debug\net5.0\ControllerSpoof.csproj.AssemblyReference.cache
+E:\Repos\Turing game\TuringGame\Repos\RoomSpoof\ControllerSpoof\obj\Debug\net5.0\ControllerSpoof.GeneratedMSBuildEditorConfig.editorconfig
+E:\Repos\Turing game\TuringGame\Repos\RoomSpoof\ControllerSpoof\obj\Debug\net5.0\ControllerSpoof.AssemblyInfoInputs.cache
+E:\Repos\Turing game\TuringGame\Repos\RoomSpoof\ControllerSpoof\obj\Debug\net5.0\ControllerSpoof.AssemblyInfo.cs
+E:\Repos\Turing game\TuringGame\Repos\RoomSpoof\ControllerSpoof\obj\Debug\net5.0\ControllerSpoof.csproj.CoreCompileInputs.cache
+E:\Repos\Turing game\TuringGame\Repos\RoomSpoof\ControllerSpoof\obj\Debug\net5.0\ControllerSpoof.dll
+E:\Repos\Turing game\TuringGame\Repos\RoomSpoof\ControllerSpoof\obj\Debug\net5.0\ref\ControllerSpoof.dll
+E:\Repos\Turing game\TuringGame\Repos\RoomSpoof\ControllerSpoof\obj\Debug\net5.0\ControllerSpoof.pdb
+E:\Repos\Turing game\TuringGame\Repos\RoomSpoof\ControllerSpoof\obj\Debug\net5.0\ControllerSpoof.genruntimeconfig.cache

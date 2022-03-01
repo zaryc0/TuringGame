@@ -41,12 +41,12 @@ namespace TGF_Client.ViewModel
         }
         public string Type
         {
-            get => _message.Type;
+            get => _message.TypeTag;
             set
             {
-                if(value != _message.Type)
+                if(value != _message.TypeTag)
                 {
-                    _message.Type = value;
+                    _message.TypeTag = value;
                     NotifyPropertyChanged();
                 }
             }

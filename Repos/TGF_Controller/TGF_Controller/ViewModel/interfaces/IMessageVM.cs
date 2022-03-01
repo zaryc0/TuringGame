@@ -14,7 +14,6 @@ namespace TGF_Controller.ViewModel.interfaces
         public string Type { get; set; }
         public string TimeStamp { get; set; }
         public string Content { get; set; }
-        public string Sender { get;}
 
         //Functions
         IMessageVM GetMessageVM();

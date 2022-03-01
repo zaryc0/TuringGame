@@ -12,7 +12,7 @@ namespace TGF_Controller.Controller.Network
     class SocketHandler : ISocketHandler
     {
         //Properties
-        private string hostName;
+        private readonly string hostName;
 
         private TcpListener _listener;
         private readonly IPAddress _localAddress;
@@ -24,34 +24,25 @@ namespace TGF_Controller.Controller.Network
         private StreamReader _reader;
         private StreamWriter _writer;
         private Pipe _pipe;
-
+        public bool isConnected;
         //Constructor
         public SocketHandler(int port)
         {
+            hostName = Dns.GetHostName();
             _localAddress = GetLocalIP();
-            
             _pipe = new Pipe();
             _pipe.RegisterFilter(new DestinationFilter(GetLocalIP()));
             _portNumber = port;
-            
             _listener = new TcpListener(_localAddress, _portNumber);
-            hostName = Dns.GetHostName();
-            _clientAddress = null;
-            //socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            _listener.Start();
-            _socket = _listener.AcceptSocket();
-            _myStream = new NetworkStream(_socket);
-            _reader = new StreamReader(_myStream);
-            _writer = new StreamWriter(_myStream)
-            {
-                AutoFlush = true
-            };
+           _clientAddress = null;
+
+
         }
 
         //Functions
         public IPAddress GetLocalIP()
         {
-            IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
+            IPHostEntry host = Dns.GetHostEntry(hostName);
             foreach (IPAddress ip in host.AddressList)
             {
                 if (ip.AddressFamily == AddressFamily.InterNetwork)
@@ -82,6 +73,19 @@ namespace TGF_Controller.Controller.Network
         public IMessage Listen()
         {
             return new Message(_reader.ReadLine());
+        }
+
+        public bool WaitForConnection()
+        {
+            _listener.Start();
+            _socket = _listener.AcceptSocket();
+            _myStream = new NetworkStream(_socket);
+            _reader = new StreamReader(_myStream);
+            _writer = new StreamWriter(_myStream)
+            {
+                AutoFlush = true
+            };
+            return true;
         }
     }
 }

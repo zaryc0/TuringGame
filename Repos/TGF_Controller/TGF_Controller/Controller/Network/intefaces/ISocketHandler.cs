@@ -15,5 +15,6 @@ namespace TGF_Controller.Controller.Network.interfaces
         public void SetClientIP(IPAddress iP);
         public IPAddress GetClientIP();
         public IPAddress GetLocalIP();
+        public bool WaitForConnection();
     }
 }

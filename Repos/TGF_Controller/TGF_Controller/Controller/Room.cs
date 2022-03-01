@@ -11,19 +11,23 @@ namespace TGF_Controller.Controller
     internal class Room : IRoom
     {
         //Properties
-        public IMessageBoard messageBoard { get; set; }
+        public IMessageBoard MessageBoard { get; set; }
         public ISocketHandler Subject { get; set; }
         public ISocketHandler Interviewer { get; set; }
         public bool HasSubject { get; set; }
         public bool HasInterviewer { get; set; }
         public bool HasRobot { get; set; }
+        public string RoomName { get; set; }
 
+        private int _id;
         private bool _active;
 
         //Constructors
-        public Room(int subjectPortNumber, int interviewerPortNumber, bool hasRobot)
+        public Room(int subjectPortNumber, int interviewerPortNumber, bool hasRobot, int id)
         {
-            messageBoard = new MessageBoard();
+            _id = id;
+            RoomName = $"Room {id}";
+            MessageBoard = new MessageBoard();
             Subject = new SocketHandler(subjectPortNumber);
             Interviewer = new SocketHandler(interviewerPortNumber);
             HasRobot = hasRobot;
@@ -37,74 +41,53 @@ namespace TGF_Controller.Controller
         {
             InitInterviewer();
             InitSubject();
+            IMessage tempMessage;
             while (_active)
             {
-                IMessage tempMessage = Interviewer.Listen();
-                TypeTag type = FilterMessage(tempMessage);
-                if (type == TypeTag.Terminate)
+                tempMessage = Interviewer.Listen();
+                MessageBoard.AddMessage(tempMessage);
+                Bus.UpdateMessageBoards(tempMessage, _id);
+                Subject.Broadcast(tempMessage);
+                tempMessage = Subject.Listen();
+                MessageBoard.AddMessage(tempMessage);
+                Bus.UpdateMessageBoards(tempMessage, _id);
+                Interviewer.Broadcast(tempMessage);
+            }
+            Subject.Broadcast(new Message("","",Constants.Message_Type_Terminate_Tag,"Connection has been severed by remote Host"));
+            Interviewer.Broadcast(new Message("", "", Constants.Message_Type_Terminate_Tag, "Connection has been severed by remote Host"));
+        }
+
+        public void CheckMessage(IMessage message)
+        {
+            if (message.TypeTag != Constants.Message_Type_Terminate_Tag)
+            {
+                if (message.TypeTag == Constants.Message_Type_Submission_Tag)
                 {
-                    if (type != TypeTag.Submit)
-                    {
-                        Subject.Broadcast(tempMessage);
-                        messageBoard.AddMessage(tempMessage);
-                        tempMessage = Subject.Listen();
-                        Interviewer.Broadcast(tempMessage);
-                        messageBoard.AddMessage(tempMessage);
-                    }
-                    else
-                    {
-                        Subject.Broadcast(new Message("", "",Constants.Message_Type_Submission_Tag,$"The interviewer Believes You are a: {tempMessage.Content}"));
-                        _active = false;
-                    }
+                    Subject.Broadcast(new Message("", "", Constants.Message_Type_Submission_Tag, $"The interviewer Believes You are a: {message.Content}"));
+                    _active = false;
                 }
                 else
                 {
-                    _active = false;
+                    _active = true;
                 }
             }
-            Subject.Broadcast(new Message("","",Constants.Message_Type_Terminate_Tag,"Connection has been severd by remote Host"));
-            Interviewer.Broadcast(new Message("", "", Constants.Message_Type_Terminate_Tag, "Connection has been severd by remote Host"));
-        }
-
-        private TypeTag FilterMessage(IMessage tempMessage)
-        {
-            return tempMessage.TypeTag == Constants.Message_Type_Terminate_Tag
-                ? TypeTag.Terminate
-                : tempMessage.TypeTag == Constants.Message_Type_Init_Tag
-                ? TypeTag.Init
-                : tempMessage.TypeTag == Constants.Message_Type_Question_Tag
-                ? TypeTag.Question
-                : tempMessage.TypeTag == Constants.Message_Type_Answer_Tag
-                ? TypeTag.Answer
-                : tempMessage.TypeTag == Constants.Message_Type_Submission_Tag
-                ? TypeTag.Submit : TypeTag.Init;
+            else
+            {
+                _active = false;
+            }
         }
 
         private void InitInterviewer()
         {
-            IMessage handshake = Interviewer.Listen();
-            if (handshake.TypeTag != Constants.Message_Type_Init_Tag)
-            {
-                throw new Exception(message: $"incorrect message type from Interviewer expected <INIT/> found:{handshake.TypeTag}");
-            }
-            else
-            {
-                Interviewer.SetClientIP(IPAddress.Parse(handshake.Source));
-            }
-
+            _ = Interviewer.WaitForConnection();
+            Interviewer.Broadcast(new Message($"<CLIENT/>,<CONTROLLER/>,<ASSIGNMENT/>,{DateTime.Now},{Constants.Interviewer_Tag},<MessageEnd/>"));
         }
 
         private void InitSubject()
         {
-            IMessage handshake = Subject.Listen();
-            if (handshake.TypeTag != Constants.Message_Type_Init_Tag)
-            {
-                throw new Exception(message: $"incorrect message type from Subject expected <INIT/> found:{handshake.TypeTag}");
-            }
-            else
-            {
-                Subject.SetClientIP(IPAddress.Parse(handshake.Source));
-            }
+            _ = Subject.WaitForConnection();
+            Subject.Broadcast(new Message($"<CLIENT/>,<CONTROLLER/>,<ASSIGNMENT/>,{DateTime.Now},{Constants.Subject_Tag},<MessageEnd/>"));
+
         }
     }
 }

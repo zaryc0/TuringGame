@@ -49,7 +49,7 @@ namespace TGF_Controller.ViewModel
         }
 
         //Functions
-        public void LaunchApplication()
+        public static void LaunchApplication()
         {
             Bus.LaunchApplication();
         }

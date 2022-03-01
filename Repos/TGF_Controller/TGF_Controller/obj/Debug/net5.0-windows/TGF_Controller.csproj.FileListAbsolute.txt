@@ -64,3 +64,9 @@ C:\Users\callu\OneDrive\Documents\UniWork\New folder\TuringGame\Repos\TGF_Contro
 C:\Users\callu\OneDrive\Documents\UniWork\New folder\TuringGame\Repos\TGF_Controller\TGF_Controller\obj\Debug\net5.0-windows\ref\TGF_Controller.dll
 C:\Users\callu\OneDrive\Documents\UniWork\New folder\TuringGame\Repos\TGF_Controller\TGF_Controller\obj\Debug\net5.0-windows\TGF_Controller.pdb
 C:\Users\callu\OneDrive\Documents\UniWork\New folder\TuringGame\Repos\TGF_Controller\TGF_Controller\obj\Debug\net5.0-windows\TGF_Controller.genruntimeconfig.cache
+E:\Repos\Turing game\TuringGame\Repos\TGF_Controller\TGF_Controller\obj\Debug\net5.0-windows\View\MessageView.g.cs
+E:\Repos\Turing game\TuringGame\Repos\TGF_Controller\TGF_Controller\obj\Debug\net5.0-windows\View\MessageView2.g.cs
+E:\Repos\Turing game\TuringGame\Repos\TGF_Controller\TGF_Controller\obj\Debug\net5.0-windows\View\MessageView.baml
+E:\Repos\Turing game\TuringGame\Repos\TGF_Controller\TGF_Controller\obj\Debug\net5.0-windows\View\MessageView2.baml
+E:\Repos\Turing game\TuringGame\Repos\TGF_Controller\TGF_Controller\obj\Debug\net5.0-windows\View\RoomView.g.cs
+E:\Repos\Turing game\TuringGame\Repos\TGF_Controller\TGF_Controller\obj\Debug\net5.0-windows\View\RoomView.baml

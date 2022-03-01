@@ -62,7 +62,7 @@ namespace TGF_Client.View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/TGF_Client;V1.0.0.0;component/view/messageboard.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/TGF_Client;component/view/messageboard.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\MessageBoard.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

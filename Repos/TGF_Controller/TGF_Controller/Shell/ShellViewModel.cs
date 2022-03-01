@@ -49,7 +49,7 @@ namespace TGF_Controller.Shell
             InitialVM = new InitialViewVM();
             MonitorVM = new MonitoringVM();
 
-            OutputContent = InitialVM;
+            ChangeOutputContent(0);
             Bus.shellVM = this;
             Bus.initialVM = InitialVM;
             Bus.monitoringVM = MonitorVM;

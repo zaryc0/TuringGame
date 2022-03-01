@@ -5,7 +5,7 @@ namespace TGF_Controller.ViewModel.interfaces
 {
     interface IMessageboardVM
     {
-        public ObservableCollection<IMessageVM> Messages { get; }
+        public ObservableCollection<IMessageVM> MessageVMs { get; }
         public void UpdateMessages(IMessage message);
     }
 }
