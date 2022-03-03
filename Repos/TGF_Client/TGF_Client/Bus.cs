@@ -27,13 +27,16 @@ namespace TGF_Client
             if (T == Constants.Subject_Tag)
             {
                 client.role = Roles.Subject;
+                client.IsListening(true);
                 shellVM.ChangeOutputContent(Constants.Subject_View_ID);
             }
             else
             {
                 client.role = Roles.Interviewer;
+                client.IsListening(false);
                 shellVM.ChangeOutputContent(Constants.Interviewer_View_ID);
             }
+            client.InitialiseThread();
         }
 
         internal static IPAddress CheckLocalIP()
@@ -69,16 +72,20 @@ namespace TGF_Client
             client.AddMessageToList(typeTag, text);
             UpdateMessageBoard(temp);
             client.socket.Broadcast(typeTag, text);
-            temp = new Message(client.socket.Listen());
-            if (temp.TypeTag == Constants.Message_Type_Answer_Tag || temp.TypeTag != Constants.Message_Type_Question_Tag)
-            {
-                UpdateMessageBoard(temp);
-            }
+            client.IsListening(true);
         }
 
         internal static void SubmitSubjectSelection(string v)
         {
             client.socket.Broadcast(Constants.Message_Type_Submission_Tag, v);
+        }
+        public static void HandleNewMessageRecieved(Message m)
+        {
+            if (m.TypeTag == Constants.Message_Type_Answer_Tag || m.TypeTag != Constants.Message_Type_Question_Tag)
+            {
+                UpdateMessageBoard(m);
+                client.IsListening(false);
+            }
         }
 
         internal static void UpdateMessageBoard(Message message)

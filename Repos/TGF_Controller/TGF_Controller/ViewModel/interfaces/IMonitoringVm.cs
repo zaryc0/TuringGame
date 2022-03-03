@@ -8,12 +8,11 @@ using TGF_Controller.Controller.interfaces;
 
 namespace TGF_Controller.ViewModel.interfaces
 {
-    interface IMonitoringVm
+    internal interface IMonitoringVm
     {
         //properties
         public int TabIndex { get; }
         public string Title { get; }
-        public string 
 
         //Commands
         public ICommand CloseActiveRoom();

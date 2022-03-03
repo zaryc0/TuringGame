@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using TGF_Client.Client_App.Network;
 using TGF_Client.Model;
 
@@ -14,9 +15,14 @@ namespace TGF_Client.Client_App
         public List<Message> messages = new List<Message>();
         public SocketHandler socket;
         public Roles role;
+        private Thread _messageChecker;
+        private bool _active;
+        private bool _Listening;
 
         public Client()
         {
+            _active = true;
+            _Listening = false;
             for(int i = 0; i < 10; i++)
             {
                 if (i % 2 == 0)
@@ -31,6 +37,10 @@ namespace TGF_Client.Client_App
             config = new Config();
             socket = new SocketHandler(GetControllerIP(), GetLocalIP());
         }
+        public void IsListening(bool state)
+        {
+            _Listening = state;
+        }
 
         public void AddMessageToList(Message message)
         {
@@ -40,9 +50,21 @@ namespace TGF_Client.Client_App
         {
             messages.Add(new Message(socket.controllerAddress.ToString(), socket.localAddress.ToString(),type,content));
         }
+        public void InitialiseThread()
+        {
+            _messageChecker = new Thread(() => WaitForMessage());
+            _messageChecker.Start();
+        }
         public void WaitForMessage()
         {
-            messages.Add(new Message(socket.Listen()));
+            while (_active)
+            {
+                if(_Listening)
+                {
+                    Message _M = new Message(socket.Listen());
+                    Bus.HandleNewMessageRecieved(_M);
+                }
+            }
         }
 
         public IPAddress GetControllerIP()
@@ -63,5 +85,6 @@ namespace TGF_Client.Client_App
             }
             throw new Exception("No network adapters with an IPv4 address in the system!");
         }
+        
     }
 }

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\Repos\Turing game\TuringGame\Repos\TGF_Controller\TGF_Controller\obj\Debug\net5.0-windows\
+C:\Users\callu\OneDrive\Documents\UniWork\New folder\TuringGame\Repos\TGF_Controller\TGF_Controller\obj\Debug\net5.0-windows\
 TGF_Controller
 none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
-E:\Repos\Turing game\TuringGame\Repos\TGF_Controller\TGF_Controller\App.xaml
-11-1950006859
+C:\Users\callu\OneDrive\Documents\UniWork\New folder\TuringGame\Repos\TGF_Controller\TGF_Controller\App.xaml
+12-128465855
 
-35-665990486
+372091515033
 193-1891726104
-Resources\AllStyles.xaml;Resources\ColourPalette.xaml;Resources\DefaultStyles.xaml;Resources\Typography.xaml;Resources\ViewTemplates.xaml;Shell\Shell.xaml;View\InitialView.xaml;View\MessageView.xaml;View\MessageView2.xaml;View\MonitoringView.xaml;View\RoomView.xaml;
+Resources\AllStyles.xaml;Resources\ColourPalette.xaml;Resources\DefaultStyles.xaml;Resources\Typography.xaml;Resources\ViewTemplates.xaml;Shell\Shell.xaml;View\InitialView.xaml;View\MessageBoardView.xaml;View\MessageView.xaml;View\MessageView2.xaml;View\MonitoringView.xaml;View\RoomView.xaml;
 
 False
 
