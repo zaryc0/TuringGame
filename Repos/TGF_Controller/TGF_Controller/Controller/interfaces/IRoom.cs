@@ -6,7 +6,8 @@ namespace TGF_Controller.Controller.interfaces
     internal interface IRoom
     {
         //Properties
-        public IMessageBoard messageBoard { get; set; }
+        public string RoomName { get; set; }
+        public IMessageBoard MessageBoard { get; set; }
         public ISocketHandler Subject { get; set; }
         public ISocketHandler Interviewer { get; set; }
         public bool HasSubject { get; set; }

@@ -7,4 +7,8 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = ControllerSpoof
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\callu\OneDrive\Documents\UniWork\New folder\TuringGame\Repos\ControllerSpoof\ControllerSpoof\
+=======
+build_property.ProjectDir = E:\Repos\Turing game\TuringGame\Repos\ControllerSpoof\ControllerSpoof\
+>>>>>>> b5cc54c4967a3841db1d52a490a54e2556ea6767

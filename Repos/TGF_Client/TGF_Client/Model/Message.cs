@@ -9,7 +9,7 @@ namespace TGF_Client.Model
         //Header
         public string Destination { get; set; }
         public string Source { get; set; }
-        public string Type { get; set; }
+        public string TypeTag { get; set; }
         public string TimeStamp {get; set;}
 
         //body
@@ -17,7 +17,7 @@ namespace TGF_Client.Model
 
         public string CompileMessage()
         {
-            return $"{Destination},{Source},{Type},{TimeStamp},{Content},{Constants.Message_End_Tag}";
+            return $"{Destination},{Source},{TypeTag},{TimeStamp},{Content},{Constants.Message_End_Tag}";
         }
         public Message(string message)
         {
@@ -28,7 +28,7 @@ namespace TGF_Client.Model
             }
             Destination = messageContent[0];
             Source = messageContent[1];
-            Type = messageContent[2];
+            TypeTag = messageContent[2];
             TimeStamp = messageContent[3];
             Content = messageContent[4];
 
@@ -37,7 +37,7 @@ namespace TGF_Client.Model
         {
             Destination = destination;
             Source = source;
-            Type = type;
+            TypeTag = type;
             TimeStamp = DateTime.Now.ToString();
             Content = Body;
         }

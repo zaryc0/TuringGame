@@ -9,5 +9,8 @@
     <DataTemplate DataType="{x:Type vm:MonitoringVM}">
         <v:MonitoringView/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:RoomTabVM}">
+        <v:MonitoringView/>
+    </DataTemplate>
 
 </ResourceDictionary>

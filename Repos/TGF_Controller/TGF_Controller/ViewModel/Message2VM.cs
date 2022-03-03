@@ -79,8 +79,6 @@ namespace TGF_Controller.ViewModel
             }
         }
 
-        public string Sender { get => "?????"; }
-
         //Functions
         public IMessageVM GetMessageVM()
         {

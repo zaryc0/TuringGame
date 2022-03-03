@@ -79,8 +79,6 @@ namespace TGF_Controller.ViewModel
             }
         }
 
-        public string Sender { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
         //Functions
         public IMessageVM GetMessageVM()
         {

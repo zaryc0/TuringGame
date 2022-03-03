@@ -4,7 +4,7 @@ using System.Net;
 using System.Net.Sockets;
 using TGF_Client.Model;
 
-namespace TGF_Client
+namespace TGF_Client.Client_App.Network
 {
     class SocketHandler
     {
@@ -29,9 +29,19 @@ namespace TGF_Client
             this.socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         }
 
-        internal (string,int) SetPort(int port)
+        internal string SetPort(int port)
         {
             controllerPortNumber = port;
+            temporaryMessage = ConnectToSocket(port);
+
+            int RoomPortNumber = int.Parse(temporaryMessage.Content);
+
+            temporaryMessage = ConnectToSocket(RoomPortNumber);
+
+            return temporaryMessage.Content;
+        }
+        private Message ConnectToSocket(int port)
+        {
             myClient = new TcpClient(hostName, port);
             myStream = myClient.GetStream();
             reader = new StreamReader(myStream);
@@ -39,13 +49,7 @@ namespace TGF_Client
             {
                 AutoFlush = true
             };
-            Broadcast(Constants.Message_Type_Init_Tag, "NULL");
-            temporaryMessage = new Message(Listen());
-            string originalContent = temporaryMessage.Content;
-            string[] vs = originalContent.Split(':');
-            string R = vs[0];
-            int I = int.Parse(vs[1]);
-            return (R,I);
+            return new Message(Listen());
         }
 
         public void Broadcast(string Type,string messagecontents)

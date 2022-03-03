@@ -12,9 +12,7 @@ namespace TGF_Controller.ViewModel
 
         public RelayCommand(Action<object> execute, Predicate<object> canExecute = null)
         {
-            if (execute == null) throw new ArgumentNullException("execute is null");
-
-            _execute = execute;
+            _execute = execute ?? throw new ArgumentNullException("execute is null");
             _canExecute = canExecute;
         }
 

@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "fVKsPKBS7vQkIUW3BEE+3nbXPrvgc34BseOqpAi9ExpVdVNGGwC8i9bVey1dn0W8bbAry9cDxIcYo6/OzbMOrA==",
   "success": true,
   "projectFilePath": "C:\\Users\\callu\\OneDrive\\Documents\\UniWork\\New folder\\TuringGame\\Repos\\ControllerSpoof\\ControllerSpoof\\ControllerSpoof.csproj",
+=======
+  "dgSpecHash": "1hziOvX+GowhS3KQwMSdN+grJe9D1803mOWbPxYWfpiZytkkEKiihJHyeV8RANB+TFz/NPaB1P0JIog6tiAB8g==",
+  "success": true,
+  "projectFilePath": "E:\\Repos\\Turing game\\TuringGame\\Repos\\ControllerSpoof\\ControllerSpoof\\ControllerSpoof.csproj",
+>>>>>>> b5cc54c4967a3841db1d52a490a54e2556ea6767
   "expectedPackageFiles": [],
   "logs": []
 }
