@@ -1,8 +1,12 @@
 @echo adding Changes to commit
 @git add .
-@echo changes added, Now commiting changes
+@echo changes added,
+@echo 
+@echo Now commiting changes
 @git commit -m "QuickPush"
-@echo Changes commited, Now Pishing to remote 
+@echo Changes commited, 
+@echo  
+@echo Now Pushing to remote 
 @git push
-@echo pushed
+@echo Pushed changes to remote repository.
 @pause
