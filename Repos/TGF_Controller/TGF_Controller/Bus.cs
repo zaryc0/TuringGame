@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using TGF_Controller.Controller;
 using TGF_Controller.Controller.interfaces;
 using TGF_Controller.Model.interfaces;
@@ -17,12 +18,17 @@ namespace TGF_Controller
         internal static void LaunchApplication()
         {
             controller = new();
-            ChangeOutputContent(Constants.Monitor_View_ID);
+            ChangeOutputContent(new WaitingVM());
         }
 
-        internal static void ChangeOutputContent(int view_ID)
+        internal static void ChangeTabOutputContent(int i)
         {
-            shellVM.ChangeOutputContent(view_ID);
+            monitoringVM.ChangeTab(i);
+        }
+
+        internal static void ChangeOutputContent(object vm)
+        {
+            shellVM.ChangeOutputContent(vm);
         }
         internal static string GetSubjectIP(int room_ID)
         {
@@ -36,12 +42,34 @@ namespace TGF_Controller
 
         internal static void CreateNewRoomView(IRoom room)
         {
-            monitoringVM.UpdateTabs(room);
+            if (monitoringVM == null)
+            {
+                monitoringVM = new MonitoringVM(controller.roomList[0]);
+                ChangeOutputContent(monitoringVM);
+            }
+            else
+            {
+                monitoringVM.AddTab(room);
+            }
         }
 
         internal static void UpdateMessageBoards(IMessage tempMessage, int roomID)
         {
-            monitoringVM.RoomTabVMs[roomID].UpdateMessages(tempMessage);
+            monitoringVM.UpdateMessages(tempMessage, roomID);
+        }
+        internal static void Close()
+        {
+            controller.Kill();
+        }
+
+        public static IRoom GetRoom(int index)
+        {
+            return controller.roomList[index];
+        }
+
+        internal static void CloseRoom(int index)
+        {
+            controller.CloseRoom(index);
         }
     }
 }

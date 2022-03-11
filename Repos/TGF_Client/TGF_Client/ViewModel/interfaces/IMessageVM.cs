@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using TGF_Client.Model;
 
-namespace TGF_Client.ViewModel
+namespace TGF_Client.ViewModel.interfaces
 {
     interface IMessageVM
     {

@@ -16,8 +16,7 @@ namespace TGF_Client
 
         public const string Message_Type_Terminate_Tag = "<TERMINATE/>";
         public const string Message_Type_Init_Tag = "<INITIALISE/>";
-        public const string Message_Type_Question_Tag = "<QUESTION/>";
-        public const string Message_Type_Answer_Tag = "<ANSWER/>";
+        public const string Message_Type_Visible_Tag = "<VISIBLE/>";
         public const string Message_Type_Submission_Tag = "<SUBMISSION/>";
         public const string Submission_Robot_Tag = "<ROBOT/>";
         public const string Submission_Human_Tag = "<HUMAN/>";

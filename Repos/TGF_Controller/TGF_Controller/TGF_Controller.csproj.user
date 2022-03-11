@@ -10,9 +10,6 @@
     <Compile Update="View\InitialView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\MessageBoardView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="View\MessageView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -22,7 +19,13 @@
     <Compile Update="View\MonitoringView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\RoomClosedView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\RoomView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\WaitingView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -48,9 +51,6 @@
     <Page Update="View\InitialView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\MessageBoardView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="View\MessageView.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -60,7 +60,13 @@
     <Page Update="View\MonitoringView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\RoomClosedView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\RoomView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\WaitingView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

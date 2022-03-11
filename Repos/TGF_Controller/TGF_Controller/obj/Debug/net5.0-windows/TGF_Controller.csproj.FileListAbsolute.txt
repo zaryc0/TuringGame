@@ -76,3 +76,7 @@ C:\Users\callu\OneDrive\Documents\UniWork\New folder\TuringGame\Repos\TGF_Contro
 C:\Users\callu\OneDrive\Documents\UniWork\New folder\TuringGame\Repos\TGF_Controller\TGF_Controller\obj\Debug\net5.0-windows\View\MessageBoardView.baml
 C:\Users\callu\OneDrive\Documents\UniWork\New folder\TuringGame\Repos\TGF_Controller\TGF_Controller\obj\Debug\net5.0-windows\View\MessageView2.baml
 C:\Users\callu\OneDrive\Documents\UniWork\New folder\TuringGame\Repos\TGF_Controller\TGF_Controller\obj\Debug\net5.0-windows\View\RoomView.baml
+E:\Repos\Turing game\TuringGame\Repos\TGF_Controller\TGF_Controller\obj\Debug\net5.0-windows\View\WaitingView.g.cs
+E:\Repos\Turing game\TuringGame\Repos\TGF_Controller\TGF_Controller\obj\Debug\net5.0-windows\View\WaitingView.baml
+E:\Repos\Turing game\TuringGame\Repos\TGF_Controller\TGF_Controller\obj\Debug\net5.0-windows\View\RoomClosedView.g.cs
+E:\Repos\Turing game\TuringGame\Repos\TGF_Controller\TGF_Controller\obj\Debug\net5.0-windows\View\RoomClosedView.baml

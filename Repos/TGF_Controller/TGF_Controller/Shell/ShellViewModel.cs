@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using TGF_Controller.ViewModel;
 
 namespace TGF_Controller.Shell
@@ -12,6 +14,7 @@ namespace TGF_Controller.Shell
         //nested View Models
         public InitialViewVM InitialVM { get; }
         public MonitoringVM MonitorVM { get; }
+        public WaitingVM WaitVM { get; }
 
         //Properties
         private string _title;
@@ -47,23 +50,18 @@ namespace TGF_Controller.Shell
         {
             Title = " Turing Game Teacher";
             InitialVM = new InitialViewVM();
-            MonitorVM = new MonitoringVM();
 
-            ChangeOutputContent(0);
             Bus.shellVM = this;
             Bus.initialVM = InitialVM;
-            Bus.monitoringVM = MonitorVM;
-        }
 
+            ChangeOutputContent(Bus.initialVM);
+        }
+        //Commands
+        public ICommand Close { get; set; }
         //Command Functions
-        public void ChangeOutputContent(int id)
+        public void ChangeOutputContent(object vm)
         {
-            OutputContent = id switch
-            {
-                Constants.Initial_View_ID => InitialVM,
-                Constants.Monitor_View_ID => MonitorVM,
-                _ => InitialVM,
-            };
+            OutputContent = vm;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using TGF_Client.ViewModel;
 
@@ -66,6 +67,11 @@ namespace TGF_Client.Shell
                 Constants.Interviewer_View_ID => InterviewerVM,
                 _ => InitialVM,
             };
+        }
+
+        public void ClosingClientApp()
+        {
+            Bus.Close();
         }
     }
 }

@@ -10,8 +10,10 @@
     <None Remove="images\human128.png" />
     <None Remove="images\human32.png" />
     <None Remove="images\human64.png" />
+    <None Remove="images\Null_img.png" />
     <None Remove="images\profile.png" />
     <None Remove="images\profile32.png" />
+    <None Remove="images\question-mark.png" />
     <None Remove="images\robot128.png" />
     <None Remove="images\robot32.png" />
     <None Remove="images\robot64.png" />
@@ -27,10 +29,16 @@
     <Resource Include="images\human64.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="images\Null_img.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="images\profile.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="images\profile32.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\question-mark.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="images\robot128.png">

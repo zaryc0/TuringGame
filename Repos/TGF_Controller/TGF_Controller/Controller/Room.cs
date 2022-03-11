@@ -28,12 +28,28 @@ namespace TGF_Controller.Controller
             _id = id;
             RoomName = $"Room {id}";
             MessageBoard = new MessageBoard();
+            PopulateMessageWithSpoofs();
             Subject = new SocketHandler(subjectPortNumber);
             Interviewer = new SocketHandler(interviewerPortNumber);
             HasRobot = hasRobot;
             HasSubject = hasRobot;
             HasInterviewer = false;
             _active = true;
+        }
+
+        private void PopulateMessageWithSpoofs()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    MessageBoard.Messages.Add(new Message($"<SUBJECT/>,<INTERVIEWER/>,{Constants.Message_Type_Visible_Tag},{DateTime.Now},Nulla id mollis est. Vestibulum massa ligula posuere semper arcu velestas. Nunc tristique odio arcu nec congue quam eleifend sit amet. Aenean in ex nulla. Nam interdum erat turpis. Morbi in enim vitae libero maximus porttitor. Praesent quis fringilla"));
+                }
+                else
+                {
+                    MessageBoard.Messages.Add(new Message($"<INTERVIEWER/>,<SUBJECT/>,{Constants.Message_Type_Visible_Tag},{DateTime.Now},Nulla id mollis est. Vestibulum massa ligula posuere semper arcu velestas. Nunc tristique odio arcu nec congue quam eleifend sit amet. Aenean in ex nulla. Nam interdum erat turpis. Morbi in enim vitae libero maximus porttitor. Praesent quis fringilla"));
+                }
+            }
         }
 
         //Functions
@@ -44,17 +60,33 @@ namespace TGF_Controller.Controller
             IMessage tempMessage;
             while (_active)
             {
-                tempMessage = Interviewer.Listen();
-                MessageBoard.AddMessage(tempMessage);
-                Bus.UpdateMessageBoards(tempMessage, _id);
-                Subject.Broadcast(tempMessage);
-                tempMessage = Subject.Listen();
-                MessageBoard.AddMessage(tempMessage);
-                Bus.UpdateMessageBoards(tempMessage, _id);
-                Interviewer.Broadcast(tempMessage);
+                try
+                {
+                    tempMessage = Interviewer.Listen(); 
+                    if(!_active) { break; }
+                    MessageBoard.AddMessage(tempMessage);
+                    Bus.UpdateMessageBoards(tempMessage, _id);
+                    Subject.Broadcast(tempMessage);
+                    tempMessage = Subject.Listen();
+                    if (!_active) { break; }
+                    MessageBoard.AddMessage(tempMessage);
+                    Bus.UpdateMessageBoards(tempMessage, _id);
+                    Interviewer.Broadcast(tempMessage);
+                }
+                catch
+                {
+
+                }
             }
-            Subject.Broadcast(new Message("","",Constants.Message_Type_Terminate_Tag,"Connection has been severed by remote Host"));
-            Interviewer.Broadcast(new Message("", "", Constants.Message_Type_Terminate_Tag, "Connection has been severed by remote Host"));
+            Interviewer.Broadcast(new Message("Null", "Null", Constants.Message_Type_Visible_Tag, "Connection has been severed by remote Host"));
+            Interviewer.Close(2);
+            Subject.Broadcast(new Message("Null", "Null", Constants.Message_Type_Visible_Tag, "Connection has been severed by remote Host"));
+            Subject.Close(2);
+        }
+
+        public int GetID()
+        {
+            return _id;
         }
 
         public void CheckMessage(IMessage message)
@@ -79,15 +111,25 @@ namespace TGF_Controller.Controller
 
         private void InitInterviewer()
         {
-            _ = Interviewer.WaitForConnection();
+            _ = Interviewer.WaitForPrimaryConnection();
+            _ = Interviewer.WaitForSecondaryConnection();
+            HasInterviewer = true;
             Interviewer.Broadcast(new Message($"<CLIENT/>,<CONTROLLER/>,<ASSIGNMENT/>,{DateTime.Now},{Constants.Interviewer_Tag},<MessageEnd/>"));
         }
 
         private void InitSubject()
         {
-            _ = Subject.WaitForConnection();
+            _ = Subject.WaitForPrimaryConnection();
+            _ = Subject.WaitForSecondaryConnection();
+            HasSubject = true;
             Subject.Broadcast(new Message($"<CLIENT/>,<CONTROLLER/>,<ASSIGNMENT/>,{DateTime.Now},{Constants.Subject_Tag},<MessageEnd/>"));
+        }
 
+        public void Kill()
+        {
+            _active = false;
+            Interviewer.Close(1);
+            Subject.Close(1);
         }
     }
 }

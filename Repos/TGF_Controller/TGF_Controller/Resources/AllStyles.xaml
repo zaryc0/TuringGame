@@ -4,5 +4,6 @@
         <ResourceDictionary Source="Typography.xaml"/>
         <ResourceDictionary Source="DefaultStyles.xaml"/>
         <ResourceDictionary Source="ColourPalette.xaml"/>
+        <ResourceDictionary Source="ViewTemplates.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

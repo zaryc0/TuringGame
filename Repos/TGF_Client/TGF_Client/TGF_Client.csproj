@@ -47,4 +47,25 @@
     </Resource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="View\MessageView2 - Copy %282%29 - Copy.xaml.cs">
+      <DependentUpon>MessageView2 - Copy (2).xaml.cs</DependentUpon>
+    </Compile>
+    <Compile Update="View\MessageView2 - Copy %282%29.xaml.cs">
+      <DependentUpon>MessageView2.xaml.cs</DependentUpon>
+    </Compile>
+    <Compile Update="View\MessageView2 - Copy - Copy %282%29.xaml.cs">
+      <DependentUpon>MessageView2 - Copy.xaml.cs</DependentUpon>
+    </Compile>
+    <Compile Update="View\MessageView2 - Copy - Copy - Copy.xaml.cs">
+      <DependentUpon>MessageView2 - Copy - Copy.xaml.cs</DependentUpon>
+    </Compile>
+    <Compile Update="View\MessageView2 - Copy - Copy.xaml.cs">
+      <DependentUpon>MessageView2 - Copy.xaml.cs</DependentUpon>
+    </Compile>
+    <Compile Update="View\MessageView2 - Copy.xaml.cs">
+      <DependentUpon>MessageView2.xaml.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
 </Project>

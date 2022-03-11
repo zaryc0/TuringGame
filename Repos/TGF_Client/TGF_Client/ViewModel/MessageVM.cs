@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using TGF_Client.Model;
+using TGF_Client.ViewModel.interfaces;
 
 namespace TGF_Client.ViewModel
 {

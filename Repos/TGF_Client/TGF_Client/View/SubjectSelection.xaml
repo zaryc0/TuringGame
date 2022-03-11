@@ -7,7 +7,7 @@
              xmlns:vm ="clr-namespace:TGF_Client.ViewModel"
              d:DataContext="{d:DesignInstance Type=vm:SubjectSelectionVM, IsDesignTimeCreatable=True}"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="400">
+             d:DesignHeight="500" d:DesignWidth="400">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -20,13 +20,13 @@
     </UserControl.DataContext>
     <Grid Background="{StaticResource InvisibleBrush}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition MinWidth="350"/>
+            <ColumnDefinition MinWidth="350" MaxWidth="400"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="50" MinHeight="45"/>
-            <RowDefinition Height="155"/>
-            <RowDefinition Height="155"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="155" MinHeight="155"/>
+            <RowDefinition Height="155" MinHeight="155"/>
+            <RowDefinition Height="50" MinHeight="45"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBlock x:Name="Header"
@@ -39,7 +39,7 @@
                    FontSize="30"
                    Foreground="{StaticResource PanelHeaderBrush}"
                    Text="{Binding Header}"/>
-        <Grid Grid.Column="1"
+        <Grid Grid.Column="0"
               Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -87,7 +87,7 @@
                        RadiusY="20"
                        Fill="{StaticResource PanelBackGroundRadialBrush}"/>
             <Image x:Name="Human_Image"
-                   Source="pack://application:,,,/images/human128.png"
+                   Source="{Binding HumanURI}"
                    Grid.Column="1"
                    Grid.Row="0"
                    Width="128"
@@ -107,7 +107,13 @@
                 MaxHeight="45"
                 MaxWidth="128"
                 Command="{Binding SubmitSelection}">
-            <TextBlock Text="{Binding ButtonText}"/>
+            <TextBlock MaxHeight="45"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Text="{Binding ButtonText}"
+                       FontSize="15"
+                       FontStyle="Normal"
+                       Foreground="{StaticResource PanelForeGroundBrush}"/>
         </Button>
     </Grid>
 </UserControl>

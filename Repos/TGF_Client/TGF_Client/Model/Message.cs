@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TGF_Client.Model.interfaces;
 
 namespace TGF_Client.Model
 {
-    class Message
+    class Message : IMessage
     {
         //Header
         public string Destination { get; set; }

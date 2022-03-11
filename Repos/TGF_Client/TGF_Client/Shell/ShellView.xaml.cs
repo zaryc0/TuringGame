@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,11 @@ namespace TGF_Client.Shell
         {
             InitializeComponent();
             this.DataContext = new ShellViewModel();
+        }
+
+        private void Closing_Application(object sender, CancelEventArgs e)
+        {
+            ((ShellViewModel)this.DataContext).ClosingClientApp();
         }
     }
 }

@@ -7,7 +7,7 @@
         xmlns:svm ="clr-namespace:TGF_Controller.Shell"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type = svm:ShellViewModel, IsDesignTimeCreatable=True}"
-        Title="{Binding Title}" MinHeight="500" MinWidth="800">
+        Title="{Binding Title}" MinHeight="550" MinWidth="800">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

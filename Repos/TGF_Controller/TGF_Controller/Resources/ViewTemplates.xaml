@@ -9,8 +9,20 @@
     <DataTemplate DataType="{x:Type vm:MonitoringVM}">
         <v:MonitoringView/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type vm:RoomTabVM}">
-        <v:MonitoringView/>
+    <DataTemplate DataType="{x:Type vm:RoomVM}">
+        <v:RoomView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:WaitingVM}">
+        <v:WaitingView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:RoomClosedVM}">
+        <v:RoomClosedView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:MessageVM}">
+        <v:MessageView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:Message2VM}">
+        <v:MessageView2/>
     </DataTemplate>
 
 </ResourceDictionary>

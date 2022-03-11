@@ -16,5 +16,7 @@ namespace TGF_Controller.Controller.interfaces
 
         //Functions
         public void Run();
+        public void Kill();
+        public int GetID();
     }
 }

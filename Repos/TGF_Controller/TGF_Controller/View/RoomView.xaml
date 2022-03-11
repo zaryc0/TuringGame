@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:TGF_Controller.View"
              xmlns:vm ="clr-namespace:TGF_Controller.ViewModel"
              xmlns:v ="clr-namespace:TGF_Controller.View"
-             d:DataContext="{d:DesignInstance Type=vm:RoomTabVM, IsDesignTimeCreatable=False}"
-             mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
+             d:DataContext="{d:DesignInstance Type=vm:RoomVM, IsDesignTimeCreatable=False}"
+             mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -15,16 +15,12 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid Background="{StaticResource ContentBackGroundBrush1}">
+    <Grid Background="{StaticResource MessageBoardBackGroundBrush}">
         <ScrollViewer Name="Scrollable"
                       VerticalScrollBarVisibility="Auto"
                       Margin="20,20,20,0">
-            <ItemsControl ItemsSource="{Binding Messages}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate DataType="{x:Type vm:MessageVM}">
-                        <v:MessageView/>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
+            <ItemsControl ItemsSource="{Binding MessageVMs}">
+
             </ItemsControl>
         </ScrollViewer>
     </Grid>

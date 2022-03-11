@@ -60,6 +60,9 @@
     <Page Update="View\MessageBoard.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\MessageView2.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\SubjectSelection.xaml">
       <SubType>Designer</SubType>
     </Page>

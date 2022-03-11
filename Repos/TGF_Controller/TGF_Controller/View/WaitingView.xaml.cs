@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace TGF_Controller.View
 {
     /// <summary>
-    /// Interaction logic for MessageBoardView.xaml
+    /// Interaction logic for WaitingVM.xaml
     /// </summary>
-    public partial class MessageBoardView : UserControl
+    public partial class WaitingView : UserControl
     {
-        public MessageBoardView()
+        public WaitingView()
         {
             InitializeComponent();
         }

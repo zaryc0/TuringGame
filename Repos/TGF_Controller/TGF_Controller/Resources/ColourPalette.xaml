@@ -25,13 +25,14 @@
     <Color x:Key="Invisible">#00FFFFFF</Color>
     <Color x:Key="ScrollBar">#F0555555</Color>
 
-    <Color x:Key="MessageBoxForeGround">#FF08090A</Color>
+    <Color x:Key="MessageBoardBackGround">#FF08090A</Color>
+
+    <Color x:Key="MessageBoxForeGround">#FFF5ECCD</Color>
     <Color x:Key="MessageBoxBackGround">#FFF98510</Color>
     <Color x:Key="MessageBoxHighlight">#FFF99939</Color>
-    
-    <Color x:Key="MessageBox2ForeGround">#FF08090A</Color>
-    <Color x:Key="MessageBox2BackGround">#FFFF00FF</Color>
-    <Color x:Key="MessageBox2Highlight">#FFFF69FF</Color>
+
+    <Color x:Key="MessageBox2BackGround">#FF292929</Color>
+    <Color x:Key="MessageBox2Highlight">#333333</Color>
 
     <!--SolidBrushes for background properties-->
     <SolidColorBrush x:Key="ScrollBarBrush" Color="{StaticResource ScrollBar}"/>
@@ -54,6 +55,9 @@
     <SolidColorBrush x:Key="ValidationErrorColorBrush" Color="{StaticResource ValidationErrorColor}"/>
 
     <SolidColorBrush x:Key="InvisibleBrush" Color="{StaticResource Invisible}"/>
+
+    <SolidColorBrush x:Key="MessageBoardBackGroundBrush" Color="{StaticResource MessageBoardBackGround}"/>
+    
     <SolidColorBrush x:Key="MessageBoxForeGroundBrush" Color="{StaticResource MessageBoxForeGround}"/>
     <SolidColorBrush x:Key="MessageBoxBackGroundBrush" Color="{StaticResource MessageBoxBackGround}"/>
     <SolidColorBrush x:Key="MessageBoxHighlightBrush" Color="{StaticResource MessageBoxHighlight}"/>
@@ -79,10 +83,4 @@
         <GradientStop Color="{StaticResource MessageBox2Highlight}"/>
     </RadialGradientBrush>
 
-    <!--Linear Brushes for background properties-->
-    <LinearGradientBrush x:Key="MessageLinearBrush" StartPoint="0.5,0.8" EndPoint="0.5,0.2">
-        <GradientStop Color="{StaticResource MessageBoxBackGround}" Offset="0"/>
-        <GradientStop Color="{StaticResource MessageBoxHighlight}" Offset=".5"/>
-        <GradientStop Color="{StaticResource MessageBoxBackGround}" Offset="1"/>
-    </LinearGradientBrush>
 </ResourceDictionary>

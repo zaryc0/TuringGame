@@ -16,17 +16,14 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid Background="{StaticResource ContentBackGroundBrush1}"
-          >
+    <Grid>
+        <Rectangle Fill="{StaticResource MessageBoardBackGroundBrush}"
+                   RadiusX="5"
+                   RadiusY="5"/>
         <ScrollViewer Name="Scrollable"
                       VerticalScrollBarVisibility="Auto"
                       Margin="20,20,20,0">
             <ItemsControl ItemsSource="{Binding Messages}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate DataType="{x:Type vm:MessageVM}">
-                        <v:Message/>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
     </Grid>

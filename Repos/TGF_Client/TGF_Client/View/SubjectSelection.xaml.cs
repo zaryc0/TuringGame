@@ -26,12 +26,12 @@ namespace TGF_Client.View
 
         private void Robot_Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            ((SubjectSelectionVM)(this.DataContext)).SelectedRobot();
+            ((SubjectSelectionVM)this.DataContext).SelectedRobot();
         }
 
         private void Human_Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            ((SubjectSelectionVM)(this.DataContext)).SelectedHuman();
+            ((SubjectSelectionVM)this.DataContext).SelectedHuman();
         }
     }
 }

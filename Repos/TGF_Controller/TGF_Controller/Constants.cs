@@ -9,6 +9,7 @@ namespace TGF_Controller
     internal class Constants
     {
         public const int Room_Limit = 5;
+        public const int User_limit = 10;
 
         public const int Initial_View_ID = 0;
         public const int Monitor_View_ID = 1;
@@ -19,8 +20,7 @@ namespace TGF_Controller
 
         public const string Message_Type_Terminate_Tag = "<TERMINATE/>";
         public const string Message_Type_Init_Tag = "<INITIALISE/>";
-        public const string Message_Type_Question_Tag = "<QUESTION/>";
-        public const string Message_Type_Answer_Tag = "<ANSWER/>";
+        public const string Message_Type_Visible_Tag = "<VISIBLE/>";
         public const string Message_Type_Submission_Tag = "<SUBMISSION/>";
 
         public const string Submission_Robot_Tag = "<ROBOT/>";
@@ -29,6 +29,8 @@ namespace TGF_Controller
 
         public const string Robot128_Img_File_Path = "pack://application:,,,/images/robot128.png";
         public const string Human128_Img_File_Path = "pack://application:,,,/images/human128.png";
+        public const string Unknown_img_File_Path = "pack://application:,,,/images/question-mark.png";
+        public const string Unavailable_img_File_Path = "pack://application:,,,/images/Null_img.png";
     }
     internal enum TypeTag
     {

@@ -8,16 +8,24 @@ namespace TGF_Client.Client_App.Network
 {
     class SocketHandler
     {
-        public string hostName ;
-        public TcpClient myClient;
-        public IPAddress controllerAddress;
-        public int controllerPortNumber = 0;
-        public int RoomPortNumber = 0;
-        public IPAddress localAddress;
-        public Socket socket;
-        public Stream myStream;
-        public StreamReader reader;
-        public StreamWriter writer;
+        private string hostName ; 
+        private int controllerPortNumber = 0;
+        private int RoomPortNumber1 = 0;
+        private int RoomPortNumber2 = 0;
+
+        private TcpClient _primaryClient;
+        private TcpClient _secondaryClient;
+
+        private IPAddress controllerAddress;
+        private IPAddress localAddress;
+
+        public Stream PrimaryStream;
+        public StreamReader PrimaryReader;
+        public StreamWriter PrimaryWriter;
+
+        public Stream SecondaryStream;
+        public StreamReader SecondaryReader;
+        public StreamWriter SecondaryWriter;
         private Message temporaryMessage;
 
         public SocketHandler(IPAddress controllerAddress, IPAddress localAddress)
@@ -26,41 +34,74 @@ namespace TGF_Client.Client_App.Network
             this.controllerPortNumber = 0;
             this.controllerAddress = controllerAddress;
             this.localAddress = localAddress;
-            this.socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         }
 
         internal string SetPort(int port)
         {
             controllerPortNumber = port;
-            temporaryMessage = ConnectToSocket(port);
-
-            int RoomPortNumber = int.Parse(temporaryMessage.Content);
-
-            temporaryMessage = ConnectToSocket(RoomPortNumber);
-
+            ConnectToSocket(1,port);
+            temporaryMessage = new Message(PrimaryReader.ReadLine());
+            RoomPortNumber1 = int.Parse(temporaryMessage.Content);
+            RoomPortNumber2 = RoomPortNumber1 + 5;
+            ConnectToSocket(1, RoomPortNumber1);
+            ConnectToSocket(2, RoomPortNumber2);
+            temporaryMessage = new Message(SecondaryReader.ReadLine());
             return temporaryMessage.Content;
         }
-        private Message ConnectToSocket(int port)
+        private void ConnectToSocket(int id,int port)
         {
-            myClient = new TcpClient(hostName, port);
-            myStream = myClient.GetStream();
-            reader = new StreamReader(myStream);
-            writer = new StreamWriter(myStream)
+            if(id == 1) 
             {
-                AutoFlush = true
-            };
-            return new Message(Listen());
+                _primaryClient = new TcpClient(hostName, port);
+                PrimaryStream = _primaryClient.GetStream();
+                PrimaryReader = new StreamReader(PrimaryStream);
+                PrimaryWriter = new StreamWriter(PrimaryStream)
+                {
+                    AutoFlush = true
+                };
+            }
+            else if(id == 2)
+            {
+                _secondaryClient = new TcpClient(hostName, port);
+                SecondaryStream = _secondaryClient.GetStream();
+                SecondaryReader = new StreamReader(SecondaryStream);
+                SecondaryWriter = new StreamWriter(SecondaryStream)
+                {
+                    AutoFlush = true
+                };
+            }
+
         }
 
-        public void Broadcast(string Type,string messagecontents)
+        public void Broadcast(string source, string Type,string messagecontents)
         {
-            Message temp = new Message(controllerAddress.ToString(), localAddress.ToString(), Type, messagecontents);
+            Message temp = new Message(controllerAddress.ToString(), source, Type, messagecontents);
             string tempMessage = temp.CompileMessage();
-            writer.WriteLine(tempMessage);
+            PrimaryWriter.WriteLine(tempMessage);
         }
+
         public string Listen()
         {
-            return reader.ReadLine();
+            try
+            {
+                return SecondaryReader.ReadLine();
+            }
+            catch
+            {
+                return $"<CLIENT/>,<CONTROLLER/>,{Constants.Message_Type_Visible_Tag},{DateTime.Now},Connection Terminated,<MessageEnd/>";
+            }
+        }
+
+        public void Close(int id)
+        {
+            if(id == 1 && _primaryClient != null)
+            {
+                _primaryClient.Close();
+            }
+            if(id == 2 && _secondaryClient != null)
+            {
+                _secondaryClient.Close();
+            }
         }
     }
 }

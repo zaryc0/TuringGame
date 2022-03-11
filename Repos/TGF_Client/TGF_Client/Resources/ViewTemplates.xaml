@@ -21,4 +21,10 @@
     <DataTemplate DataType="{x:Type vm:SubjectSelectionVM}">
         <v:SubjectSelection/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:MessageVM}">
+        <v:Message/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:Message2VM}">
+        <v:MessageView2/>
+    </DataTemplate>
 </ResourceDictionary>

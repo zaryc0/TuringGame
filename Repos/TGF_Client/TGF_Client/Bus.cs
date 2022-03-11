@@ -23,17 +23,15 @@ namespace TGF_Client
         }
         internal static void SetPortNumber(int port)
         {
-            string T = client.socket.SetPort(port);
+            string T = client.InitialiseConnection(port);
             if (T == Constants.Subject_Tag)
             {
                 client.role = Roles.Subject;
-                client.IsListening(true);
                 shellVM.ChangeOutputContent(Constants.Subject_View_ID);
             }
             else
             {
                 client.role = Roles.Interviewer;
-                client.IsListening(false);
                 shellVM.ChangeOutputContent(Constants.Interviewer_View_ID);
             }
             client.InitialiseThread();
@@ -41,7 +39,7 @@ namespace TGF_Client
 
         internal static IPAddress CheckLocalIP()
         {
-            return client.socket.localAddress;
+            return client.GetLocalIP();
         }
 
         internal static IEnumerable<Message> GetMessages()
@@ -51,37 +49,34 @@ namespace TGF_Client
 
         internal static void SendMessage(string text)
         {
-            string source = "";
-            string typeTag = "";
-
-            switch (client.role)
-            {
-                case Roles.Interviewer:
-                    source = Constants.Interviewer_Tag;
-                    typeTag = Constants.Message_Type_Question_Tag;
-                    break;
-                case Roles.Subject:
-                    source = Constants.Subject_Tag;
-                    typeTag = Constants.Message_Type_Answer_Tag;
-                    break;
-                case Roles.None:
-                    break;
-            }
-
+            client.IsListening(false);
+            string source = Constants.Interviewer_Tag;;
+            string typeTag = Constants.Message_Type_Visible_Tag;
             Message temp = new Message("<ROOM/>", source, typeTag , text);
             client.AddMessageToList(typeTag, text);
             UpdateMessageBoard(temp);
-            client.socket.Broadcast(typeTag, text);
+            client.SendMessage(typeTag, text);
             client.IsListening(true);
         }
 
         internal static void SubmitSubjectSelection(string v)
         {
-            client.socket.Broadcast(Constants.Message_Type_Submission_Tag, v);
+            client.SendMessage(Constants.Message_Type_Submission_Tag, v);
         }
+
+        internal static void Close()
+        {
+            bool killable = false;
+            while (!killable) 
+            {
+                killable = client.Kill();     
+            }
+
+        }
+
         public static void HandleNewMessageRecieved(Message m)
         {
-            if (m.TypeTag == Constants.Message_Type_Answer_Tag || m.TypeTag != Constants.Message_Type_Question_Tag)
+            if (m.TypeTag == Constants.Message_Type_Visible_Tag)
             {
                 UpdateMessageBoard(m);
                 client.IsListening(false);

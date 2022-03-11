@@ -14,16 +14,25 @@ namespace TGF_Controller.Controller.Network
         //Properties
         private readonly string hostName;
 
-        private TcpListener _listener;
-        private readonly IPAddress _localAddress;
+        
+        private IPAddress _localAddress;
         private IPAddress _clientAddress;
         private int _portNumber;
 
-        private Socket _socket;
-        private Stream _myStream;
-        private StreamReader _reader;
-        private StreamWriter _writer;
+        private TcpListener _primaryListener;
+        private Socket _primarySocket;
+        private Stream _primaryStream;
+        private StreamReader _primaryReader;
+        private StreamWriter _primaryWriter;
+
+        private TcpListener _secondaryListener;
+        private Socket _secondarySocket;
+        private Stream _secondaryStream;
+        private StreamReader _secondaryReader;
+        private StreamWriter _secondaryWriter;
+
         private Pipe _pipe;
+
         public bool isConnected;
         //Constructor
         public SocketHandler(int port)
@@ -33,8 +42,9 @@ namespace TGF_Controller.Controller.Network
             _pipe = new Pipe();
             _pipe.RegisterFilter(new DestinationFilter(GetLocalIP()));
             _portNumber = port;
-            _listener = new TcpListener(_localAddress, _portNumber);
-           _clientAddress = null;
+            _primaryListener = new TcpListener(_localAddress, _portNumber);
+            _secondaryListener = new TcpListener(_localAddress, _portNumber + 5);
+            _clientAddress = null;
 
 
         }
@@ -56,7 +66,13 @@ namespace TGF_Controller.Controller.Network
         public void Broadcast(IMessage message)
         {
             IMessage filteredMessage =_pipe.ProcessMessage(message);
-            _writer.WriteLine(filteredMessage.CompileMessage());
+            _secondaryWriter.WriteLine(filteredMessage.CompileMessage());
+        }
+
+        public void BroadcastOnPrimary(IMessage message)
+        {
+            IMessage filteredMessage = _pipe.ProcessMessage(message);
+            _primaryWriter.WriteLine(filteredMessage.CompileMessage());
         }
 
         public void SetClientIP(IPAddress iP)
@@ -72,20 +88,52 @@ namespace TGF_Controller.Controller.Network
 
         public IMessage Listen()
         {
-            return new Message(_reader.ReadLine());
-        }
+            try
+            {
+                return new Message(_primaryReader.ReadLine());
+            }
+            catch 
+            {
+                return new Message("NULL", "NULL", "</ERROR>", "AStudent has Disconnected");
+            }
+            }
 
-        public bool WaitForConnection()
+        public bool WaitForPrimaryConnection()
         {
-            _listener.Start();
-            _socket = _listener.AcceptSocket();
-            _myStream = new NetworkStream(_socket);
-            _reader = new StreamReader(_myStream);
-            _writer = new StreamWriter(_myStream)
+            _primaryListener.Start();
+            _primarySocket = _primaryListener.AcceptSocket();
+            _primaryStream = new NetworkStream(_primarySocket);
+            _primaryReader = new StreamReader(_primaryStream);
+            _primaryWriter = new StreamWriter(_primaryStream)
             {
                 AutoFlush = true
             };
             return true;
         }
+        public bool WaitForSecondaryConnection()
+        {
+            _secondaryListener.Start();
+            _secondarySocket = _secondaryListener.AcceptSocket();
+            _secondaryStream = new NetworkStream(_secondarySocket);
+            _secondaryReader = new StreamReader(_secondaryStream);
+            _secondaryWriter = new StreamWriter(_secondaryStream)
+            {
+                AutoFlush = true
+            };
+            return true;
+        }
+
+        public void Close(int id)
+        {
+            if (_primarySocket != null && id == 1)
+            {
+                _primarySocket.Close();
+            }
+            else if (_secondarySocket != null && id == 2)
+            {
+                _secondarySocket.Close();
+            }
+        }
+
     }
 }

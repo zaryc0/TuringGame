@@ -10,20 +10,46 @@ namespace TGF_Client.ViewModel
     {
         //Properties
         private string _header;
+        private string _humanImgURI;
+        private string _robotImgURI;
+        private string _buttonText;
+        private SubjectEnum _selection;
+
+        //Constructors
+        public SubjectSelectionVM()
+        {
+            Header = "Who are you talking to?";
+            RobotURI = Constants.Robot128_Img_File_Path;
+            HumanURI = Constants.Human128_Img_File_Path;
+            ButtonText = "Select an Image";
+            Selection = SubjectEnum.None;
+            SubmitSelection = new RelayCommand(o => Submit());
+        }
+        //Property Masks
         public string Header
         {
             get => _header;
             set
             {
-                if(value != _header)
+                if (value != _header)
                 {
                     _header = value;
                     NotifyPropertyChanged();
                 }
             }
         }
-
-        private string _robotImgURI;
+        public string HumanURI
+        {
+            get => _humanImgURI;
+            set
+            {
+                if (value != _humanImgURI)
+                {
+                    _humanImgURI = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
         public string RobotURI
         {
             get => _robotImgURI;
@@ -31,27 +57,12 @@ namespace TGF_Client.ViewModel
             {
                 if (value != _robotImgURI)
                 {
-                    _robotImgURI= value;
+                    _robotImgURI = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private string _buttonText;
-        public string ButtonText
-        {
-            get => _buttonText;
-            set
-            {
-                if(value != _buttonText)
-                {
-                    _buttonText = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private SubjectEnum _selection;
         public SubjectEnum Selection
         {
             get => _selection;
@@ -64,16 +75,21 @@ namespace TGF_Client.ViewModel
                 }
             }
         }
-
-        public SubjectSelectionVM()
+        public string ButtonText
         {
-            Header = "Who are you talking to?";
-            RobotURI = Constants.Robot128_Img_File_Path;
-            ButtonText = "Select Image";
-            Selection = SubjectEnum.None;
-            SubmitSelection = new RelayCommand(o => Submit());
+            get => _buttonText;
+            set
+            {
+                if (value != _buttonText)
+                {
+                    _buttonText = value;
+                    NotifyPropertyChanged();
+                }
+            }
         }
+        //Commands
 
+        //Functions
         public void SelectedRobot()
         {
             Selection = SubjectEnum.Robot;

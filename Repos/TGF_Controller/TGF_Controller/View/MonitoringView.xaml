@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:TGF_Controller.View"
              xmlns:vm ="clr-namespace:TGF_Controller.ViewModel"
              xmlns:v ="clr-namespace:TGF_Controller.View"
-             d:DataContext="{d:DesignInstance Type=vm:MonitoringVM, IsDesignTimeCreatable=True}"
-             mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
+             d:DataContext="{d:DesignInstance Type=vm:MonitoringVM, IsDesignTimeCreatable=False}"
+             mc:Ignorable="d" d:DesignHeight="500" d:DesignWidth="800">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -19,25 +19,134 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition MinWidth="155" Width="*"/>
 
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition MinHeight="400" Height="3*"/>
             <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
-        <TabControl Grid.Column="1"
-                    Grid.Row="1"
-                    ItemsSource="{Binding RoomTabVMs}">
-            <TabControl.ItemTemplate>
-                <DataTemplate DataType="{x:Type vm:RoomTabVM}">
-                    <v:RoomView/>
-                </DataTemplate>
-            </TabControl.ItemTemplate>
-            
-        </TabControl>
-        
+        <TextBlock Grid.Row ="0"
+                   Grid.Column="1"
+                   Foreground ="{StaticResource PanelHeaderBrush}"
+                   Text="{Binding SelectedItem}"/>
+        <ContentControl Grid.Column="1"
+                        Grid.Row="1"
+                        Content="{Binding Content}"/>
+        <Grid Grid.Column="1"
+              Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" MaxWidth="100" MinWidth="50"/>
+            </Grid.ColumnDefinitions>
+             <ComboBox Height="40"
+                       ItemsSource="{Binding Tabs}"
+                       Background="{StaticResource ContentBackGroundBrush1}"
+                       SelectedIndex="{Binding TabIndex}"
+                       FontSize="15">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding TabTitle}"
+                                   FontSize="15"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Button Grid.Column="1"
+                    Grid.Row="0"
+                    Height="40"
+                    Command="{Binding TabChangeCommand}">
+                <TextBlock Text="Change Room"
+                           FontSize="15"/>
+            </Button>
+        </Grid>
+
+        <Grid Grid.Column="2"
+              Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition MinWidth="155" Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition MinHeight="185" Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition MinHeight="185" Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Column="1"
+              Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" MaxHeight="165"/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                <Rectangle Grid.Column="0"
+                           Grid.Row="0"
+                           Width="150"
+                           Height="150"
+                           RadiusX="20"
+                           RadiusY="20"
+                           Fill="{StaticResource PanelBackGroundRadialBrush}"/>
+                <Image x:Name="Robot_Image"
+                   Grid.Column="0"
+                   Grid.Row="0"
+                   Source="{Binding InterviewerImgURI}"
+                   Width="128"
+                   MaxWidth="128"/>
+                <TextBlock Grid.Column="0"
+                       Grid.Row="1"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="15"
+                       Foreground="{StaticResource PanelHeaderBrush}"
+                       Text="{Binding InterviewerType}"/>
+            </Grid>
+            <Grid Grid.Column="1"
+              Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" MaxHeight="165"/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                <Rectangle Grid.Column="0"
+                           Grid.Row="0"
+                           Grid.RowSpan="1"
+                           Width="150"
+                           Height="150"
+                           RadiusX="20"
+                           RadiusY="20"
+                           Fill="{StaticResource PanelBackGroundRadialBrush}"/>
+                <Image x:Name="Human_Image"
+                   Source="{Binding SubjectImgURI}"
+                   Grid.Column="1"
+                   Grid.Row="0"
+                   Width="128"
+                   MaxWidth="128"/>
+                <TextBlock Grid.Column="0"
+                       Grid.Row="1"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="15"
+                       Foreground="{StaticResource PanelHeaderBrush}"
+                       Text="{Binding SubjectType}"/>
+            </Grid>
+        </Grid>
+        <Button Grid.Column="2"
+                Grid.Row="2"
+                MaxHeight="40"
+                MaxWidth="155"
+                Command="{Binding CloseActiveRoom}">
+            <TextBlock FontSize="15"
+                       Text="{Binding CloseRoomButtonText}"
+                       Foreground="{StaticResource ContentForeGroundBrush}"/>
+
+        </Button>
     </Grid>
 </UserControl>
