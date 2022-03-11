@@ -8,5 +8,5 @@
 @echo  
 @echo Now Pushing to remote 
 @git push
-@echo Pushed changes to remote repository.
+@echo Changes Pushed to remote
 @pause
