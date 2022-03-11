@@ -4,5 +4,5 @@
 @git commit -m "QuickPush"
 @echo Changes commited, Now Pishing to remote 
 @git push
-@echo Pushed changes to remote repository.
+@echo pushed
 @pause
