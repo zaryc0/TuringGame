@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using TGF_Client.Model;
+using TGF_Client.Model.interfaces;
 using TGF_Client.ViewModel.interfaces;
 
 namespace TGF_Client.ViewModel
@@ -19,7 +20,7 @@ namespace TGF_Client.ViewModel
                 UpdateMessages(m);
             }
         }
-        public void UpdateMessages(Message message)
+        public void UpdateMessages(IMessage message)
         {
             IMessageVM m = new MessageVM(message);
             if (Bus.client.role == Roles.Interviewer)

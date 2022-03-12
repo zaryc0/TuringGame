@@ -44,7 +44,7 @@
                 <TextBlock FontSize="20"
                            TextAlignment="Center"
                            Foreground="{StaticResource PanelHeaderBrush}"
-                           Text="{Binding Sender}"/>
+                           Text="{Binding Source}"/>
             </StackPanel>
             <TextBlock Grid.Row="0"
                        Grid.Column="0"

@@ -13,8 +13,7 @@ namespace TGF_Controller.Controller.Network.interfaces
         public void Broadcast(IMessage message);
         public void BroadcastOnPrimary(IMessage message);
         public IMessage Listen();
-        public void SetClientIP(IPAddress iP);
-        public IPAddress GetClientIP();
+        public void SetFilters(int roomID);
         public IPAddress GetLocalIP();
         public bool WaitForPrimaryConnection();
         public bool WaitForSecondaryConnection();

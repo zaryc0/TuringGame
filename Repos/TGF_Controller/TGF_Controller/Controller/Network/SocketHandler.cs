@@ -16,7 +16,6 @@ namespace TGF_Controller.Controller.Network
 
         
         private IPAddress _localAddress;
-        private IPAddress _clientAddress;
         private int _portNumber;
 
         private TcpListener _primaryListener;
@@ -40,11 +39,9 @@ namespace TGF_Controller.Controller.Network
             hostName = Dns.GetHostName();
             _localAddress = GetLocalIP();
             _pipe = new Pipe();
-            _pipe.RegisterFilter(new DestinationFilter(GetLocalIP()));
             _portNumber = port;
             _primaryListener = new TcpListener(_localAddress, _portNumber);
             _secondaryListener = new TcpListener(_localAddress, _portNumber + 5);
-            _clientAddress = null;
 
 
         }
@@ -66,7 +63,7 @@ namespace TGF_Controller.Controller.Network
         public void Broadcast(IMessage message)
         {
             IMessage filteredMessage =_pipe.ProcessMessage(message);
-            _secondaryWriter.WriteLine(filteredMessage.CompileMessage());
+            _secondaryWriter.WriteLine(message.CompileMessage());
         }
 
         public void BroadcastOnPrimary(IMessage message)
@@ -75,28 +72,22 @@ namespace TGF_Controller.Controller.Network
             _primaryWriter.WriteLine(filteredMessage.CompileMessage());
         }
 
-        public void SetClientIP(IPAddress iP)
+        public void SetFilters(int roomID)
         {
-            _clientAddress = iP;
-            _pipe.RegisterFilter(new SourceFilter(iP));
-        }
-
-        public IPAddress GetClientIP()
-        {
-            return _clientAddress;
+            _pipe.RegisterFilter(new TerminateFilter(roomID));
         }
 
         public IMessage Listen()
         {
             try
             {
-                return new Message(_primaryReader.ReadLine());
+                return _pipe.ProcessMessage(new Message(_primaryReader.ReadLine()));
             }
             catch 
             {
-                return new Message("NULL", "NULL", "</ERROR>", "AStudent has Disconnected");
+                return new Message("room", "room", Constants.Message_Type_Visible_Tag, "irrelevant");
             }
-            }
+        }
 
         public bool WaitForPrimaryConnection()
         {

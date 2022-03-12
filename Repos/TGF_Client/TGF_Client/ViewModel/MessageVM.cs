@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 using TGF_Client.Model;
+using TGF_Client.Model.interfaces;
 using TGF_Client.ViewModel.interfaces;
 
 namespace TGF_Client.ViewModel
 {
     class MessageVM : BaseViewModel , IMessageVM
     {
-        private Message _message;
+        private IMessage _message;
         //Properties
         public string Sender
         {
@@ -76,7 +77,7 @@ namespace TGF_Client.ViewModel
                 }
             }
         }
-        public MessageVM(Message message)
+        public MessageVM(IMessage message)
         {
             _message = message;
         }

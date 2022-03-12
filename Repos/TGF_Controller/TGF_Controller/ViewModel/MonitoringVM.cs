@@ -182,31 +182,30 @@ namespace TGF_Controller.ViewModel
             SetOccupantDetails();
         }
 
-        public void UpdateMessages(IMessage tempMessage, int roomID)
+        public void UpdateMessages(IMessage message, int roomID)
         {
-            bool validView;
             int tempID = 0;
-
-            try
+            if (_activeRoom.GetType().Equals(typeof(RoomVM)))
             {
-                IRoomVM temp = (IRoomVM)_activeRoom;
-                validView = true;
-                tempID = temp.ID;
-            }
-
-            catch
-            {
-                validView = false;
-            }
-
-            App.Current.Dispatcher.Invoke(delegate
-            {
-                Tabs[roomID].MessageVMs.Add(new MessageVM(tempMessage));
-                if (validView && roomID == tempID)
+                System.Windows.Application.Current.Dispatcher.Invoke(delegate
                 {
-                    Content = Tabs[roomID];
-                }
-            });
+                    if(message.Source == Constants.Subject_Tag)
+                    {
+                        Tabs[roomID].MessageVMs.Add(new Message2VM(message));
+                    }
+                    else
+                    {
+                        Tabs[roomID].MessageVMs.Add(new MessageVM(message));
+                    }
+                
+                    if (roomID == ((IRoomVM)_activeRoom).ID)
+                    {
+                        Content = Tabs[roomID];
+                    }
+                });
+            }
+            
+
         }
 
         private void SetOccupantDetails()
@@ -250,17 +249,31 @@ namespace TGF_Controller.ViewModel
 
             }
         }
-
+        public void CloseAllRooms()
+        {
+            for (int i = 0; i < Tabs.Count; i++)
+            {
+                CloseRoom(i);
+            }
+        }
         public void CloseRoom(int index)
         {
-            IRoomVM temp = (IRoomVM)_activeRoom;
-            TabIndex = 0;
-            Bus.CloseRoom(index);
-            if (temp.ID == Tabs[index].ID)
+            try
             {
-                Content = new RoomClosedVM();
+                IRoomVM temp = (IRoomVM)_activeRoom;
+                TabIndex = 0;
+                Bus.CloseRoom(Tabs[index].ID);
+                if (temp.ID == Tabs[index].ID)
+                {
+                    Content = new RoomClosedVM();
+                }
+                Tabs.RemoveAt(index);
             }
-            Tabs.RemoveAt(index);
+            catch
+            {
+                return;
+            }
+
         }
     }
 }

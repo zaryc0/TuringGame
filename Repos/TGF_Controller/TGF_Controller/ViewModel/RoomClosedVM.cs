@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TGF_Controller.Controller;
+using TGF_Controller.Controller.interfaces;
+using TGF_Controller.Model.interfaces;
 using TGF_Controller.ViewModel.interfaces;
 
 namespace TGF_Controller.ViewModel
 {
-    class RoomClosedVM : BaseViewModel, IRoomClosedVM
+    class RoomClosedVM : BaseViewModel, IRoomClosedVM , IRoomVM
     {
         //Properties
         private string _text;
@@ -18,6 +22,9 @@ namespace TGF_Controller.ViewModel
         {
             TextToDisplay = "The current Room is Not Available\n";
             ImageURI = Constants.Unavailable_img_File_Path;
+            MessageVMs = new();
+            TabTitle = "";
+            ID = 0;
         }
 
         //Property Masks
@@ -45,9 +52,28 @@ namespace TGF_Controller.ViewModel
             }
         }
 
+        public ObservableCollection<IMessageVM> MessageVMs { get; private set; }
+
+        public string TabTitle { get; private set; }
+
+        public int ID { get; private set; }
+
         //Commands
 
         //Functions
+        public IRoom GetRoom()
+        {
+            return new Room();
+        }
 
+        public string GetRoomName()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateMessages(IMessage message)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

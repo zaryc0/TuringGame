@@ -2,11 +2,13 @@
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using TGF_Client.Client_App.Network.interfaces;
 using TGF_Client.Model;
+using TGF_Client.Model.interfaces;
 
 namespace TGF_Client.Client_App.Network
 {
-    class SocketHandler
+    class SocketHandler : ISocketHandler
     {
         private string hostName ; 
         private int controllerPortNumber = 0;
@@ -18,14 +20,15 @@ namespace TGF_Client.Client_App.Network
 
         private IPAddress controllerAddress;
         private IPAddress localAddress;
+        private bool _isConnected;
+        public Stream PrimaryStream { get; set; }
+        public StreamReader PrimaryReader { get; set; }
+        public StreamWriter PrimaryWriter { get; set; }
 
-        public Stream PrimaryStream;
-        public StreamReader PrimaryReader;
-        public StreamWriter PrimaryWriter;
-
-        public Stream SecondaryStream;
-        public StreamReader SecondaryReader;
-        public StreamWriter SecondaryWriter;
+        public Stream SecondaryStream { get; set; }
+        public StreamReader SecondaryReader { get; set; }
+        public StreamWriter SecondaryWriter { get; set; }
+        private IPipe _pipe;
         private Message temporaryMessage;
 
         public SocketHandler(IPAddress controllerAddress, IPAddress localAddress)
@@ -34,9 +37,10 @@ namespace TGF_Client.Client_App.Network
             this.controllerPortNumber = 0;
             this.controllerAddress = controllerAddress;
             this.localAddress = localAddress;
+            _pipe = new Pipe();
         }
 
-        internal string SetPort(int port)
+        public string SetPort(int port)
         {
             controllerPortNumber = port;
             ConnectToSocket(1,port);
@@ -73,11 +77,12 @@ namespace TGF_Client.Client_App.Network
 
         }
 
-        public void Broadcast(string source, string Type,string messagecontents)
+        public IMessage Broadcast(string source, string Type,string messagecontents)
         {
-            Message temp = new Message(controllerAddress.ToString(), source, Type, messagecontents);
+            IMessage temp = _pipe.ProcessMessage(new Message(controllerAddress.ToString(), source, Type, messagecontents));
             string tempMessage = temp.CompileMessage();
             PrimaryWriter.WriteLine(tempMessage);
+            return temp;
         }
 
         public string Listen()
@@ -96,12 +101,23 @@ namespace TGF_Client.Client_App.Network
         {
             if(id == 1 && _primaryClient != null)
             {
+                if(_primaryClient.Connected)
+                {
+                    _ = Broadcast("this", Constants.Message_Type_Terminate_Tag, "has Disconnected from Room");
+                    _ = Listen();
+                }
                 _primaryClient.Close();
             }
             if(id == 2 && _secondaryClient != null)
             {
                 _secondaryClient.Close();
             }
+        }
+
+        public void addFilters(string destinationTag, string sourceTag)
+        {
+            _pipe.RegisterFilter(new SourceFilter(sourceTag));
+            _pipe.RegisterFilter(new DestinationFilter(destinationTag));
         }
     }
 }

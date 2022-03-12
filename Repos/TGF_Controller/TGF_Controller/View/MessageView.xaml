@@ -31,7 +31,7 @@
                        Grid.RowSpan="2"
                        RadiusX="10"
                        RadiusY="10"
-                       Fill="{StaticResource MessageBackGroundRadialBrush}"/>
+                       Fill="{StaticResource MessageBoxBackGroundBrush}"/>
             <StackPanel Orientation="Vertical">
                 <Image Source="pack://application:,,,/images/profile32.png"
                        HorizontalAlignment="Center" 
@@ -45,7 +45,7 @@
                        FontSize="20"
                        TextAlignment="Center"
                        Foreground="{StaticResource MessageBoxForeGroundBrush}"
-                       Text="{Binding Sender}"/>
+                       Text="{Binding Source}"/>
             </StackPanel>
             <TextBlock Grid.Row="0"
                        Grid.Column="1"

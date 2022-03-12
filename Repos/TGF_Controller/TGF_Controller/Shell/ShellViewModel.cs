@@ -45,6 +45,11 @@ namespace TGF_Controller.Shell
             }
         }
 
+        internal void ClosingApplication()
+        {
+            Bus.Close();
+        }
+
         //Constructor
         public ShellViewModel()
         {

@@ -33,6 +33,7 @@ namespace TGF_Controller.ViewModel.interfaces
         public void ChangeTab(int index);
         public void UpdateMessages(IMessage tempMessage, int roomID);
         public void CloseRoom(int index);
+        public void CloseAllRooms();
 
     }
 }

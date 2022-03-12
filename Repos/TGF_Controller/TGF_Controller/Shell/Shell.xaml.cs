@@ -26,5 +26,9 @@ namespace TGF_Controller.Shell
             InitializeComponent();
             this.DataContext = new ShellViewModel();
         }
+        private void Closing_Application(object sender, CancelEventArgs e)
+        {
+            ((ShellViewModel)this.DataContext).ClosingApplication();
+        }
     }
 }

@@ -6,13 +6,14 @@ using System.Text;
 using System.Threading;
 using TGF_Client.Client_App.Network;
 using TGF_Client.Model;
+using TGF_Client.Model.interfaces;
 
 namespace TGF_Client.Client_App
 {
     class Client
     {
         public Config config;
-        public List<Message> messages = new List<Message>();
+        public List<IMessage> messages = new List<IMessage>();
         public Roles role;
         private SocketHandler _socket;
         private Thread _messageChecker;
@@ -39,23 +40,31 @@ namespace TGF_Client.Client_App
             _socket = new SocketHandler(GetControllerIP(), GetLocalIP());
         }
 
+        internal void SetRole(Roles newRole)
+        {
+            role = newRole;
+            if (newRole == Roles.Interviewer)
+            {
+                _socket.addFilters(Constants.Subject_Tag, Constants.Interviewer_Tag);
+            }
+            else
+            {
+                _socket.addFilters(Constants.Interviewer_Tag, Constants.Subject_Tag);
+            }
+
+        }
+
         internal string InitialiseConnection(int port)
         {
             return _socket.SetPort(port);
         }
 
-        internal void SendMessage(string typeTag, string text)
+        internal IMessage SendMessage(string typeTag, string text)
         {
             string source = "";
-            if(role == Roles.Interviewer)
-            {
-                source = Constants.Interviewer_Tag;
-            }
-            else if(role == Roles.Subject)
-            {
-                source = Constants.Subject_Tag;
-            }
-            _socket.Broadcast(source,typeTag, text);
+            IMessage temp = _socket.Broadcast(source, typeTag, text);
+            messages.Add(temp);
+            return temp;
         }
 
         public void IsListening(bool state)

@@ -19,7 +19,12 @@ namespace TGF_Controller.Controller
         private int _lastRoomID;
         private bool _active;
         public Dictionary<int, IRoom> roomList;
-        
+
+        internal void DisconnectSubject()
+        {
+            
+        }
+
         //Constructor
         public Control()
         {
@@ -119,29 +124,11 @@ namespace TGF_Controller.Controller
         internal void CloseRoom(int index)
         {
             roomList[index].Kill();
-            _ = roomList.Remove(index);
-            _numberOfConnectionsMade -= 2;
         }
 
         internal void Kill()
         {
             _active = false;
-            bool temp = true;
-            while (temp)
-            {
-                temp = CheckThreads();
-            }
-        }
-        private bool CheckThreads()
-        {
-            foreach (Thread t in _threadList)
-            {
-                if (t.IsAlive)
-                {
-                    return true;
-                }
-            }
-            return false;
         }
     }
 }

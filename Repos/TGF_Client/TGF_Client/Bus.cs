@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Text;
+using System.Threading;
 using TGF_Client.Client_App;
 using TGF_Client.Model;
+using TGF_Client.Model.interfaces;
 using TGF_Client.Shell;
 using TGF_Client.ViewModel;
 
@@ -16,6 +18,7 @@ namespace TGF_Client
         public static InitialViewVM initialVM;
         public static SubjectViewVM subjectVM;
         public static InterviewerViewVM interviewerVM;
+        private static Mutex _lock = new Mutex();
 
         internal static string GetSender(string source)
         {
@@ -26,12 +29,13 @@ namespace TGF_Client
             string T = client.InitialiseConnection(port);
             if (T == Constants.Subject_Tag)
             {
-                client.role = Roles.Subject;
+                client.SetRole(Roles.Subject);
+
                 shellVM.ChangeOutputContent(Constants.Subject_View_ID);
             }
             else
             {
-                client.role = Roles.Interviewer;
+                client.SetRole(Roles.Interviewer);
                 shellVM.ChangeOutputContent(Constants.Interviewer_View_ID);
             }
             client.InitialiseThread();
@@ -42,7 +46,7 @@ namespace TGF_Client
             return client.GetLocalIP();
         }
 
-        internal static IEnumerable<Message> GetMessages()
+        internal static IEnumerable<IMessage> GetMessages()
         {
             return client.messages;
         }
@@ -50,12 +54,9 @@ namespace TGF_Client
         internal static void SendMessage(string text)
         {
             client.IsListening(false);
-            string source = Constants.Interviewer_Tag;;
             string typeTag = Constants.Message_Type_Visible_Tag;
-            Message temp = new Message("<ROOM/>", source, typeTag , text);
-            client.AddMessageToList(typeTag, text);
+            IMessage temp = client.SendMessage(typeTag, text);
             UpdateMessageBoard(temp);
-            client.SendMessage(typeTag, text);
             client.IsListening(true);
         }
 
@@ -67,9 +68,10 @@ namespace TGF_Client
         internal static void Close()
         {
             bool killable = false;
+            _lock.Dispose();
             while (!killable) 
             {
-                killable = client.Kill();     
+                killable = client.Kill();
             }
 
         }
@@ -78,12 +80,14 @@ namespace TGF_Client
         {
             if (m.TypeTag == Constants.Message_Type_Visible_Tag)
             {
+                _lock.WaitOne();
                 UpdateMessageBoard(m);
                 client.IsListening(false);
+                _lock.ReleaseMutex();
             }
         }
 
-        internal static void UpdateMessageBoard(Message message)
+        internal static void UpdateMessageBoard(IMessage message)
         {
             subjectVM.messageBoardVM.UpdateMessages(message);
             interviewerVM.messageBoardVM.UpdateMessages(message);

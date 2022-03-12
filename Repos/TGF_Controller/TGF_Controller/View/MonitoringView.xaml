@@ -28,10 +28,6 @@
             <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row ="0"
-                   Grid.Column="1"
-                   Foreground ="{StaticResource PanelHeaderBrush}"
-                   Text="{Binding SelectedItem}"/>
         <ContentControl Grid.Column="1"
                         Grid.Row="1"
                         Content="{Binding Content}"/>

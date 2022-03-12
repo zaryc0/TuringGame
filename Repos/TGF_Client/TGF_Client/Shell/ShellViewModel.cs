@@ -69,7 +69,7 @@ namespace TGF_Client.Shell
             };
         }
 
-        public void ClosingClientApp()
+        public void ClosingApplication()
         {
             Bus.Close();
         }

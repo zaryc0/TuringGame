@@ -29,7 +29,7 @@ namespace TGF_Client.Shell
 
         private void Closing_Application(object sender, CancelEventArgs e)
         {
-            ((ShellViewModel)this.DataContext).ClosingClientApp();
+            ((ShellViewModel)this.DataContext).ClosingApplication();
         }
     }
 }

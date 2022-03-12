@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Threading;
 using TGF_Controller.Controller;
 using TGF_Controller.Controller.interfaces;
 using TGF_Controller.Model.interfaces;
@@ -14,6 +15,7 @@ namespace TGF_Controller
         public static ShellViewModel shellVM;
         public static InitialViewVM initialVM;
         public static MonitoringVM monitoringVM;
+        private static readonly Mutex _lock = new();
 
         internal static void LaunchApplication()
         {
@@ -29,15 +31,6 @@ namespace TGF_Controller
         internal static void ChangeOutputContent(object vm)
         {
             shellVM.ChangeOutputContent(vm);
-        }
-        internal static string GetSubjectIP(int room_ID)
-        {
-            return controller.GetRoom(room_ID).Subject.GetClientIP().ToString();
-        }
-
-        internal static string GetInterviewerIP(int room_ID)
-        {
-            return controller.GetRoom(room_ID).Interviewer.GetClientIP().ToString();
         }
 
         internal static void CreateNewRoomView(IRoom room)
@@ -55,16 +48,19 @@ namespace TGF_Controller
 
         internal static void UpdateMessageBoards(IMessage tempMessage, int roomID)
         {
+            _lock.WaitOne();
             monitoringVM.UpdateMessages(tempMessage, roomID);
+            _lock.ReleaseMutex();
         }
         internal static void Close()
         {
+            monitoringVM.CloseAllRooms();
             controller.Kill();
         }
 
         public static IRoom GetRoom(int index)
         {
-            return controller.roomList[index];
+            return controller.GetRoom(index);
         }
 
         internal static void CloseRoom(int index)

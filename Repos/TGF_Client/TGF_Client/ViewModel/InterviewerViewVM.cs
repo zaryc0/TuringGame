@@ -8,7 +8,6 @@ namespace TGF_Client.ViewModel
     {
         public MessageBoardVM messageBoardVM { get; set; }
         public UserTextInputVM userTextInputVM { get; set; }
-
         public SubjectSelectionVM subjectSelectionVM { get; set; }
 
         public InterviewerViewVM()

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Threading;
 using TGF_Controller.Controller.interfaces;
 using TGF_Controller.Controller.Network;
 using TGF_Controller.Controller.Network.interfaces;
@@ -21,8 +22,22 @@ namespace TGF_Controller.Controller
 
         private int _id;
         private bool _active;
+        private Mutex _lock = new();
+        private Thread _interviewerListener;
+        private Thread _subjectListener;
 
         //Constructors
+        public Room()
+        {
+            _id = 0;
+            RoomName = $"Room {_id}";
+            MessageBoard = null;
+            HasInterviewer = false;
+            _active = true;
+            _lock = new();
+            _subjectListener = new Thread(() => ListenToSubject());
+            _interviewerListener = new Thread(() => ListenToInterviewer());
+        }
         public Room(int subjectPortNumber, int interviewerPortNumber, bool hasRobot, int id)
         {
             _id = id;
@@ -30,11 +45,16 @@ namespace TGF_Controller.Controller
             MessageBoard = new MessageBoard();
             PopulateMessageWithSpoofs();
             Subject = new SocketHandler(subjectPortNumber);
+            Subject.SetFilters(_id);
             Interviewer = new SocketHandler(interviewerPortNumber);
+            Interviewer.SetFilters(_id);
             HasRobot = hasRobot;
             HasSubject = hasRobot;
             HasInterviewer = false;
             _active = true;
+            _lock = new();
+            _subjectListener = new Thread(() => ListenToSubject());
+            _interviewerListener = new Thread(() => ListenToInterviewer());
         }
 
         private void PopulateMessageWithSpoofs()
@@ -57,56 +77,13 @@ namespace TGF_Controller.Controller
         {
             InitInterviewer();
             InitSubject();
-            IMessage tempMessage;
-            while (_active)
-            {
-                try
-                {
-                    tempMessage = Interviewer.Listen(); 
-                    if(!_active) { break; }
-                    MessageBoard.AddMessage(tempMessage);
-                    Bus.UpdateMessageBoards(tempMessage, _id);
-                    Subject.Broadcast(tempMessage);
-                    tempMessage = Subject.Listen();
-                    if (!_active) { break; }
-                    MessageBoard.AddMessage(tempMessage);
-                    Bus.UpdateMessageBoards(tempMessage, _id);
-                    Interviewer.Broadcast(tempMessage);
-                }
-                catch
-                {
-
-                }
-            }
-            Interviewer.Broadcast(new Message("Null", "Null", Constants.Message_Type_Visible_Tag, "Connection has been severed by remote Host"));
-            Interviewer.Close(2);
-            Subject.Broadcast(new Message("Null", "Null", Constants.Message_Type_Visible_Tag, "Connection has been severed by remote Host"));
-            Subject.Close(2);
+            _interviewerListener.Start();
+            _subjectListener.Start();
         }
 
         public int GetID()
         {
             return _id;
-        }
-
-        public void CheckMessage(IMessage message)
-        {
-            if (message.TypeTag != Constants.Message_Type_Terminate_Tag)
-            {
-                if (message.TypeTag == Constants.Message_Type_Submission_Tag)
-                {
-                    Subject.Broadcast(new Message("", "", Constants.Message_Type_Submission_Tag, $"The interviewer Believes You are a: {message.Content}"));
-                    _active = false;
-                }
-                else
-                {
-                    _active = true;
-                }
-            }
-            else
-            {
-                _active = false;
-            }
         }
 
         private void InitInterviewer()
@@ -125,11 +102,62 @@ namespace TGF_Controller.Controller
             Subject.Broadcast(new Message($"<CLIENT/>,<CONTROLLER/>,<ASSIGNMENT/>,{DateTime.Now},{Constants.Subject_Tag},<MessageEnd/>"));
         }
 
+        private void ListenToSubject()
+        {
+            IMessage tempMessage;
+            while (_active)
+            {
+
+                tempMessage = Subject.Listen();
+                if (!_active) { break; }
+                UpdateMessageBoards(tempMessage);
+                Interviewer.Broadcast(tempMessage);
+            }
+            try
+            {
+                Interviewer.Broadcast(new Message("Null", "Null", Constants.Message_Type_Visible_Tag, "Subject has Left the room Connection will be Terminated"));
+            }
+            catch
+            {
+                return;
+            }
+        }
+        private void ListenToInterviewer()
+        {
+            IMessage tempMessage;
+            while (_active)
+            {
+                tempMessage = Interviewer.Listen();
+                if (!_active) { break; }
+                UpdateMessageBoards(tempMessage);
+                Subject.Broadcast(tempMessage);
+            }
+            try
+            {
+                Interviewer.Broadcast(new Message("Null", "Null", Constants.Message_Type_Visible_Tag, "Interviewer has Left the room Connection will be Terminated"));
+            }
+            catch
+            {
+                return;
+            }
+        }
+        private void UpdateMessageBoards(IMessage m)
+        {
+            _ = _lock.WaitOne();
+            MessageBoard.AddMessage(m);
+            Bus.UpdateMessageBoards(m, _id);
+            _lock.ReleaseMutex();
+        }
         public void Kill()
         {
             _active = false;
             Interviewer.Close(1);
             Subject.Close(1);
+            _lock.Dispose();
+            Interviewer.Broadcast(new Message("Null", "Null", Constants.Message_Type_Visible_Tag, "Connection has been severed by remote Host"));
+            Interviewer.Close(2);
+            Subject.Broadcast(new Message("Null", "Null", Constants.Message_Type_Visible_Tag, "Connection has been severed by remote Host"));
+            Subject.Close(2);
         }
     }
 }
