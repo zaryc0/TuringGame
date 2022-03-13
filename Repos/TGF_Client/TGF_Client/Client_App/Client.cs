@@ -37,7 +37,6 @@ namespace TGF_Client.Client_App
             }
             config = new Config();
             _socket = new SocketHandler(GetControllerIP(), GetLocalIP());
-            _socket = new SocketHandler(GetControllerIP(), GetLocalIP());
         }
 
         internal void SetRole(Roles newRole)

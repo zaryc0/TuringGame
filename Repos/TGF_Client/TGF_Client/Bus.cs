@@ -30,7 +30,6 @@ namespace TGF_Client
             if (T == Constants.Subject_Tag)
             {
                 client.SetRole(Roles.Subject);
-
                 shellVM.ChangeOutputContent(Constants.Subject_View_ID);
             }
             else
