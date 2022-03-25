@@ -7,30 +7,16 @@ namespace TGF_Controller.Model
     {
         //Properties
         public List<IMessage> Messages { get; set; }
-
         //Constructors
         public MessageBoard()
         {
             Messages = new List<IMessage>();
         }
-        public MessageBoard(IMessage message)
-        {
-            Messages = new List<IMessage>
-            {
-                message
-            };
-        }
-        public MessageBoard(List<IMessage> messages)
-        {
-            Messages = messages;
-        }
-
         //Functions
         public void AddMessage(IMessage message)
         {
             Messages.Add(message);
         }
-
         public IMessage GetMessage(int id)
         {
             return Messages[id];

@@ -16,7 +16,38 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid Background="{StaticResource WindowBackGroundRadialBrush}">
-        <ContentControl Content="{Binding OutputContent}"/>
+    <Grid DockPanel.Dock="Bottom"
+              Name="ParentGrid" 
+              Background="{StaticResource WindowBackGroundRadialBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto" MaxHeight="150"/>
+        </Grid.RowDefinitions>
+        <ContentControl Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="5"
+                        Content="{Binding OutputContent}"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+            <ScrollViewer Grid.Row="1"
+                          Grid.Column="0"
+                          Background="{StaticResource ContentBackGroundBrush1}"
+                          Visibility="{Binding DebugFlag}"
+                          Margin="5">
+                <TextBlock Text="{Binding Debug}"
+                           FontSize="15"
+                           Foreground= "{StaticResource PanelHeaderBrush}"/>
+            </ScrollViewer>
+            <Button Grid.Column="1"
+                    Width="20"
+                    Height="20"
+                    Margin="5,5,5,5"
+                    Click="ToggleDebug">
+                <Image Source="pack://application:,,,/images/debug.png"/>
+            </Button>
+        </Grid>
     </Grid>
 </Window>

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Net;
+using System.Diagnostics;
 using System.Threading;
 using TGF_Controller.Controller.interfaces;
 using TGF_Controller.Controller.Network;
@@ -20,11 +20,16 @@ namespace TGF_Controller.Controller
         public bool HasRobot { get; set; }
         public string RoomName { get; set; }
 
+        private Process _chatBotWrapped;
         private int _id;
+        private int _hostPortNumber;
+        private int _subjectPortNumber;
+        private int _interviewerPortNumber;
         private bool _active;
         private Mutex _lock = new();
         private Thread _interviewerListener;
         private Thread _subjectListener;
+        private Thread _BotLauncher;
 
         //Constructors
         public Room()
@@ -33,52 +38,48 @@ namespace TGF_Controller.Controller
             RoomName = $"Room {_id}";
             MessageBoard = null;
             HasInterviewer = false;
+            HasSubject = false;
             _active = true;
             _lock = new();
             _subjectListener = new Thread(() => ListenToSubject());
             _interviewerListener = new Thread(() => ListenToInterviewer());
+            _BotLauncher = new Thread(() => LaunchChatBot());
         }
-        public Room(int subjectPortNumber, int interviewerPortNumber, bool hasRobot, int id)
+        public Room(int subjectPortNumber, int interviewerPortNumber, int hostPortNumber, int id)
         {
             _id = id;
+            _hostPortNumber = hostPortNumber;
             RoomName = $"Room {id}";
             MessageBoard = new MessageBoard();
-            PopulateMessageWithSpoofs();
+            //PopulateMessageWithSpoofs();
             Subject = new SocketHandler(subjectPortNumber);
             Subject.SetFilters(_id);
             Interviewer = new SocketHandler(interviewerPortNumber);
             Interviewer.SetFilters(_id);
-            HasRobot = hasRobot;
-            HasSubject = hasRobot;
             HasInterviewer = false;
+            HasSubject = false;
+            _subjectPortNumber = subjectPortNumber;
+            _interviewerPortNumber = interviewerPortNumber;
             _active = true;
             _lock = new();
             _subjectListener = new Thread(() => ListenToSubject());
             _interviewerListener = new Thread(() => ListenToInterviewer());
-        }
+            _BotLauncher = new Thread(() => LaunchChatBot());
 
-        private void PopulateMessageWithSpoofs()
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                if (i % 2 == 0)
-                {
-                    MessageBoard.Messages.Add(new Message($"<SUBJECT/>,<INTERVIEWER/>,{Constants.Message_Type_Visible_Tag},{DateTime.Now},Nulla id mollis est. Vestibulum massa ligula posuere semper arcu velestas. Nunc tristique odio arcu nec congue quam eleifend sit amet. Aenean in ex nulla. Nam interdum erat turpis. Morbi in enim vitae libero maximus porttitor. Praesent quis fringilla"));
-                }
-                else
-                {
-                    MessageBoard.Messages.Add(new Message($"<INTERVIEWER/>,<SUBJECT/>,{Constants.Message_Type_Visible_Tag},{DateTime.Now},Nulla id mollis est. Vestibulum massa ligula posuere semper arcu velestas. Nunc tristique odio arcu nec congue quam eleifend sit amet. Aenean in ex nulla. Nam interdum erat turpis. Morbi in enim vitae libero maximus porttitor. Praesent quis fringilla"));
-                }
-            }
         }
 
         //Functions
         public void Run()
         {
+            Bus.AddDebugMessage($"Room:{_id} has begun to Run");
             InitInterviewer();
+            Bus.AddDebugMessage($"Room:{_id} has obtained interviewer");
+            _BotLauncher.Start();
             InitSubject();
+            Bus.AddDebugMessage($"Room:{_id} has obtained Subject");
             _interviewerListener.Start();
             _subjectListener.Start();
+            Bus.AddDebugMessage($"Room:{_id} has begun transmission");
         }
 
         public int GetID()
@@ -129,8 +130,7 @@ namespace TGF_Controller.Controller
             {
                 tempMessage = Interviewer.Listen();
                 if (!_active) { break; }
-                UpdateMessageBoards(tempMessage);
-                Subject.Broadcast(tempMessage);
+                Subject.Broadcast(HandleMessageRecieved(tempMessage));
             }
             try
             {
@@ -140,6 +140,20 @@ namespace TGF_Controller.Controller
             {
                 return;
             }
+        }
+        private IMessage HandleMessageRecieved(IMessage m)
+        {
+            if (m.TypeTag == Constants.Message_Type_Visible_Tag)
+            {
+                UpdateMessageBoards(m);
+                return m;
+            }
+            if (m.TypeTag == Constants.Message_Type_Submission_Tag)
+            {
+                m.TypeTag = Constants.Message_Type_Visible_Tag;
+                m.Content = m.Content == Constants.Submission_Robot ? "I think you are a Robot!" : "I think you are a human!";
+            }
+            return m;
         }
         private void UpdateMessageBoards(IMessage m)
         {
@@ -156,8 +170,38 @@ namespace TGF_Controller.Controller
             _lock.Dispose();
             Interviewer.Broadcast(new Message("Null", "Null", Constants.Message_Type_Visible_Tag, "Connection has been severed by remote Host"));
             Interviewer.Close(2);
-            Subject.Broadcast(new Message("Null", "Null", Constants.Message_Type_Visible_Tag, "Connection has been severed by remote Host"));
+            if (HasSubject && HasRobot)
+            {
+                KillChatBot();
+            }
+            else
+            {
+                Subject.Broadcast(new Message("Null", "Null", Constants.Message_Type_Visible_Tag, "Connection has been severed by remote Host"));
+            }
             Subject.Close(2);
+        }
+        private void LaunchChatBot()
+        {
+            Bus.AddDebugMessage($"Room:{_id} entered bot launch");
+            Thread.Sleep(5000);
+            Bus.AddDebugMessage($"Room:{_id} HasSubject = {HasSubject}");
+            if (HasSubject != true)
+            {
+                Bus.AddDebugMessage($"Room:{_id} hit");
+                ProcessStartInfo thisInfo = new ProcessStartInfo("ChatBotWrapper.exe");
+                thisInfo.WorkingDirectory = "../../../../../ChatBotWrapper/bin/Release/net5.0";
+                thisInfo.Arguments = $"{_hostPortNumber}";
+                thisInfo.RedirectStandardInput = false;
+                thisInfo.RedirectStandardOutput = false;
+                thisInfo.UseShellExecute = true;
+                thisInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                _ = Process.Start(thisInfo);
+                HasRobot = true;
+            }
+        }
+        private void KillChatBot()
+        {
+            Subject.Broadcast(new Message(Constants.kill_Chat_Bot_Message));
         }
     }
 }

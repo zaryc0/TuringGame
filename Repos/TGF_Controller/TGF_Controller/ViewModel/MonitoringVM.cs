@@ -22,6 +22,7 @@ namespace TGF_Controller.ViewModel
                        _subjectImgUri,
                        _interviewerImgURI,
                        _buttonText;
+        private int _hostPort;
         private int _index;
 
         //Constructor
@@ -35,7 +36,7 @@ namespace TGF_Controller.ViewModel
             SubjectType = "Uknown";
             InterviewerType = "Uknown";
             SetOccupantDetails();
-
+            _hostPort = Bus.hostPortNum;
             CloseActiveRoom = new RelayCommand(o => CloseRoom(_index));
             TabChangeCommand = new RelayCommand(o => ChangeTab(_index));
         }
@@ -55,7 +56,6 @@ namespace TGF_Controller.ViewModel
                 }
             }
         }
-
         public string Header
         {
             get => _header;
@@ -68,7 +68,6 @@ namespace TGF_Controller.ViewModel
                 }
             }
         }
-
         public string SubjectType
         {
             get => _subjectType;
@@ -81,7 +80,6 @@ namespace TGF_Controller.ViewModel
                 }
             }
         }
-
         public string SubjectImgURI
         {
             get => _subjectImgUri;
@@ -94,7 +92,6 @@ namespace TGF_Controller.ViewModel
                 }
             }
         }
-
         public string InterviewerType
         {
             get => _interviewerType;
@@ -107,7 +104,6 @@ namespace TGF_Controller.ViewModel
                 }
             }
         }
-
         public string InterviewerImgURI
         {
             get => _interviewerImgURI;
@@ -120,7 +116,6 @@ namespace TGF_Controller.ViewModel
                 }
             }
         }
-
         public object Content
         {
             get => _activeRoom;
@@ -134,7 +129,6 @@ namespace TGF_Controller.ViewModel
                 }
             }
         }
-
         public int TabIndex
         {
             get => _index;
@@ -162,7 +156,6 @@ namespace TGF_Controller.ViewModel
                 NotifyPropertyChanged();
             });
         }
-
         public void UpdateTab(int id,IMessage m)
         {
             App.Current.Dispatcher.Invoke(delegate
@@ -170,7 +163,6 @@ namespace TGF_Controller.ViewModel
                 Tabs[id].MessageVMs.Add(new MessageVM(m));
             });
         }
-
         public void ChangeTab(int index)
         {
             int roomID = Tabs[index].GetRoom().GetID();
@@ -181,10 +173,8 @@ namespace TGF_Controller.ViewModel
             Header = $"Observing {temp.GetRoomName()}";
             SetOccupantDetails();
         }
-
         public void UpdateMessages(IMessage message, int roomID)
         {
-            int tempID = 0;
             if (_activeRoom.GetType().Equals(typeof(RoomVM)))
             {
                 System.Windows.Application.Current.Dispatcher.Invoke(delegate
@@ -207,7 +197,6 @@ namespace TGF_Controller.ViewModel
             
 
         }
-
         private void SetOccupantDetails()
         {
             try

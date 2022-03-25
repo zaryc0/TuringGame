@@ -23,9 +23,10 @@ namespace TGF_Controller
         public const string Message_Type_Visible_Tag = "<VISIBLE/>";
         public const string Message_Type_Submission_Tag = "<SUBMISSION/>";
 
-        public const string Submission_Robot_Tag = "<ROBOT/>";
-        public const string Submission_Human_Tag = "<HUMAN/>";
+        public const string Submission_Robot = "<ROBOT/>";
+        public const string Submission_Human = "<HUMAN/>";
         public const string Session_Termination_Message = "The Session has been terminate";
+        public const string kill_Chat_Bot_Message = "<SUBJECT/>,<SUBJECT/>,<TERMINATE/>,quit,<MESSAGEEND/>";
 
         public const string Robot128_Img_File_Path = "pack://application:,,,/images/robot128.png";
         public const string Human128_Img_File_Path = "pack://application:,,,/images/human128.png";

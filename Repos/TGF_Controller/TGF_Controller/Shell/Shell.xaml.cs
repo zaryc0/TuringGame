@@ -30,5 +30,13 @@ namespace TGF_Controller.Shell
         {
             ((ShellViewModel)this.DataContext).ClosingApplication();
         }
+
+        private void ToggleDebug(object sender, RoutedEventArgs e)
+        {
+            ((ShellViewModel)this.DataContext).ToggleDebugFlag();
+            ParentGrid.UpdateLayout();
+
+        }
+
     }
 }

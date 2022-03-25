@@ -16,6 +16,7 @@ namespace ChatBotWrapper.Network
         private IPAddress _localAddress;
         private IPEndPoint _ipEp_Primary;
         private IPEndPoint _ipEp_Secondary;
+        private IPEndPoint _ipEp_Controller;
 
         private int _portNumber;
         private int RoomPortNumber1 = 0;
@@ -36,19 +37,42 @@ namespace ChatBotWrapper.Network
 
         public bool isConnected;
         //Constructor
-        public SocketHandler(string port, string controllerIP)
+        public SocketHandler(string port)
         {
-            _ipEp_Primary = new IPEndPoint(IPAddress.Parse(controllerIP), int.Parse(port));
-            _localAddress = IPAddress.Parse(controllerIP);
+            _localAddress = GetControllerIP();
             _pipe = new Pipe();
             _portNumber = int.Parse(port);
+            _ipEp_Controller = new IPEndPoint(_localAddress, _portNumber);
+            _primaryClient = new TcpClient();
+            _secondaryClient = new TcpClient();
         }
+        private IPAddress GetControllerIP()
+        {
+            IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (IPAddress ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip;
+                }
+            }
+            throw new Exception("No network adapters with an IPv4 address in the system!");
+        }
+
 
         //Functions
         public void SetPort(int port)
         {
             _controllerportnumber = port;
-            ConnectToSocket(1, port);
+
+            _primaryClient.Connect(_ipEp_Controller);
+            _primaryStream = _primaryClient.GetStream();
+            _primaryReader = new StreamReader(_primaryStream);
+            _primaryWriter = new StreamWriter(_primaryStream)
+            {
+                AutoFlush = true
+            };
+
             IMessage temporaryMessage = new Message(_primaryReader.ReadLine());
             RoomPortNumber1 = int.Parse(temporaryMessage.Content);
             RoomPortNumber2 = RoomPortNumber1 + 5;
@@ -61,8 +85,9 @@ namespace ChatBotWrapper.Network
             if (id == 1)
             {
                 _ipEp_Primary = new IPEndPoint(_localAddress, port);
-                _primaryClient = new TcpClient(_ipEp_Primary);
-                while (!_primaryClient.Connected) { }
+                _primaryClient.Close();
+                _primaryClient = new TcpClient();
+                _primaryClient.Connect(_ipEp_Primary);
                 _primaryStream = _primaryClient.GetStream();
                 _primaryReader = new StreamReader(_primaryStream);
                 _primaryWriter = new StreamWriter(_primaryStream)
@@ -72,9 +97,8 @@ namespace ChatBotWrapper.Network
             }
             else if (id == 2)
             {
-                _ipEp_Secondary.Port = new IPEndPoint(_localAddress, port);
-                _secondaryClient = new TcpClient(_ipEp_Secondary);
-                while (!_primaryClient.Connected) { }
+                _ipEp_Secondary = new IPEndPoint(_localAddress, port);
+                _secondaryClient.Connect(_ipEp_Secondary);
                 _secondaryStream = _secondaryClient.GetStream();
                 _secondaryReader = new StreamReader(_secondaryStream);
                 _secondaryWriter = new StreamWriter(_secondaryStream)
@@ -94,6 +118,7 @@ namespace ChatBotWrapper.Network
         {
             _pipe.RegisterFilter(new SourceFilter(sourceTag));
             _pipe.RegisterFilter(new DestinationFilter(destinationTag));
+            _pipe.RegisterFilter(new TagFilter(Constants.Message_Type_Visible_Tag));
         }
 
         public IMessage Listen()

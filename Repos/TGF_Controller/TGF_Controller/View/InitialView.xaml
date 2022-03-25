@@ -17,7 +17,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -27,9 +27,18 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="1"
                     Grid.Column="1">
-            <TextBlock Text="{Binding TextBlock}"/>
-            <Button Command="{Binding LaunchButtonPress}">
-                <TextBlock Text="{Binding ButtonText}"/>
+            <TextBlock FontSize="40"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       TextWrapping="NoWrap"
+                       TextAlignment="Center"
+                       Foreground="{StaticResource PanelHeaderBrush}"
+                       Text="{Binding TextBlock}"/>
+            <Button Width="150"
+                    Height="50"
+                    Command="{Binding LaunchButtonPress}">
+                <TextBlock FontSize="20"
+                           Text="{Binding ButtonText}"/>
             </Button>
                
         </StackPanel>

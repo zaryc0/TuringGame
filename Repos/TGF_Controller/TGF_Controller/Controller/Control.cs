@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading;
 using TGF_Controller.Controller.interfaces;
 using TGF_Controller.Controller.Network;
@@ -17,34 +18,30 @@ namespace TGF_Controller.Controller
         private List<Thread> _threadList;
         private int _roomPortBase;
         private int _lastRoomID;
+        private int _hostPortNum;
         private bool _active;
         public Dictionary<int, IRoom> roomList;
 
-        internal void DisconnectSubject()
-        {
-            
-        }
-
         //Constructor
-        public Control()
+        public Control(int portnumber)
         {
             _active = true;
+            _hostPortNum = portnumber;
             _numberOfConnectionsMade = 0;
-            _hostSocket = new SocketHandler(4839);
+            _hostSocket = new SocketHandler(_hostPortNum);
             roomList = new Dictionary<int, IRoom>();
             _threadList = new List<Thread>();
-            _roomPortBase = 1000;
+            _roomPortBase = 4000;
             Thread T = new(() => ManageController());
             T.Start();
         }
 
-
         //Functions
-        public bool CreateRoom(int roomID,int subPortNum, int intPortNum)
+        private bool CreateRoom(int roomID, int subPortNum, int intPortNum)
         {
             if (roomList.Count < Constants.Room_Limit)
             {
-                IRoom temp = new Room(subPortNum, intPortNum, false, roomID);
+                IRoom temp = new Room(subPortNum, intPortNum, _hostPortNum, roomID);
                 roomList.Add(temp.GetID(),temp);
                 _threadList.Add(new Thread(() => ManageRoom(roomID)));
                 _threadList[roomID].Start();
@@ -55,18 +52,15 @@ namespace TGF_Controller.Controller
                 return false;
             }
         }
-
-        public void ManageRoom(int room)
+        private void ManageRoom(int room)
         {
             roomList[room].Run();
         }
-
         public IRoom GetRoom(int room_ID)
         {
             return roomList[room_ID];
         }
-
-        public void ManageController()
+        private void ManageController()
         {
             while (_active)
             {
@@ -94,8 +88,7 @@ namespace TGF_Controller.Controller
                 }
             }
         }
-
-        public int GetFreeRoomID()
+        private int GetFreeRoomID()
         {
             IEnumerable<int> freeroomIDs;
             List<int> allRoomIDs = new();
@@ -120,12 +113,10 @@ namespace TGF_Controller.Controller
             }
 
         }
-
         internal void CloseRoom(int index)
         {
             roomList[index].Kill();
         }
-
         internal void Kill()
         {
             _active = false;

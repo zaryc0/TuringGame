@@ -23,7 +23,11 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0"
                    Grid.Column="0"
-                   FontSize="20"
+                   FontSize="40"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   TextWrapping="NoWrap"
+                   TextAlignment="Center"
                    Foreground="{StaticResource PanelHeaderBrush}"
                    Text="{Binding Text}"/>
     </Grid>

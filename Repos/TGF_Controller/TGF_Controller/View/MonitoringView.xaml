@@ -28,6 +28,13 @@
             <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0"
+                   Grid.Column="1"
+                   FontSize="15"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Stretch"
+                   Foreground="{StaticResource PanelHeaderBrush}"
+                   Text="{Binding PortNumber}"/>
         <ContentControl Grid.Column="1"
                         Grid.Row="1"
                         Content="{Binding Content}"/>

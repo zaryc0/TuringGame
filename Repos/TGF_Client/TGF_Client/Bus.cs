@@ -52,11 +52,9 @@ namespace TGF_Client
 
         internal static void SendMessage(string text)
         {
-            client.IsListening(false);
             string typeTag = Constants.Message_Type_Visible_Tag;
             IMessage temp = client.SendMessage(typeTag, text);
-            UpdateMessageBoard(temp);
-            client.IsListening(true);
+            UpdateMessageBoard(temp,0);
         }
 
         internal static void SubmitSubjectSelection(string v)
@@ -66,30 +64,30 @@ namespace TGF_Client
 
         internal static void Close()
         {
-            bool killable = false;
             _lock.Dispose();
-            while (!killable) 
-            {
-                killable = client.Kill();
-            }
+            _ = client.Kill();
+            
 
         }
 
-        public static void HandleNewMessageRecieved(Message m)
+        public static void HandleNewMessageRecieved(Message m,int type)
         {
             if (m.TypeTag == Constants.Message_Type_Visible_Tag)
             {
-                _lock.WaitOne();
-                UpdateMessageBoard(m);
-                client.IsListening(false);
+                _ = _lock.WaitOne();
+                UpdateMessageBoard(m,type);
                 _lock.ReleaseMutex();
             }
         }
 
-        internal static void UpdateMessageBoard(IMessage message)
+        internal static void UpdateMessageBoard(IMessage message, int type)
         {
-            subjectVM.messageBoardVM.UpdateMessages(message);
-            interviewerVM.messageBoardVM.UpdateMessages(message);
+            subjectVM.messageBoardVM.UpdateMessages(message,type);
+            interviewerVM.messageBoardVM.UpdateMessages(message,type);
+        }
+        internal static void AddDebugMessage(string dmess)
+        {
+            shellVM.Debug = $"[{DateTime.Now}] -> {dmess}\n";
         }
     }
 }

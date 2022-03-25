@@ -11,39 +11,26 @@ namespace TGF_Client.ViewModel
     class MessageBoardVM : BaseViewModel
     {
         public ObservableCollection<IMessageVM> Messages { get; set; }
-
         public MessageBoardVM()
         {
             Messages = new ObservableCollection<IMessageVM>();
-            foreach (Message m in Bus.GetMessages())
-            {
-                UpdateMessages(m);
-            }
         }
-        public void UpdateMessages(IMessage message)
+        public void UpdateMessages(IMessage message,int type)
         {
             IMessageVM m = new MessageVM(message);
-            if (Bus.client.role == Roles.Interviewer)
+            if (type == 0)
             {
-                if (message.Source == Constants.Interviewer_Tag)
+                m = new MessageVM(message)
                 {
-                    m = new MessageVM(message);
-                }
-                else if (message.Source == Constants.Subject_Tag)
-                {
-                    m = new Message2VM(message);
-                }
+                    Source = "you"
+                };
             }
-            else if (Bus.client.role == Roles.Subject)
+            else if (type == 1)
             {
-                if (message.Source == Constants.Interviewer_Tag)
+                m = new Message2VM(message)
                 {
-                    m = new Message2VM(message);
-                }
-                else if (message.Source == Constants.Subject_Tag)
-                {
-                    m = new MessageVM(message);
-                }
+                    Source = "???"
+                };
             }
             App.Current.Dispatcher.Invoke(delegate
             {

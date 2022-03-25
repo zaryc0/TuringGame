@@ -44,6 +44,5 @@ namespace TGF_Client.ViewModel
             Bus.SendMessage(text);
             ClearText();
         }
-
     }
 }

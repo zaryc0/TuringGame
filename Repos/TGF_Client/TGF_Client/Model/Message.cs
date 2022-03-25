@@ -7,19 +7,14 @@ namespace TGF_Client.Model
 {
     class Message : IMessage
     {
-        //Header
+        //properties
         public string Destination { get; set; }
         public string Source { get; set; }
         public string TypeTag { get; set; }
-        public string TimeStamp {get; set;}
-
-        //body
+        public string TimeStamp {get; set; }
         public string Content { get; set; }
 
-        public string CompileMessage()
-        {
-            return $"{Destination},{Source},{TypeTag},{TimeStamp},{Content},{Constants.Message_End_Tag}";
-        }
+        //constructors
         public Message(string message)
         {
             string[] messageContent = message.Split(',');
@@ -41,6 +36,12 @@ namespace TGF_Client.Model
             TypeTag = type;
             TimeStamp = DateTime.Now.ToString();
             Content = Body;
+        }
+
+        //functions
+        public string CompileMessage()
+        {
+            return $"{Destination},{Source},{TypeTag},{TimeStamp},{Content},{Constants.Message_End_Tag}";
         }
         public bool MessageIsNotValid(string[] input)
         {

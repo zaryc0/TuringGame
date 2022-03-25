@@ -12,18 +12,17 @@ namespace TGF_Client.Client_App
 {
     class Client
     {
+        //Variables
         public Config config;
         public List<IMessage> messages = new List<IMessage>();
         public Roles role;
         private SocketHandler _socket;
         private Thread _messageChecker;
         private bool _active;
-        private bool _Listening;
-
+        //Constructor
         public Client()
         {
             _active = true;
-            _Listening = false;
             for(int i = 0; i < 10; i++)
             {
                 if (i % 2 == 0)
@@ -38,7 +37,7 @@ namespace TGF_Client.Client_App
             config = new Config();
             _socket = new SocketHandler(GetControllerIP(), GetLocalIP());
         }
-
+        //Functions
         internal void SetRole(Roles newRole)
         {
             role = newRole;
@@ -52,32 +51,16 @@ namespace TGF_Client.Client_App
             }
 
         }
-
         internal string InitialiseConnection(int port)
         {
             return _socket.SetPort(port);
         }
-
         internal IMessage SendMessage(string typeTag, string text)
         {
-            string source = "";
+            string source = Bus.client.role == Roles.Interviewer ? Constants.Interviewer_Tag : Constants.Subject_Tag;
             IMessage temp = _socket.Broadcast(source, typeTag, text);
             messages.Add(temp);
             return temp;
-        }
-
-        public void IsListening(bool state)
-        {
-            _Listening = state;
-        }
-
-        public void AddMessageToList(Message message)
-        {
-            messages.Add(message);
-        }
-        public void AddMessageToList(string type, string content)
-        {
-            messages.Add(new Message(GetControllerIP().ToString(), GetLocalIP().ToString(),type,content));
         }
         public void InitialiseThread()
         {
@@ -92,17 +75,14 @@ namespace TGF_Client.Client_App
                 if (temp != null)
                 {
                     Message _M = new Message(temp);
-                    Bus.HandleNewMessageRecieved(_M);
+                    Bus.HandleNewMessageRecieved(_M,1);
                 }
             }
         }
-
         public IPAddress GetControllerIP()
         {
-            //return config.controllerIP;
-            return IPAddress.Parse("10.228.199.121");
+            return IPAddress.Parse(config.d["Controller IP"]);
         }
-
         public IPAddress GetLocalIP()
         {
             IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
@@ -115,15 +95,10 @@ namespace TGF_Client.Client_App
             }
             throw new Exception("No network adapters with an IPv4 address in the system!");
         }
-
         public bool Kill()
         {
             _active = false;
             _socket.Close(2);
-            if (_messageChecker != null)
-            {
-                while (_messageChecker.IsAlive) { } 
-            }
             _socket.Close(1);
             return true;
         }

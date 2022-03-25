@@ -14,13 +14,13 @@ namespace TGF_Controller.ViewModel.interfaces
     {
         //properties
         public int TabIndex { get; set; }
-        public string Header { get; }
+        public string Header { get; set; }
         public string CloseRoomButtonText { get; set; }
-        public string SubjectType { get; }
-        public string SubjectImgURI { get; }
-        public string InterviewerType { get; }
-        public string InterviewerImgURI { get; }
-        public object Content { get; }
+        public string SubjectType { get; set; }
+        public string SubjectImgURI { get; set; }
+        public string InterviewerType { get; set; }
+        public string InterviewerImgURI { get; set; }
+        public object Content { get; set; }
         public ObservableCollection<IRoomVM> Tabs { get; set; }
 
         //Commands

@@ -24,12 +24,12 @@ namespace TGF_Client.Shell
         public ShellView()
         {
             InitializeComponent();
-            this.DataContext = new ShellViewModel();
+            DataContext = new ShellViewModel();
         }
 
         private void Closing_Application(object sender, CancelEventArgs e)
         {
-            ((ShellViewModel)this.DataContext).ClosingApplication();
+            ((ShellViewModel)DataContext).ClosingApplication();
         }
     }
 }

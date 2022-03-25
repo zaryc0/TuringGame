@@ -58,7 +58,6 @@ namespace TGF_Controller.ViewModel
         {
             return _room;
         }
-
         public void UpdateMessages(IMessage message)
         {
             App.Current.Dispatcher.Invoke(delegate

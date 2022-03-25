@@ -1,8 +1,7 @@
 {
   "profiles": {
     "ChatBotWrapper": {
-      "commandName": "Project",
-      "commandLineArgs": "4839 192.168.1.140"
+      "commandName": "Project"
     }
   }
 }

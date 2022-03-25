@@ -7,15 +7,11 @@ using TGF_Client.ViewModel.interfaces;
 
 namespace TGF_Client.ViewModel
 {
-    class MessageVM : BaseViewModel , IMessageVM
+    class MessageVM : BaseViewModel, IMessageVM
     {
         private IMessage _message;
         //Properties
-        public string Sender
-        {
-            get => Bus.GetSender(Source);
-
-        }
+        public string Sender => _message.Source;
 
         public string Destination
         {

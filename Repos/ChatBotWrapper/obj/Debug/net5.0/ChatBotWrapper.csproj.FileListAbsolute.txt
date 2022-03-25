@@ -53,3 +53,19 @@ C:\Users\callu\OneDrive\Documents\UniWork\TuringGame\Repos\ChatBotWrapper\obj\De
 C:\Users\callu\OneDrive\Documents\UniWork\TuringGame\Repos\ChatBotWrapper\obj\Debug\net5.0\ref\ChatBotWrapper.dll
 C:\Users\callu\OneDrive\Documents\UniWork\TuringGame\Repos\ChatBotWrapper\obj\Debug\net5.0\ChatBotWrapper.pdb
 C:\Users\callu\OneDrive\Documents\UniWork\TuringGame\Repos\ChatBotWrapper\obj\Debug\net5.0\ChatBotWrapper.genruntimeconfig.cache
+E:\Repos\Turing game\TuringGame\Repos\ChatBotWrapper\bin\Debug\net5.0\ChatBotWrapper.exe
+E:\Repos\Turing game\TuringGame\Repos\ChatBotWrapper\bin\Debug\net5.0\ChatBotWrapper.deps.json
+E:\Repos\Turing game\TuringGame\Repos\ChatBotWrapper\bin\Debug\net5.0\ChatBotWrapper.runtimeconfig.json
+E:\Repos\Turing game\TuringGame\Repos\ChatBotWrapper\bin\Debug\net5.0\ChatBotWrapper.runtimeconfig.dev.json
+E:\Repos\Turing game\TuringGame\Repos\ChatBotWrapper\bin\Debug\net5.0\ChatBotWrapper.dll
+E:\Repos\Turing game\TuringGame\Repos\ChatBotWrapper\bin\Debug\net5.0\ref\ChatBotWrapper.dll
+E:\Repos\Turing game\TuringGame\Repos\ChatBotWrapper\bin\Debug\net5.0\ChatBotWrapper.pdb
+E:\Repos\Turing game\TuringGame\Repos\ChatBotWrapper\obj\Debug\net5.0\ChatBotWrapper.csproj.AssemblyReference.cache
+E:\Repos\Turing game\TuringGame\Repos\ChatBotWrapper\obj\Debug\net5.0\ChatBotWrapper.GeneratedMSBuildEditorConfig.editorconfig
+E:\Repos\Turing game\TuringGame\Repos\ChatBotWrapper\obj\Debug\net5.0\ChatBotWrapper.AssemblyInfoInputs.cache
+E:\Repos\Turing game\TuringGame\Repos\ChatBotWrapper\obj\Debug\net5.0\ChatBotWrapper.AssemblyInfo.cs
+E:\Repos\Turing game\TuringGame\Repos\ChatBotWrapper\obj\Debug\net5.0\ChatBotWrapper.csproj.CoreCompileInputs.cache
+E:\Repos\Turing game\TuringGame\Repos\ChatBotWrapper\obj\Debug\net5.0\ChatBotWrapper.dll
+E:\Repos\Turing game\TuringGame\Repos\ChatBotWrapper\obj\Debug\net5.0\ref\ChatBotWrapper.dll
+E:\Repos\Turing game\TuringGame\Repos\ChatBotWrapper\obj\Debug\net5.0\ChatBotWrapper.pdb
+E:\Repos\Turing game\TuringGame\Repos\ChatBotWrapper\obj\Debug\net5.0\ChatBotWrapper.genruntimeconfig.cache

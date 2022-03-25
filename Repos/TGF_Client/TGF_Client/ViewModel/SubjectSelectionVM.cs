@@ -62,7 +62,6 @@ namespace TGF_Client.ViewModel
                 }
             }
         }
-
         public SubjectEnum Selection
         {
             get => _selection;

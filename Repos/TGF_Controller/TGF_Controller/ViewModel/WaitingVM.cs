@@ -9,12 +9,16 @@ namespace TGF_Controller.ViewModel
 {
     class WaitingVM : BaseViewModel, IWaitingVM
     {
-        //model
+        //models
         private string _text;
-        public WaitingVM()
+        private int _portNum;
+        //Constructors
+        public WaitingVM(int portnum)
         {
-            Text = "Waiting for a user to connect";
+            _portNum = portnum;
+            Text = $"PortNumber: {_portNum}\nWaiting for users to connect";
         }
+        //Property access masks
         public string Text
         {
             get => _text;

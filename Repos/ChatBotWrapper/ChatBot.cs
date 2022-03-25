@@ -1,12 +1,9 @@
 ﻿using ChatBotWrapper.Model;
+using ChatBotWrapper.Model.interfaces;
 using ChatBotWrapper.Network;
-using IronPython.Hosting;
-using Microsoft.Scripting.Hosting;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Text;
+using System.Threading;
 
 namespace ChatBotWrapper
 {
@@ -14,6 +11,7 @@ namespace ChatBotWrapper
     {
         private SocketHandler _socket;
         private bool _active;
+        private IMessage m;
         static void Main(string[] args)
         {
             _ = new ChatBot(args);
@@ -22,7 +20,7 @@ namespace ChatBotWrapper
         public ChatBot(string[] argv)
         {
             _active = true;
-            _socket = new SocketHandler(argv[0],argv[1]);
+            _socket = new SocketHandler(argv[0]);
             Process chatter = new();
             ProcessStartInfo thisInfo = new ProcessStartInfo();
             thisInfo.FileName = "../../../Python_def/python.exe";
@@ -38,13 +36,20 @@ namespace ChatBotWrapper
             StreamReader ProcessReader = chatter.StandardOutput;
 
             _socket.SetPort(int.Parse(argv[0]));
-
+            _socket.AddFilters(Constants.Interviewer_Tag, Constants.Subject_Tag);
             while (_active)
             {
                 _socket.Broadcast(new Message("", "", "", ProcessReader.ReadLine()));
-                string messageText = _socket.Listen().Content;
-                ProcessWriter.WriteLine(messageText);
+                m = _socket.Listen();
+                if (m.TypeTag == Constants.Message_Type_Terminate_Tag)
+                {
+                    _active = false;
+                    m.Content = "quit";
+                }
+                ProcessWriter.WriteLine(m.Content);
+                Thread.Sleep(1000);
             }
+            chatter.Dispose();
         }
     }
 }

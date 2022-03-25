@@ -15,24 +15,23 @@ namespace TGF_Controller
         public static ShellViewModel shellVM;
         public static InitialViewVM initialVM;
         public static MonitoringVM monitoringVM;
+        public static int hostPortNum;
         private static readonly Mutex _lock = new();
+
 
         internal static void LaunchApplication()
         {
-            controller = new();
-            ChangeOutputContent(new WaitingVM());
+            Random r = new();
+            hostPortNum = r.Next(7000,9999);
+            controller = new(hostPortNum);
+            AddDebugMessage($"Opened port listenere on port {hostPortNum}");
+            ChangeOutputContent(new WaitingVM(hostPortNum));
         }
-
-        internal static void ChangeTabOutputContent(int i)
-        {
-            monitoringVM.ChangeTab(i);
-        }
-
         internal static void ChangeOutputContent(object vm)
         {
+            AddDebugMessage($"Changed output Content to {vm.GetType()}");
             shellVM.ChangeOutputContent(vm);
         }
-
         internal static void CreateNewRoomView(IRoom room)
         {
             if (monitoringVM == null)
@@ -45,7 +44,6 @@ namespace TGF_Controller
                 monitoringVM.AddTab(room);
             }
         }
-
         internal static void UpdateMessageBoards(IMessage tempMessage, int roomID)
         {
             _lock.WaitOne();
@@ -54,18 +52,27 @@ namespace TGF_Controller
         }
         internal static void Close()
         {
-            monitoringVM.CloseAllRooms();
-            controller.Kill();
-        }
+            if (monitoringVM != null)
+            {
+                monitoringVM.CloseAllRooms();
+            }
+            if (controller! != null)
+            {
+                controller.Kill();
+            }
 
+        }
         public static IRoom GetRoom(int index)
         {
             return controller.GetRoom(index);
         }
-
         internal static void CloseRoom(int index)
         {
             controller.CloseRoom(index);
+        }
+        internal static void AddDebugMessage(string dmess)
+        {
+            shellVM.Debug = $"[{DateTime.Now}] -> {dmess}\n";
         }
     }
 }

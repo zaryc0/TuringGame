@@ -8,6 +8,6 @@ namespace TGF_Controller.ViewModel.interfaces
 {
     interface IWaitingVM
     {
-        public string Text { get; }
+        public string Text { get; set; }
     }
 }
