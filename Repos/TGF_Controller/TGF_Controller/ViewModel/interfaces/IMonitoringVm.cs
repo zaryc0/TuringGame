@@ -20,6 +20,7 @@ namespace TGF_Controller.ViewModel.interfaces
         public string SubjectImgURI { get; set; }
         public string InterviewerType { get; set; }
         public string InterviewerImgURI { get; set; }
+        public string PortNumber { get; set; }
         public object Content { get; set; }
         public ObservableCollection<IRoomVM> Tabs { get; set; }
 

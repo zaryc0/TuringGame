@@ -14,3 +14,19 @@ E:\Repos\Turing game\TuringGame\Repos\ChatBotWrapper\obj\Release\net5.0\ChatBotW
 E:\Repos\Turing game\TuringGame\Repos\ChatBotWrapper\obj\Release\net5.0\ref\ChatBotWrapper.dll
 E:\Repos\Turing game\TuringGame\Repos\ChatBotWrapper\obj\Release\net5.0\ChatBotWrapper.pdb
 E:\Repos\Turing game\TuringGame\Repos\ChatBotWrapper\obj\Release\net5.0\ChatBotWrapper.genruntimeconfig.cache
+C:\Users\callu\OneDrive\Documents\UniWork\TuringGame\Repos\ChatBotWrapper\bin\Release\net5.0\ChatBotWrapper.exe
+C:\Users\callu\OneDrive\Documents\UniWork\TuringGame\Repos\ChatBotWrapper\bin\Release\net5.0\ChatBotWrapper.deps.json
+C:\Users\callu\OneDrive\Documents\UniWork\TuringGame\Repos\ChatBotWrapper\bin\Release\net5.0\ChatBotWrapper.runtimeconfig.json
+C:\Users\callu\OneDrive\Documents\UniWork\TuringGame\Repos\ChatBotWrapper\bin\Release\net5.0\ChatBotWrapper.runtimeconfig.dev.json
+C:\Users\callu\OneDrive\Documents\UniWork\TuringGame\Repos\ChatBotWrapper\bin\Release\net5.0\ChatBotWrapper.dll
+C:\Users\callu\OneDrive\Documents\UniWork\TuringGame\Repos\ChatBotWrapper\bin\Release\net5.0\ref\ChatBotWrapper.dll
+C:\Users\callu\OneDrive\Documents\UniWork\TuringGame\Repos\ChatBotWrapper\bin\Release\net5.0\ChatBotWrapper.pdb
+C:\Users\callu\OneDrive\Documents\UniWork\TuringGame\Repos\ChatBotWrapper\obj\Release\net5.0\ChatBotWrapper.csproj.AssemblyReference.cache
+C:\Users\callu\OneDrive\Documents\UniWork\TuringGame\Repos\ChatBotWrapper\obj\Release\net5.0\ChatBotWrapper.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\callu\OneDrive\Documents\UniWork\TuringGame\Repos\ChatBotWrapper\obj\Release\net5.0\ChatBotWrapper.AssemblyInfoInputs.cache
+C:\Users\callu\OneDrive\Documents\UniWork\TuringGame\Repos\ChatBotWrapper\obj\Release\net5.0\ChatBotWrapper.AssemblyInfo.cs
+C:\Users\callu\OneDrive\Documents\UniWork\TuringGame\Repos\ChatBotWrapper\obj\Release\net5.0\ChatBotWrapper.csproj.CoreCompileInputs.cache
+C:\Users\callu\OneDrive\Documents\UniWork\TuringGame\Repos\ChatBotWrapper\obj\Release\net5.0\ChatBotWrapper.dll
+C:\Users\callu\OneDrive\Documents\UniWork\TuringGame\Repos\ChatBotWrapper\obj\Release\net5.0\ref\ChatBotWrapper.dll
+C:\Users\callu\OneDrive\Documents\UniWork\TuringGame\Repos\ChatBotWrapper\obj\Release\net5.0\ChatBotWrapper.pdb
+C:\Users\callu\OneDrive\Documents\UniWork\TuringGame\Repos\ChatBotWrapper\obj\Release\net5.0\ChatBotWrapper.genruntimeconfig.cache

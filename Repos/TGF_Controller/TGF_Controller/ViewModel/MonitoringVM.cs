@@ -43,7 +43,18 @@ namespace TGF_Controller.ViewModel
 
         //Property Masks
         public ObservableCollection<IRoomVM> Tabs { get; set; }
-
+        public string PortNumber
+        {
+            get => $"{_hostPort}";
+            set
+            {
+                if (value != $"{_hostPort}")
+                {
+                    _hostPort = int.Parse(value);
+                    NotifyPropertyChanged();
+                }
+            }
+        }
         public string CloseRoomButtonText
         {
             get => _buttonText;

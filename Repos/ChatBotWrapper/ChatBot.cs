@@ -1,6 +1,7 @@
 ﻿using ChatBotWrapper.Model;
 using ChatBotWrapper.Model.interfaces;
 using ChatBotWrapper.Network;
+using ChatBotWrapper.Network.interfaces;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
@@ -9,7 +10,7 @@ namespace ChatBotWrapper
 {
     class ChatBot
     {
-        private SocketHandler _socket;
+        private ISocketHandler _socket;
         private bool _active;
         private IMessage m;
         static void Main(string[] args)

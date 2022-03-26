@@ -1,6 +1,7 @@
 ﻿using ChatBotWrapper.Model;
 using ChatBotWrapper.Model.interfaces;
 using ChatBotWrapper.Network.Filters;
+using ChatBotWrapper.Network.intefaces;
 using ChatBotWrapper.Network.interfaces;
 using System;
 using System.IO;
@@ -22,18 +23,11 @@ namespace ChatBotWrapper.Network
         private int RoomPortNumber1 = 0;
         private int RoomPortNumber2 = 0;
 
-        private TcpClient _primaryClient;
-        private TcpClient _secondaryClient;
+        private ITSocket _primary_socket;
+        private ITSocket _secondary_socket;
 
-        private Stream _primaryStream;
-        private StreamReader _primaryReader;
-        private StreamWriter _primaryWriter;
 
-        private Stream _secondaryStream;
-        private StreamReader _secondaryReader;
-        private StreamWriter _secondaryWriter;
-
-        private Pipe _pipe;
+        private IPipe _pipe;
 
         public bool isConnected;
         //Constructor
@@ -43,8 +37,8 @@ namespace ChatBotWrapper.Network
             _pipe = new Pipe();
             _portNumber = int.Parse(port);
             _ipEp_Controller = new IPEndPoint(_localAddress, _portNumber);
-            _primaryClient = new TcpClient();
-            _secondaryClient = new TcpClient();
+            _primary_socket = new TSocket();
+            _secondary_socket = new TSocket();
         }
         private IPAddress GetControllerIP()
         {
@@ -59,94 +53,69 @@ namespace ChatBotWrapper.Network
             throw new Exception("No network adapters with an IPv4 address in the system!");
         }
 
-
         //Functions
         public void SetPort(int port)
         {
             _controllerportnumber = port;
 
-            _primaryClient.Connect(_ipEp_Controller);
-            _primaryStream = _primaryClient.GetStream();
-            _primaryReader = new StreamReader(_primaryStream);
-            _primaryWriter = new StreamWriter(_primaryStream)
-            {
-                AutoFlush = true
-            };
-
-            IMessage temporaryMessage = new Message(_primaryReader.ReadLine());
+            _primary_socket.Connect(_ipEp_Controller);
+            IMessage temporaryMessage = new Message(_primary_socket.Read());
             RoomPortNumber1 = int.Parse(temporaryMessage.Content);
             RoomPortNumber2 = RoomPortNumber1 + 5;
             ConnectToSocket(1, RoomPortNumber1);
             ConnectToSocket(2, RoomPortNumber2);
-            _ = new Message(_secondaryReader.ReadLine());
+            _ = new Message(_secondary_socket.Read());
         }
         private void ConnectToSocket(int id, int port)
         {
             if (id == 1)
             {
                 _ipEp_Primary = new IPEndPoint(_localAddress, port);
-                _primaryClient.Close();
-                _primaryClient = new TcpClient();
-                _primaryClient.Connect(_ipEp_Primary);
-                _primaryStream = _primaryClient.GetStream();
-                _primaryReader = new StreamReader(_primaryStream);
-                _primaryWriter = new StreamWriter(_primaryStream)
-                {
-                    AutoFlush = true
-                };
+                _primary_socket.Close();
+                _primary_socket.Connect(_ipEp_Primary);
             }
             else if (id == 2)
             {
                 _ipEp_Secondary = new IPEndPoint(_localAddress, port);
-                _secondaryClient.Connect(_ipEp_Secondary);
-                _secondaryStream = _secondaryClient.GetStream();
-                _secondaryReader = new StreamReader(_secondaryStream);
-                _secondaryWriter = new StreamWriter(_secondaryStream)
-                {
-                    AutoFlush = true
-                };
+                _secondary_socket.Connect(_ipEp_Secondary);
             }
         }
-
         public void Broadcast(IMessage message)
         {
             IMessage filteredMessage = _pipe.ProcessMessage(message);
-            _primaryWriter.WriteLine(filteredMessage.CompileMessage());
+            _primary_socket.Write(filteredMessage.CompileMessage());
         }
-
         public void AddFilters(string destinationTag, string sourceTag)
         {
             _pipe.RegisterFilter(new SourceFilter(sourceTag));
             _pipe.RegisterFilter(new DestinationFilter(destinationTag));
             _pipe.RegisterFilter(new TagFilter(Constants.Message_Type_Visible_Tag));
         }
-
         public IMessage Listen()
         {
             try
             {
-                return new Message(_secondaryReader.ReadLine());
+                return new Message(_secondary_socket.Read());
             }
             catch
             {
                 return new Message("room", "chatbot", Constants.Message_Type_Visible_Tag, "irrelevant");
             }
         }
-
         public void Close(int id)
         {
-            if (id == 1 && _primaryClient != null)
+            if (id == 1 && _primary_socket != null)
             {
-                if (_primaryClient.Connected)
+                if (_primary_socket.IsConnected())
                 {
                     Broadcast(new Message(" ","", Constants.Message_Type_Terminate_Tag, "has Disconnected from Room"));
                     _ = Listen();
                 }
-                _primaryClient.Close();
+                _primary_socket.Close();
             }
-            if (id == 2 && _secondaryClient != null)
+            if (id == 2 && _secondary_socket != null)
             {
-                _secondaryClient.Close();
+                _secondary_socket.Close();
             }
         }
 
