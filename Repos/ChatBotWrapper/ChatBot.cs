@@ -24,8 +24,7 @@ namespace ChatBotWrapper
             _socket = new SocketHandler(argv[0]);
             Process chatter = new();
             ProcessStartInfo thisInfo = new ProcessStartInfo();
-            thisInfo.FileName = "../../../Python_def/python.exe";
-            thisInfo.Arguments = "../../../Chatter.py";
+            thisInfo.FileName = "../../../chatbot/dist/chatter.exe";
             thisInfo.RedirectStandardInput = true;
             thisInfo.RedirectStandardOutput = true;
             thisInfo.UseShellExecute = false;
