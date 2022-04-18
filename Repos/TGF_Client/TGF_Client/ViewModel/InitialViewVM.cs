@@ -26,7 +26,7 @@ namespace TGF_Client.ViewModel
         public InitialViewVM()
         {
             Clear();
-            Input = "test";
+            Input = "";
             SubmitInput = new RelayCommand(o => Send(_input));
         }
 

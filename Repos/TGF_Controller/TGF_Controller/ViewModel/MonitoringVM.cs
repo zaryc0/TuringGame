@@ -45,7 +45,7 @@ namespace TGF_Controller.ViewModel
         public ObservableCollection<IRoomVM> Tabs { get; set; }
         public string PortNumber
         {
-            get => $"{_hostPort}";
+            get => $"Session Code:{_hostPort}";
             set
             {
                 if (value != $"{_hostPort}")
