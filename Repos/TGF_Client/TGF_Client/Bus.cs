@@ -64,10 +64,8 @@ namespace TGF_Client
 
         internal static void Close()
         {
-            _lock.Dispose();
             _ = client.Kill();
-            
-
+            _lock.Dispose();
         }
 
         public static void HandleNewMessageRecieved(Message m,int type)

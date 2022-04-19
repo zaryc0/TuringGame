@@ -44,7 +44,14 @@ namespace TGF_Controller.Controller.Network
         }
         public void Write(string message)
         {
-            _writer.WriteLine(message);
+            try
+            {
+                _writer.WriteLine(message);
+            }
+            catch
+            {
+
+            }
         }
     }
 }

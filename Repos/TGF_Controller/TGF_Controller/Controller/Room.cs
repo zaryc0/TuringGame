@@ -110,9 +110,9 @@ namespace TGF_Controller.Controller
             {
 
                 tempMessage = Subject.Listen();
+                if (tempMessage.TypeTag == Constants.Message_Type_Terminate_Tag) { return; }
                 if (!_active) { break; }
-                UpdateMessageBoards(tempMessage);
-                Interviewer.Broadcast(tempMessage);
+                Interviewer.Broadcast(HandleMessageRecieved(tempMessage));
             }
             try
             {
@@ -129,6 +129,7 @@ namespace TGF_Controller.Controller
             while (_active)
             {
                 tempMessage = Interviewer.Listen();
+                if (tempMessage.TypeTag == Constants.Message_Type_Terminate_Tag) { return; }
                 if (!_active) { break; }
                 Subject.Broadcast(HandleMessageRecieved(tempMessage));
             }

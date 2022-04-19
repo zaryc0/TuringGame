@@ -16,7 +16,7 @@ namespace TGF_Controller.ViewModel
         public WaitingVM(int portnum)
         {
             _portNum = portnum;
-            Text = $"PortNumber: {_portNum}\nWaiting for users to connect";
+            Text = $"Enter Code: {_portNum}\nWaiting for users to connect";
         }
         //Property access masks
         public string Text

@@ -17,24 +17,24 @@ namespace TGF_Controller.Controller.Network.Filters
         }
         public IMessage Run(IMessage message)
         {
-            if (message.TypeTag == Constants.Message_Type_Terminate_Tag)
-            {
-                if (message.Source == Constants.Subject_Tag)
-                {
-                    Bus.controller.roomList[_roomID].Subject.Close(1);
-                    Bus.controller.roomList[_roomID].Subject.Broadcast(message);
-                    Bus.controller.roomList[_roomID].Subject.Close(2);
-                    message.Content = "Subject " + message.Content;
-                }
-                else
-                {
-                    Bus.controller.roomList[_roomID].Interviewer.Close(1);
-                    Bus.controller.roomList[_roomID].Interviewer.Broadcast(message);
-                    Bus.controller.roomList[_roomID].Interviewer.Close(2);
-                    message.Content = "Interviewer " + message.Content;
-                }
-                message.TypeTag = Constants.Message_Type_Visible_Tag;
-            }
+            //if (message.TypeTag == Constants.Message_Type_Terminate_Tag)
+            //{
+            //    if (message.Source == Constants.Subject_Tag)
+            //    {
+            //        Bus.controller.roomList[_roomID].Subject.Close(1);
+            //        Bus.controller.roomList[_roomID].Subject.Broadcast(message);
+            //        Bus.controller.roomList[_roomID].Subject.Close(2);
+            //        message.Content = "Subject " + message.Content;
+            //    }
+            //    else
+            //    {
+            //        Bus.controller.roomList[_roomID].Interviewer.Close(1);
+            //        Bus.controller.roomList[_roomID].Interviewer.Broadcast(message);
+            //        Bus.controller.roomList[_roomID].Interviewer.Close(2);
+            //        message.Content = "Interviewer " + message.Content;
+            //    }
+            //  message.TypeTag = Constants.Message_Type_Visible_Tag;
+            //}
             return message;
         }
     }

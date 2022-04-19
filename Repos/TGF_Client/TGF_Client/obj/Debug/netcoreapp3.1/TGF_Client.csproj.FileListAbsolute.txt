@@ -155,7 +155,6 @@ C:\Temp\TuringGame\Repos\TGF_Client\TGF_Client\bin\Debug\netcoreapp3.1\TGF_Clien
 C:\Temp\TuringGame\Repos\TGF_Client\TGF_Client\bin\Debug\netcoreapp3.1\TGF_Client.runtimeconfig.dev.json
 C:\Temp\TuringGame\Repos\TGF_Client\TGF_Client\bin\Debug\netcoreapp3.1\TGF_Client.dll
 C:\Temp\TuringGame\Repos\TGF_Client\TGF_Client\bin\Debug\netcoreapp3.1\TGF_Client.pdb
-C:\Temp\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\TGF_Client.csproj.AssemblyReference.cache
 C:\Temp\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\Resources\AllStyles.baml
 C:\Temp\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\Resources\ColourPalette.baml
 C:\Temp\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\Resources\DefaultStyles.baml
@@ -191,3 +190,4 @@ C:\Temp\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\TGF_Clien
 C:\Temp\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\TGF_Client.dll
 C:\Temp\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\TGF_Client.pdb
 C:\Temp\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\TGF_Client.genruntimeconfig.cache
+C:\Temp\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\TGF_Client.csproj.AssemblyReference.cache

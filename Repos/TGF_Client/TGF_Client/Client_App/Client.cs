@@ -19,6 +19,7 @@ namespace TGF_Client.Client_App
         private SocketHandler _socket;
         private Thread _messageChecker;
         private bool _active;
+        private bool _closing;
         //Constructor
         public Client()
         {
@@ -75,7 +76,14 @@ namespace TGF_Client.Client_App
                 if (temp != null)
                 {
                     Message _M = new Message(temp);
-                    Bus.HandleNewMessageRecieved(_M,1);
+                    if (_M.Content == "Connection Terminated")
+                    {
+                        _active = false;
+                    }
+                    if (_active)
+                    {
+                        Bus.HandleNewMessageRecieved(_M, 1); 
+                    }
                 }
             }
         }

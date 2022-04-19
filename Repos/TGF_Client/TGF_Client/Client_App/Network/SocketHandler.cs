@@ -118,9 +118,16 @@ namespace TGF_Client.Client_App.Network
         {
             if(id == 1 && _primaryClient != null)
             {
-                if(_primaryClient.Connected)
+                if (_primaryClient.Connected)
                 {
-                    _ = Broadcast("this", Constants.Message_Type_Terminate_Tag, "has Disconnected from Room");
+                    try
+                    {
+                        _ = Broadcast("this", Constants.Message_Type_Terminate_Tag, "has Disconnected from Room");
+                    }
+                    catch
+                    {
+
+                    }
                     _ = Listen();
                 }
                 _primaryClient.Close();

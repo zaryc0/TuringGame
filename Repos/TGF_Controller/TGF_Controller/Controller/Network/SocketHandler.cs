@@ -71,9 +71,9 @@ namespace TGF_Controller.Controller.Network
             {
                 return _pipe.ProcessMessage(new Message(_primary_socket.Read()));
             }
-            catch 
+            catch
             {
-                return new Message("room", "room", Constants.Message_Type_Visible_Tag, "irrelevant");
+                return new Message("room", "room", Constants.Message_Type_Terminate_Tag, "irrelevant");
             }
         }
         public bool WaitForPrimaryConnection()
