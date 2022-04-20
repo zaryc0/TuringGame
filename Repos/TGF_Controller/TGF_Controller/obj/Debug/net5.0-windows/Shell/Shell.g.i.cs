@@ -61,7 +61,7 @@ namespace TGF_Controller.Shell {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/TGF_Controller;component/shell/shell.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/TGF_Controller;V1.0.0.0;component/shell/shell.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Shell\Shell.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Temp\\TuringGame\\Repos\\TGF_Client\\TGF_Client\\TGF_Client.csproj": {}
+    "C:\\Temp\\New folder\\TuringGame\\Repos\\TGF_Client\\TGF_Client\\TGF_Client.csproj": {}
   },
   "projects": {
-    "C:\\Temp\\TuringGame\\Repos\\TGF_Client\\TGF_Client\\TGF_Client.csproj": {
+    "C:\\Temp\\New folder\\TuringGame\\Repos\\TGF_Client\\TGF_Client\\TGF_Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Temp\\TuringGame\\Repos\\TGF_Client\\TGF_Client\\TGF_Client.csproj",
+        "projectUniqueName": "C:\\Temp\\New folder\\TuringGame\\Repos\\TGF_Client\\TGF_Client\\TGF_Client.csproj",
         "projectName": "TGF_Client",
-        "projectPath": "C:\\Temp\\TuringGame\\Repos\\TGF_Client\\TGF_Client\\TGF_Client.csproj",
+        "projectPath": "C:\\Temp\\New folder\\TuringGame\\Repos\\TGF_Client\\TGF_Client\\TGF_Client.csproj",
         "packagesPath": "C:\\Users\\645263\\.nuget\\packages\\",
-        "outputPath": "C:\\Temp\\TuringGame\\Repos\\TGF_Client\\TGF_Client\\obj\\",
+        "outputPath": "C:\\Temp\\New folder\\TuringGame\\Repos\\TGF_Client\\TGF_Client\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
