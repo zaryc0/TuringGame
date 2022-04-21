@@ -13,6 +13,7 @@ namespace ChatBotWrapper
         private ISocketHandler _socket;
         private bool _active;
         private IMessage m;
+        private string _ChatbotScript;
         static void Main(string[] args)
         {
             _ = new ChatBot(args);
@@ -20,11 +21,12 @@ namespace ChatBotWrapper
 
         public ChatBot(string[] argv)
         {
+            _ChatbotScript = "../../../chatbot/dist/chatter.exe";
             _active = true;
             _socket = new SocketHandler(argv[0]);
             Process chatter = new();
             ProcessStartInfo thisInfo = new ProcessStartInfo();
-            thisInfo.FileName = "../../../chatbot/dist/chatter.exe";
+            thisInfo.FileName = _ChatbotScript;
             thisInfo.RedirectStandardInput = true;
             thisInfo.RedirectStandardOutput = true;
             thisInfo.UseShellExecute = false;
@@ -47,7 +49,7 @@ namespace ChatBotWrapper
                     m.Content = "quit";
                 }
                 ProcessWriter.WriteLine(m.Content);
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
             }
             chatter.Dispose();
         }

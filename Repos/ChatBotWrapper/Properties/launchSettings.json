@@ -2,7 +2,7 @@
   "profiles": {
     "ChatBotWrapper": {
       "commandName": "Project",
-      "commandLineArgs": "7756"
+      "commandLineArgs": "7328"
     }
   }
 }
