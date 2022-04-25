@@ -25,8 +25,8 @@ from here you can view the conversation between the clients attcahed to the curr
   The ChatBotWrapper application is managed in the background by the TGF_Controller application and
   does not need to be interacted with by the User
 ### How to use the TGF_Controller
-To Launch The TGF_COntroller double click the TGF Shortcut in the root folder it will present you with a
-  screen that asks you to enter a session code enter the4 digit session code from the running TGF_Controller
-  application then click Submit. when succesfully connected the CLient application will change to display 
+To Launch The TGF_Controller double click the TGF Shortcut in the root folder it will present you with a
+  screen that asks you to enter a session code enter the 4 digit session code from the running TGF_Controller
+  application then click Submit. when succesfully connected the Client application will change to display 
   either the Interviewer view or the Subvject view. messages can be entered into the text box and sent by clicking
   the sent message should then appear on the messageBoard and any recieved messages will appear here also.
