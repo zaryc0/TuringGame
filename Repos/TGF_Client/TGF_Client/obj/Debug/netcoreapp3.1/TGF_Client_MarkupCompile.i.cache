@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Temp\New folder\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\
+C:\Temp\TuringGame\Repos\TGF_Client\TGF_Client\obj\Debug\netcoreapp3.1\
 TGF_Client
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
-C:\Temp\New folder\TuringGame\Repos\TGF_Client\TGF_Client\App.xaml
+C:\Temp\TuringGame\Repos\TGF_Client\TGF_Client\App.xaml
 141114881174
 
 38-818807782
 192-1533232326
 Resources\AllStyles.xaml;Resources\ColourPalette.xaml;Resources\DefaultStyles.xaml;Resources\Typography.xaml;Resources\ViewTemplates.xaml;Shell\ShellView.xaml;View\InitialView.xaml;View\InterviewerView.xaml;View\Message.xaml;View\MessageBoard.xaml;View\MessageView2.xaml;View\SubjectSelection.xaml;View\SubjectView.xaml;View\UserTextInput.xaml;
 
-False
+True
 

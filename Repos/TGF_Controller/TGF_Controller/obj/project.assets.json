@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Temp\\New folder\\TuringGame\\Repos\\TGF_Controller\\TGF_Controller\\TGF_Controller.csproj",
+      "projectUniqueName": "C:\\Temp\\TuringGame\\Repos\\TGF_Controller\\TGF_Controller\\TGF_Controller.csproj",
       "projectName": "TGF_Controller",
-      "projectPath": "C:\\Temp\\New folder\\TuringGame\\Repos\\TGF_Controller\\TGF_Controller\\TGF_Controller.csproj",
+      "projectPath": "C:\\Temp\\TuringGame\\Repos\\TGF_Controller\\TGF_Controller\\TGF_Controller.csproj",
       "packagesPath": "C:\\Users\\645263\\.nuget\\packages\\",
-      "outputPath": "C:\\Temp\\New folder\\TuringGame\\Repos\\TGF_Controller\\TGF_Controller\\obj\\",
+      "outputPath": "C:\\Temp\\TuringGame\\Repos\\TGF_Controller\\TGF_Controller\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
